@@ -107,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				A00852F11CACE9240076F011 /* AppDelegate.swift */,
-				A0DEA7781CAD1871000894A5 /* Libraries */,
 				A07BBA101CAE43CF0015B89B /* Models */,
 				A07BBA091CAE42470015B89B /* Server Communication */,
 				A00853031CACE9540076F011 /* Support Files */,
@@ -118,6 +117,7 @@
 		A00853031CACE9540076F011 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				A0DEA7781CAD1871000894A5 /* Libraries */,
 				A00852F81CACE9240076F011 /* Assets.xcassets */,
 				A00852FA1CACE9240076F011 /* LaunchScreen.storyboard */,
 				A00852FD1CACE9240076F011 /* Info.plist */,
