@@ -28,6 +28,12 @@ struct ServerAPI {
 
     }
 
+    static func createUserRegistrationData(user: User) -> [String : AnyObject]{
+        var data = [String : AnyObject]()
+        data["user"] = dictionaryFrom(user: user)
+        return data
+    }
+
     private static func parseServerResponseData(data: [AnyObject]) -> [String : AnyObject] {
         return data[0] as! [String : AnyObject]
     }
@@ -62,6 +68,8 @@ struct ServerAPI {
 
         dict["name"] = user.name
         dict["email"] = user.email
+        dict["password"] = user.password
+
         if user.id != nil {
             dict["id"] = user.id
         }

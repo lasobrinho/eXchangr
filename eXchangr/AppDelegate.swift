@@ -14,7 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
         return true
+    }
+
+    func applicationWillEnterForeground(application: UIApplication) {
+        ServerInterface.sharedInstance.connect()
+    }
+
+    func applicationDidEnterBackground(application: UIApplication) {
+        ServerInterface.sharedInstance.disconnect()
     }
 
 }

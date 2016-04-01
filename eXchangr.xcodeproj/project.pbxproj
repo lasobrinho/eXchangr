@@ -127,8 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				A07BBA0A1CAE42600015B89B /* ServerAPI.swift */,
-				A07BBA0C1CAE42FE0015B89B /* ServerResponseEvent.swift */,
-				A07BBA0E1CAE430D0015B89B /* ClientEvent.swift */,
+				A07BBA191CAE532C0015B89B /* Events */,
 				A07BBA151CAE4F1B0015B89B /* ServerInterface.swift */,
 				A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */,
 			);
@@ -141,6 +140,15 @@
 				A07BBA111CAE43EC0015B89B /* User.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		A07BBA191CAE532C0015B89B /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				A07BBA0C1CAE42FE0015B89B /* ServerResponseEvent.swift */,
+				A07BBA0E1CAE430D0015B89B /* ClientEvent.swift */,
+			);
+			name = Events;
 			sourceTree = "<group>";
 		};
 		A0DEA7781CAD1871000894A5 /* Libraries */ = {

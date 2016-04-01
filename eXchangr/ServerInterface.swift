@@ -37,4 +37,11 @@ class ServerInterface {
     func removeCallbackForUserRegistration() {
         socket.off(ServerResponseEvent.userRegistrationResponse)
     }
+
+    func performUserRegistration(user: User) {
+        if socket.status == .Connected {
+            let data = ServerAPI.createUserRegistrationData(user)
+            socket.emit(ClientEvent.userRegistration, data)
+        }
+    }
 }
