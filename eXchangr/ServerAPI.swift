@@ -8,12 +8,9 @@
 
 import Foundation
 
-enum UserRegistrationResult {
-    case Success(User)
-    case Failure(String)
-}
-
 struct ServerAPI {
+
+    static let serverURL = NSURL(string: "http://localhost:3000")!
 
     static func parseUserRegistrationResponse(data: [AnyObject]) -> UserRegistrationResult {
 
