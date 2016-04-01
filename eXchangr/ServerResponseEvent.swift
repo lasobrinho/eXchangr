@@ -9,5 +9,7 @@
 import Foundation
 
 struct ServerResponseEvent {
+
     static let userRegistrationResponse = "userRegistrationResponse"
+    
 }

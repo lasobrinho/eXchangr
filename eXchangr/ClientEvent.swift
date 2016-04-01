@@ -9,5 +9,7 @@
 import Foundation
 
 struct ClientEvent {
+
     static let userRegistration = "userRegistration"
+    
 }
