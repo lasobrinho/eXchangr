@@ -28,9 +28,31 @@ struct ServerAPI {
 
     }
 
+    static func parseUserAuthenticationResponse(data: [AnyObject]) -> UserAuthenticationResult {
+
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        if responseCode == 0 {
+            let userJSON = extractUserFrom(serverResponse: serverResponse)
+            let user = userFrom(userJSON: userJSON)
+            return .Success(user)
+        } else {
+            let message = extractMessageFrom(serverResponse: serverResponse)
+            return .Failure(message)
+        }
+        
+    }
+
     static func createUserRegistrationData(user: User) -> [String : AnyObject]{
         var data = [String : AnyObject]()
         data["user"] = dictionaryFrom(user: user)
+        return data
+    }
+
+    static func createUserAuthenticationData(email email: String, password: String) -> [String : AnyObject] {
+        var data = [String : AnyObject]()
+        data["credentials"] = dictionaryFrom(credentials: (email, password))
         return data
     }
 
@@ -79,6 +101,15 @@ struct ServerAPI {
         if user.reputation != nil {
             dict["reputation"] = user.reputation
         }
+        
+        return dict
+    }
+
+    private static func dictionaryFrom(credentials credentials: (email: String, password: String)) -> [String : AnyObject] {
+        var dict = [String : AnyObject]()
+
+        dict["email"] = credentials.email
+        dict["password"] = credentials.password
         
         return dict
     }

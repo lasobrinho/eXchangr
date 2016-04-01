@@ -11,5 +11,6 @@ import Foundation
 struct ClientEvent {
 
     static let userRegistration = "userRegistration"
+    static let userAuthentication = "userAuthentication"
     
 }

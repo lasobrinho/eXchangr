@@ -38,10 +38,30 @@ class ServerInterface {
         socket.off(ServerResponseEvent.userRegistrationResponse)
     }
 
+    func registerCallbackForUserAuthentication(callback: (result: UserAuthenticationResult) -> ()) {
+        removeCallbackForUserAuthentication()
+        socket.on(ServerResponseEvent.userAuthenticationResponse) {
+            (data, ack) in
+            let authenticationResult = ServerAPI.parseUserAuthenticationResponse(data)
+            callback(result: authenticationResult)
+        }
+    }
+
+    func removeCallbackForUserAuthentication() {
+        socket.off(ServerResponseEvent.userAuthenticationResponse)
+    }
+
     func performUserRegistration(user: User) {
         if socket.status == .Connected {
             let data = ServerAPI.createUserRegistrationData(user)
             socket.emit(ClientEvent.userRegistration, data)
+        }
+    }
+
+    func performUserAuthentication(email email: String, password: String) {
+        if socket.status == .Connected {
+            let data = ServerAPI.createUserAuthenticationData(email: email, password: password)
+            socket.emit(ClientEvent.userAuthentication, data)
         }
     }
 }

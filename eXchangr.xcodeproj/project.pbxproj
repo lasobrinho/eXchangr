@@ -16,6 +16,7 @@
 		A07BBA121CAE43EC0015B89B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA111CAE43EC0015B89B /* User.swift */; };
 		A07BBA161CAE4F1B0015B89B /* ServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA151CAE4F1B0015B89B /* ServerInterface.swift */; };
 		A07BBA181CAE50EB0015B89B /* UserRegistrationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */; };
+		A07BBA1E1CAE5EF60015B89B /* UserAuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA1D1CAE5EF60015B89B /* UserAuthenticationResult.swift */; };
 		A0DEA78F1CAD1871000894A5 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA77A1CAD1871000894A5 /* SocketAckEmitter.swift */; };
 		A0DEA7901CAD1871000894A5 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA77B1CAD1871000894A5 /* SocketAckManager.swift */; };
 		A0DEA7911CAD1871000894A5 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA77C1CAD1871000894A5 /* SocketAnyEvent.swift */; };
@@ -51,6 +52,7 @@
 		A07BBA111CAE43EC0015B89B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A07BBA151CAE4F1B0015B89B /* ServerInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerInterface.swift; sourceTree = "<group>"; };
 		A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationResult.swift; sourceTree = "<group>"; };
+		A07BBA1D1CAE5EF60015B89B /* UserAuthenticationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationResult.swift; sourceTree = "<group>"; };
 		A0DEA77A1CAD1871000894A5 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
 		A0DEA77B1CAD1871000894A5 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		A0DEA77C1CAD1871000894A5 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
@@ -105,10 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				A00852F11CACE9240076F011 /* AppDelegate.swift */,
+				A0DEA7781CAD1871000894A5 /* Libraries */,
 				A07BBA101CAE43CF0015B89B /* Models */,
 				A07BBA091CAE42470015B89B /* Server Communication */,
 				A00853031CACE9540076F011 /* Support Files */,
-				A0DEA7781CAD1871000894A5 /* Libraries */,
 			);
 			path = eXchangr;
 			sourceTree = "<group>";
@@ -126,10 +128,10 @@
 		A07BBA091CAE42470015B89B /* Server Communication */ = {
 			isa = PBXGroup;
 			children = (
-				A07BBA0A1CAE42600015B89B /* ServerAPI.swift */,
+				A07BBA1C1CAE5EDF0015B89B /* Server Results */,
 				A07BBA191CAE532C0015B89B /* Events */,
 				A07BBA151CAE4F1B0015B89B /* ServerInterface.swift */,
-				A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */,
+				A07BBA0A1CAE42600015B89B /* ServerAPI.swift */,
 			);
 			name = "Server Communication";
 			sourceTree = "<group>";
@@ -149,6 +151,15 @@
 				A07BBA0E1CAE430D0015B89B /* ClientEvent.swift */,
 			);
 			name = Events;
+			sourceTree = "<group>";
+		};
+		A07BBA1C1CAE5EDF0015B89B /* Server Results */ = {
+			isa = PBXGroup;
+			children = (
+				A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */,
+				A07BBA1D1CAE5EF60015B89B /* UserAuthenticationResult.swift */,
+			);
+			name = "Server Results";
 			sourceTree = "<group>";
 		};
 		A0DEA7781CAD1871000894A5 /* Libraries */ = {
@@ -261,6 +272,7 @@
 				A07BBA181CAE50EB0015B89B /* UserRegistrationResult.swift in Sources */,
 				A07BBA121CAE43EC0015B89B /* User.swift in Sources */,
 				A0DEA7991CAD1871000894A5 /* SocketEventHandler.swift in Sources */,
+				A07BBA1E1CAE5EF60015B89B /* UserAuthenticationResult.swift in Sources */,
 				A0DEA79C1CAD1871000894A5 /* SocketIOClientStatus.swift in Sources */,
 				A0DEA7A11CAD1871000894A5 /* SocketTypes.swift in Sources */,
 				A0DEA7A31CAD1871000894A5 /* WebSocket.swift in Sources */,
