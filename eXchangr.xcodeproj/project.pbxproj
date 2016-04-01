@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				A00852F11CACE9240076F011 /* AppDelegate.swift */,
-				A07BBA101CAE43CF0015B89B /* Models */,
+				A07BBA101CAE43CF0015B89B /* Model */,
 				A07BBA091CAE42470015B89B /* Server Communication */,
 				A00853031CACE9540076F011 /* Support Files */,
 			);
@@ -136,12 +136,12 @@
 			name = "Server Communication";
 			sourceTree = "<group>";
 		};
-		A07BBA101CAE43CF0015B89B /* Models */ = {
+		A07BBA101CAE43CF0015B89B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A07BBA111CAE43EC0015B89B /* User.swift */,
 			);
-			name = Models;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		A07BBA191CAE532C0015B89B /* Events */ = {
