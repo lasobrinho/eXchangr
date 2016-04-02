@@ -13,8 +13,16 @@ class ServerInterface {
 
     private let socket: SocketIOClient
 
+    private var userAuthenticationObservers: [UserAuthenticationObserver]
+    private var userRegistrationObservers: [UserRegistrationObserver]
+
+    private var authenticatedUser: User?
+
     init() {
         socket = SocketIOClient(socketURL: ServerAPI.serverURL)
+        userAuthenticationObservers = [UserAuthenticationObserver]()
+        userRegistrationObservers = [UserRegistrationObserver]()
+        registerCallbacks()
     }
 
     func connect() {
@@ -25,28 +33,45 @@ class ServerInterface {
         socket.disconnect()
     }
 
-    func registerCallbackForUserRegistration(callback: (result: UserRegistrationResult) -> ()) {
+    func addAuthenticationObserver(observer: UserAuthenticationObserver) {
+        userAuthenticationObservers.append(observer)
+    }
+
+    func addUserRegistrationObserver(observer: UserRegistrationObserver) {
+        userRegistrationObservers.append(observer)
+    }
+
+    private func registerCallbacks() {
+        registerCallbackForUserAuthentication()
+        registerCallbackForUserAuthentication()
+    }
+
+    private func registerCallbackForUserRegistration() {
         socket.once(ServerResponseEvent.userRegistrationResponse) {
-            (data, ack) in
+            [weak self] (data, ack) in
             let registrationResult = ServerAPI.parseUserRegistrationResponse(data)
-            callback(result: registrationResult)
+            self?.notifyUserRegistrationObservers(registrationResult)
         }
     }
 
-    func registerCallbackForUserAuthentication(callback: (result: UserAuthenticationResult) -> ()) {
+    private func registerCallbackForUserAuthentication() {
         socket.once(ServerResponseEvent.userAuthenticationResponse) {
-            (data, ack) in
+            [weak self] (data, ack)  in
             let authenticationResult = ServerAPI.parseUserAuthenticationResponse(data)
-            callback(result: authenticationResult)
+            self?.notifyUserAuthenticationObservers(authenticationResult)
         }
     }
 
-    func removeCallbackForUserAuthentication() {
-        socket.off(ServerResponseEvent.userAuthenticationResponse)
+    private func notifyUserAuthenticationObservers(result: UserAuthenticationResult) {
+        for observer in userAuthenticationObservers {
+            observer.notify(result)
+        }
     }
 
-    func removeCallbackForUserRegistration() {
-        socket.off(ServerResponseEvent.userRegistrationResponse)
+    private func notifyUserRegistrationObservers(result: UserRegistrationResult) {
+        for observer in userRegistrationObservers {
+            observer.notify(result)
+        }
     }
 
     func performUserRegistration(user: User) {
