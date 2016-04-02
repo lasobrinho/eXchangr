@@ -17,6 +17,9 @@
 		A07BBA161CAE4F1B0015B89B /* ServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA151CAE4F1B0015B89B /* ServerInterface.swift */; };
 		A07BBA181CAE50EB0015B89B /* UserRegistrationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */; };
 		A07BBA1E1CAE5EF60015B89B /* UserAuthenticationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA1D1CAE5EF60015B89B /* UserAuthenticationResult.swift */; };
+		A08DC8F11CB0699500A7C4DF /* UserRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8F01CB0699500A7C4DF /* UserRegistrationViewController.swift */; };
+		A08DC8F31CB06E6100A7C4DF /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8F21CB06E6100A7C4DF /* BrowserViewController.swift */; };
+		A08DC8F51CB06E7A00A7C4DF /* UserItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8F41CB06E7A00A7C4DF /* UserItemsViewController.swift */; };
 		A0C9B40B1CAFA26B00420332 /* UserAuthenticationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C9B40A1CAFA26B00420332 /* UserAuthenticationObserver.swift */; };
 		A0C9B40D1CAFA27700420332 /* UserRegistrationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C9B40C1CAFA27700420332 /* UserRegistrationObserver.swift */; };
 		A0DEA78F1CAD1871000894A5 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA77A1CAD1871000894A5 /* SocketAckEmitter.swift */; };
@@ -56,6 +59,9 @@
 		A07BBA151CAE4F1B0015B89B /* ServerInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerInterface.swift; sourceTree = "<group>"; };
 		A07BBA171CAE50EB0015B89B /* UserRegistrationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationResult.swift; sourceTree = "<group>"; };
 		A07BBA1D1CAE5EF60015B89B /* UserAuthenticationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationResult.swift; sourceTree = "<group>"; };
+		A08DC8F01CB0699500A7C4DF /* UserRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationViewController.swift; sourceTree = "<group>"; };
+		A08DC8F21CB06E6100A7C4DF /* BrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		A08DC8F41CB06E7A00A7C4DF /* UserItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItemsViewController.swift; sourceTree = "<group>"; };
 		A0C9B40A1CAFA26B00420332 /* UserAuthenticationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationObserver.swift; sourceTree = "<group>"; };
 		A0C9B40C1CAFA27700420332 /* UserRegistrationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationObserver.swift; sourceTree = "<group>"; };
 		A0DEA77A1CAD1871000894A5 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
@@ -227,6 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				A0F359281CAF902D007F18AC /* LoginViewController.swift */,
+				A08DC8F01CB0699500A7C4DF /* UserRegistrationViewController.swift */,
+				A08DC8F21CB06E6100A7C4DF /* BrowserViewController.swift */,
+				A08DC8F41CB06E7A00A7C4DF /* UserItemsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -321,10 +330,13 @@
 				A0C9B40B1CAFA26B00420332 /* UserAuthenticationObserver.swift in Sources */,
 				A0DEA7901CAD1871000894A5 /* SocketAckManager.swift in Sources */,
 				A0DEA7961CAD1871000894A5 /* SocketEnginePollable.swift in Sources */,
+				A08DC8F31CB06E6100A7C4DF /* BrowserViewController.swift in Sources */,
+				A08DC8F11CB0699500A7C4DF /* UserRegistrationViewController.swift in Sources */,
 				A0F359291CAF902D007F18AC /* LoginViewController.swift in Sources */,
 				A00852F21CACE9240076F011 /* AppDelegate.swift in Sources */,
 				A0DEA7911CAD1871000894A5 /* SocketAnyEvent.swift in Sources */,
 				A0DEA79B1CAD1871000894A5 /* SocketIOClientOption.swift in Sources */,
+				A08DC8F51CB06E7A00A7C4DF /* UserItemsViewController.swift in Sources */,
 				A07BBA0B1CAE42600015B89B /* ServerAPI.swift in Sources */,
 				A0DEA79A1CAD1871000894A5 /* SocketIOClient.swift in Sources */,
 				A0DEA79F1CAD1871000894A5 /* SocketParsable.swift in Sources */,

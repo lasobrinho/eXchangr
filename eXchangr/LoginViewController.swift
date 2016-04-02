@@ -13,12 +13,20 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addAuthenticationObserver(self)
+    }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         ServerInterface.sharedInstance.performUserAuthentication(email: "lucas@gmail.com", password: "password")
     }
 
     func update(result: UserAuthenticationResult) {
-        print(result)
+        switch result {
+        case .Success:
+            navigationController?.pushViewController(BrowserViewController(), animated: true)
+        case let .Failure(message):
+            print(message)
+        }
     }
 
 }
