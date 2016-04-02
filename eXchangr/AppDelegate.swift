@@ -14,11 +14,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        ServerInterface.sharedInstance.connect()
+        self.window = UIWindow()
+        self.window!.rootViewController = buildApplicationContainer()
+        self.window!.makeKeyAndVisible()
         return true
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func buildApplicationContainer() -> UIViewController {
+        let rootViewController = buildRootViewController()
+        let appContainer = UINavigationController(rootViewController: rootViewController)
+        appContainer.toolbarHidden = true
+        appContainer.navigationBarHidden = true
+        return appContainer
+    }
+
+    func buildRootViewController() -> UIViewController {
+        let rootViewController = LoginViewController()
+        return rootViewController
+    }
+
+    func applicationDidBecomeActive(application: UIApplication) {
         ServerInterface.sharedInstance.connect()
     }
 

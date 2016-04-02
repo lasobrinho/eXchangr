@@ -34,10 +34,6 @@ class ServerInterface {
         }
     }
 
-    func removeCallbackForUserRegistration() {
-        socket.off(ServerResponseEvent.userRegistrationResponse)
-    }
-
     func registerCallbackForUserAuthentication(callback: (result: UserAuthenticationResult) -> ()) {
         removeCallbackForUserAuthentication()
         socket.on(ServerResponseEvent.userAuthenticationResponse) {
@@ -49,6 +45,10 @@ class ServerInterface {
 
     func removeCallbackForUserAuthentication() {
         socket.off(ServerResponseEvent.userAuthenticationResponse)
+    }
+
+    func removeCallbackForUserRegistration() {
+        socket.off(ServerResponseEvent.userRegistrationResponse)
     }
 
     func performUserRegistration(user: User) {

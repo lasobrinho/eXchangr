@@ -38,6 +38,7 @@
 		A0DEA7A11CAD1871000894A5 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA78C1CAD1871000894A5 /* SocketTypes.swift */; };
 		A0DEA7A21CAD1871000894A5 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA78D1CAD1871000894A5 /* SwiftRegex.swift */; };
 		A0DEA7A31CAD1871000894A5 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA78E1CAD1871000894A5 /* WebSocket.swift */; };
+		A0F359291CAF902D007F18AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F359281CAF902D007F18AC /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		A0DEA78C1CAD1871000894A5 /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
 		A0DEA78D1CAD1871000894A5 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
 		A0DEA78E1CAD1871000894A5 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		A0F359281CAF902D007F18AC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		A00852F01CACE9240076F011 /* eXchangr */ = {
 			isa = PBXGroup;
 			children = (
+				A0F359271CAF8FA9007F18AC /* Controller */,
 				A00852F11CACE9240076F011 /* AppDelegate.swift */,
 				A07BBA101CAE43CF0015B89B /* Model */,
 				A07BBA091CAE42470015B89B /* Server Communication */,
@@ -198,6 +201,14 @@
 			path = SocketIO;
 			sourceTree = "<group>";
 		};
+		A0F359271CAF8FA9007F18AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A0F359281CAF902D007F18AC /* LoginViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -287,6 +298,7 @@
 				A0DEA7A01CAD1871000894A5 /* SocketStringReader.swift in Sources */,
 				A0DEA7901CAD1871000894A5 /* SocketAckManager.swift in Sources */,
 				A0DEA7961CAD1871000894A5 /* SocketEnginePollable.swift in Sources */,
+				A0F359291CAF902D007F18AC /* LoginViewController.swift in Sources */,
 				A00852F21CACE9240076F011 /* AppDelegate.swift in Sources */,
 				A0DEA7911CAD1871000894A5 /* SocketAnyEvent.swift in Sources */,
 				A0DEA79B1CAD1871000894A5 /* SocketIOClientOption.swift in Sources */,
