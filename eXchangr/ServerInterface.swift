@@ -26,8 +26,7 @@ class ServerInterface {
     }
 
     func registerCallbackForUserRegistration(callback: (result: UserRegistrationResult) -> ()) {
-        removeCallbackForUserRegistration()
-        socket.on(ServerResponseEvent.userRegistrationResponse) {
+        socket.once(ServerResponseEvent.userRegistrationResponse) {
             (data, ack) in
             let registrationResult = ServerAPI.parseUserRegistrationResponse(data)
             callback(result: registrationResult)
@@ -35,8 +34,7 @@ class ServerInterface {
     }
 
     func registerCallbackForUserAuthentication(callback: (result: UserAuthenticationResult) -> ()) {
-        removeCallbackForUserAuthentication()
-        socket.on(ServerResponseEvent.userAuthenticationResponse) {
+        socket.once(ServerResponseEvent.userAuthenticationResponse) {
             (data, ack) in
             let authenticationResult = ServerAPI.parseUserAuthenticationResponse(data)
             callback(result: authenticationResult)
@@ -52,16 +50,26 @@ class ServerInterface {
     }
 
     func performUserRegistration(user: User) {
-        if socket.status == .Connected {
-            let data = ServerAPI.createUserRegistrationData(user)
-            socket.emit(ClientEvent.userRegistration, data)
-        }
+        let data = ServerAPI.createUserRegistrationData(user)
+        emitEvent(ClientEvent.userRegistration, data: data)
     }
 
     func performUserAuthentication(email email: String, password: String) {
+        let data = ServerAPI.createUserAuthenticationData(email: email, password: password)
+        emitEvent(ClientEvent.userAuthentication,  data: data)
+
+
+    }
+
+    private func emitEvent(event: String, data: AnyObject) {
         if socket.status == .Connected {
-            let data = ServerAPI.createUserAuthenticationData(email: email, password: password)
-            socket.emit(ClientEvent.userAuthentication, data)
+            socket.emit(event, data)
+        } else {
+            socket.once("connect") {
+                _ in
+                self.socket.emit(event, data)
+            }
         }
     }
+
 }
