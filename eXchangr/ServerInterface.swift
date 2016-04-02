@@ -15,13 +15,17 @@ class ServerInterface {
 
     private var userAuthenticationObservers: [UserAuthenticationObserver]
     private var userRegistrationObservers: [UserRegistrationObserver]
+    private var itemAdditionObservers: [ItemAdditionObserver]
 
     private var authenticatedUser: User?
 
     init() {
         socket = SocketIOClient(socketURL: ServerAPI.serverURL)
+
         userAuthenticationObservers = [UserAuthenticationObserver]()
         userRegistrationObservers = [UserRegistrationObserver]()
+        itemAdditionObservers = [ItemAdditionObserver]()
+
         registerCallbacks()
     }
 
@@ -41,9 +45,14 @@ class ServerInterface {
         userRegistrationObservers.append(observer)
     }
 
+    func addItemAdditionObserver(observer: ItemAdditionObserver) {
+        itemAdditionObservers.append(observer)
+    }
+
     private func registerCallbacks() {
         registerCallbackForUserRegistration()
         registerCallbackForUserAuthentication()
+        registerCallbackForItemAddition()
     }
 
     private func registerCallbackForUserRegistration() {
@@ -58,7 +67,20 @@ class ServerInterface {
         socket.once(ServerResponseEvent.userAuthenticationResponse) {
             [weak self] (data, ack)  in
             let authenticationResult = ServerAPI.parseUserAuthenticationResponse(data)
+            switch authenticationResult {
+            case let .Success(user):
+                self?.authenticatedUser = user
+            default: break
+            }
             self?.notifyUserAuthenticationObservers(authenticationResult)
+        }
+    }
+
+    private func registerCallbackForItemAddition() {
+        socket.once(ServerResponseEvent.itemAdditionResponse) {
+            [weak self] (data, ack) in
+            let additionResult = ServerAPI.parseItemAdditionResponse(data)
+            self?.notifyItemAdditionObservers(additionResult)
         }
     }
 
@@ -74,6 +96,12 @@ class ServerInterface {
         }
     }
 
+    private func notifyItemAdditionObservers(result: ItemAdditionResult) {
+        for observer in itemAdditionObservers {
+            observer.update(result)
+        }
+    }
+
     func performUserRegistration(user: User) {
         let data = ServerAPI.createUserRegistrationData(user)
         emitEvent(ClientEvent.userRegistration, data: data)
@@ -82,8 +110,11 @@ class ServerInterface {
     func performUserAuthentication(email email: String, password: String) {
         let data = ServerAPI.createUserAuthenticationData(email: email, password: password)
         emitEvent(ClientEvent.userAuthentication,  data: data)
+    }
 
-
+    func performItemAddition(item: Item) {
+        let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
+        emitEvent(ClientEvent.itemAddition, data: data)
     }
 
     private func emitEvent(event: String, data: AnyObject) {

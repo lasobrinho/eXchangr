@@ -12,5 +12,5 @@ struct ClientEvent {
 
     static let userRegistration = "userRegistration"
     static let userAuthentication = "userAuthentication"
-    
+    static let itemAddition = "itemAddition"
 }
