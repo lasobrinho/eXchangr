@@ -8,10 +8,17 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UserAuthenticationObserver {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ServerInterface.sharedInstance.addAuthenticationObserver(self)
+
+        ServerInterface.sharedInstance.performUserAuthentication(email: "lucas@gmail.com", password: "password")
+    }
+
+    func update(result: UserAuthenticationResult) {
+        print(result)
     }
 
 }

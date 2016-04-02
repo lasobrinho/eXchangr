@@ -9,5 +9,5 @@
 import Foundation
 
 protocol UserAuthenticationObserver {
-    func notify(result: UserAuthenticationResult)
+    func update(result: UserAuthenticationResult)
 }

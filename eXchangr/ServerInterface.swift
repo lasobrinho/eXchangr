@@ -42,7 +42,7 @@ class ServerInterface {
     }
 
     private func registerCallbacks() {
-        registerCallbackForUserAuthentication()
+        registerCallbackForUserRegistration()
         registerCallbackForUserAuthentication()
     }
 
@@ -64,13 +64,13 @@ class ServerInterface {
 
     private func notifyUserAuthenticationObservers(result: UserAuthenticationResult) {
         for observer in userAuthenticationObservers {
-            observer.notify(result)
+            observer.update(result)
         }
     }
 
     private func notifyUserRegistrationObservers(result: UserRegistrationResult) {
         for observer in userRegistrationObservers {
-            observer.notify(result)
+            observer.update(result)
         }
     }
 

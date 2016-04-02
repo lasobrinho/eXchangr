@@ -9,5 +9,5 @@
 import Foundation
 
 protocol UserRegistrationObserver {
-    func notify(result: UserRegistrationResult)
+    func update(result: UserRegistrationResult)
 }
