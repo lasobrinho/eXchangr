@@ -6,7 +6,7 @@
 //  Copyright © 2016 eXchangr. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class Item {
 
@@ -14,9 +14,9 @@ class Item {
     var name: String
     var description: String
     var active: Bool
-    var pictures: [UIImage]
+    var pictures: [Picture]
 
-    init(id: Int?, name: String, description: String, active: Bool, pictures: [UIImage]) {
+    init(id: Int?, name: String, description: String, active: Bool, pictures: [Picture]) {
         self.id = id
         self.name = name
         self.description = description

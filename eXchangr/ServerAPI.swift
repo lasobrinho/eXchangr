@@ -140,9 +140,13 @@ struct ServerAPI {
     private static func dictionaryFrom(item item: Item) -> [String : AnyObject] {
         var dict = [String : AnyObject]()
 
+        if item.id != nil {
+            dict["id"] = item.id!
+        }
         dict["name"] = item.name
         dict["description"] = item.description
         dict["active"] = item.active
+        dict["pictures"] = dictionaryFrom(item.pictures)
 
         return dict
     }
@@ -151,11 +155,40 @@ struct ServerAPI {
         guard let id = itemJSON["id"] as? Int,
             let name = itemJSON["name"] as? String,
             let description = itemJSON["description"] as? String,
-            let active = itemJSON["active"] as? Bool else {
+            let active = itemJSON["active"] as? Bool,
+            let picturesJSON = itemJSON["pictures"] as? [AnyObject],
+            let pictures = pictureArrayFrom(picturesJSONArray: picturesJSON) else {
                 fatalError()
         }
 
-        return Item(id: id, name: name, description: description, active: active, pictures: [UIImage]())
+        return Item(id: id, name: name, description: description, active: active, pictures: pictures)
+    }
+
+    private static func dictionaryFrom(picturesArray: [Picture]) -> [[String : AnyObject]] {
+        var pictureBytesCollection = [[String : AnyObject]]()
+
+        for picture in picturesArray {
+            var pictureDict = [String : AnyObject]()
+            if picture.id != nil {
+                pictureDict["id"] = picture.id!
+            }
+            pictureDict["bytes"] = picture.bytes
+            pictureBytesCollection.append(pictureDict)
+        }
+
+        return pictureBytesCollection
+    }
+
+    private static func pictureArrayFrom(picturesJSONArray picturesJSONArray: [AnyObject]) -> [Picture]?{
+        var pictures = [Picture]()
+        for object in picturesJSONArray {
+            guard let pictureDict =  object as? [String : AnyObject],
+                let bytes = pictureDict["bytes"] as? NSData else {
+                    return nil
+            }
+            pictures.append(Picture(id: pictureDict["id"] as? Int, bytes: bytes))
+        }
+        return pictures
     }
 
     //MARK: General
