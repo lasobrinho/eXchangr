@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ItemAdditionObserver {
+protocol ItemAdditionObserver: class {
     func update(result: ItemAdditionResult)
 }

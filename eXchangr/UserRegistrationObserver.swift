@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol UserRegistrationObserver {
+protocol UserRegistrationObserver: class {
     func update(result: UserRegistrationResult)
 }
