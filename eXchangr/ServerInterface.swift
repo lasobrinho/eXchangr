@@ -19,7 +19,7 @@ class ServerInterface {
 
     private var authenticatedUser: User?
 
-    init() {
+    private init() {
         socket = SocketIOClient(socketURL: ServerAPI.serverURL)
 
         userAuthenticationObservers = [UserAuthenticationObserver]()
