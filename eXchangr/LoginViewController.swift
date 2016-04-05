@@ -24,6 +24,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
         switch result {
         case .Success:
             navigationController?.pushViewController(BrowserViewController(), animated: true)
+            ServerInterface.sharedInstance.removeUserAuthenticationObserver(self)
         case let .Failure(message):
             print(message)
         }

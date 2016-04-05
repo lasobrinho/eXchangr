@@ -54,7 +54,7 @@ class ServerInterface {
         userRegistrationObservers.append(observer)
     }
 
-    func removeRegistrationObserver(observer: UserRegistrationObserver) {
+    func removeUserRegistrationObserver(observer: UserRegistrationObserver) {
         for (index,existingObserver) in userRegistrationObservers.enumerate() {
             if observer === existingObserver {
                 userRegistrationObservers.removeAtIndex(index)

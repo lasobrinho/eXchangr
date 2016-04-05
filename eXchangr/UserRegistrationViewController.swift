@@ -22,6 +22,7 @@ class UserRegistrationViewController: UIViewController, UserRegistrationObserver
 
     func update(result: UserRegistrationResult) {
         print(result)
+        ServerInterface.sharedInstance.removeUserRegistrationObserver(self)
     }
 
 }
