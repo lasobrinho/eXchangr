@@ -37,16 +37,43 @@ class ServerInterface {
         socket.disconnect()
     }
 
-    func addAuthenticationObserver(observer: UserAuthenticationObserver) {
+    func addUserAuthenticationObserver(observer: UserAuthenticationObserver) {
         userAuthenticationObservers.append(observer)
+    }
+
+    func removeUserAuthenticationObserver(observer: UserAuthenticationObserver) {
+        for (index,existingObserver) in userAuthenticationObservers.enumerate() {
+            if observer === existingObserver {
+                userAuthenticationObservers.removeAtIndex(index)
+                break
+            }
+        }
     }
 
     func addUserRegistrationObserver(observer: UserRegistrationObserver) {
         userRegistrationObservers.append(observer)
     }
 
+    func removeRegistrationObserver(observer: UserRegistrationObserver) {
+        for (index,existingObserver) in userRegistrationObservers.enumerate() {
+            if observer === existingObserver {
+                userRegistrationObservers.removeAtIndex(index)
+                break
+            }
+        }
+    }
+
     func addItemAdditionObserver(observer: ItemAdditionObserver) {
         itemAdditionObservers.append(observer)
+    }
+
+    func removeItemAdditionObserver(observer: UserAuthenticationObserver) {
+        for (index,existingObserver) in itemAdditionObservers.enumerate() {
+            if observer === existingObserver {
+                itemAdditionObservers.removeAtIndex(index)
+                break
+            }
+        }
     }
 
     private func registerCallbacks() {

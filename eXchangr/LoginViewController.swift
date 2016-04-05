@@ -12,7 +12,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ServerInterface.sharedInstance.addAuthenticationObserver(self)
+        ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
     }
 
     override func viewDidAppear(animated: Bool) {
