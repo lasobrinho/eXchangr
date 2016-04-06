@@ -23,6 +23,8 @@ user will be able to register items and exchange them for other people's items.
 	* Ability to see item's owner contact
 	* Only items within a limited radius around the user's location will be
 	  shown
+* Ability to block another user
+
 
 ### Server Application
 * Multiple users support
@@ -55,14 +57,14 @@ user will be able to register items and exchange them for other people's items.
   both of them will be able to see each other contact information and then
   concretize the exchange.
 
-## Implementation
+## iOS Application Implementation
 
 ### Model
 
 * User
 * Item
 * Picture
-* Location
+* Coordinates
 
 ### View
 
@@ -81,7 +83,27 @@ user will be able to register items and exchange them for other people's items.
 * AccountConfigurationViewController
 * SideMenuViewController
 
-### Server Side
+## Server Application Implementation
+
+### Model
+
+* Item
+* Picture
+* Reaction
+* Statistic
+* User
+* BlockedUser
+
+### Controller
+
+* EventHandlers
+	* UserRegistration
+	* UserAuthentication
+	* ItemAddition
+	* ItemUpdate
+	* ItemBrowser
+
+### Implementation Details
 
 * Language: Javascript
 * Runtime: NodeJS
@@ -89,10 +111,9 @@ user will be able to register items and exchange them for other people's items.
 
 ## Third-Party libraries:
 
-### Server Side
-	* [Socket.io](https://github.com/socketio/socket.io) for NodeJS
-	* [Sequelize](https://github.com/sequelize/sequelize)
-
 ### Client Side
-	* [Socket.io](https://github.com/socketio/socket.io-client-swift) Swift
-	Client
+* [Socket.io](https://github.com/socketio/socket.io-client-swift) Swift Client
+
+### Server Side
+* [Socket.io](https://github.com/socketio/socket.io) for NodeJS
+* [Sequelize](https://github.com/sequelize/sequelize)
