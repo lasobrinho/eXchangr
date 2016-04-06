@@ -23,7 +23,7 @@ user will be able to register items and exchange them for other people's items.
 	* Ability to see item's owner contact
 	* Only items within a limited radius around the user's location will be
 	  shown
-	  
+
 ### Server Application
 * Multiple users support
 * Session maintenance
@@ -86,6 +86,13 @@ user will be able to register items and exchange them for other people's items.
 * Language: Javascript
 * Runtime: NodeJS
 * Database: MySQL
-* Third-Party Libraries:
-	* [Socket.io](https://github.com/socketio/socket.io)
+
+## Third-Party libraries:
+
+### Server Side
+	* [Socket.io](https://github.com/socketio/socket.io) for NodeJS
 	* [Sequelize](https://github.com/sequelize/sequelize)
+
+### Client Side
+	* [Socket.io](https://github.com/socketio/socket.io-client-swift) Swift
+	Client
