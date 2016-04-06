@@ -23,6 +23,7 @@ user will be able to register items and exchange them for other people's items.
 	* Ability to see item's owner contact
 	* Only items within a limited radius around the user's location will be
 	  shown
+	  
 ### Server Application
 * Multiple users support
 * Session maintenance
