@@ -93,6 +93,7 @@ user will be able to register items and exchange them for other people's items.
 * Statistic
 * User
 * BlockedUser
+* Session
 
 ### Controller
 
