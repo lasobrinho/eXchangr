@@ -38,6 +38,7 @@ class UserItemsViewController: UIViewController, ItemAdditionObserver {
     }
 
     func update(result: ItemAdditionResult) {
+        print("Addition Result")
         print(result)
     }
 

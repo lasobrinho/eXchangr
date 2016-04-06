@@ -9,6 +9,6 @@
 import Foundation
 
 enum UserRegistrationResult {
-    case Success(User)
+    case Success
     case Failure(String)
 }
