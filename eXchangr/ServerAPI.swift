@@ -121,7 +121,10 @@ struct ServerAPI {
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
 
         if responseCode == 0 {
-            return .Success
+            let itemJSON = extractItemFrom(serverResponse: serverResponse)
+            let item = itemFrom(itemJSON: itemJSON)
+
+            return .Success(item)
         } else {
             let message = extractMessageFrom(serverResponse: serverResponse)
             return .Failure(message)

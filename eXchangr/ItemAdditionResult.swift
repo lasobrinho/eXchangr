@@ -9,6 +9,6 @@
 import Foundation
 
 enum ItemAdditionResult {
-    case Success
+    case Success(Item)
     case Failure(String)
 }
