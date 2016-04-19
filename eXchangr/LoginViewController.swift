@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController, UserAuthenticationObserver {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
         super.viewDidAppear(animated)
         ServerInterface.sharedInstance.performUserAuthentication(email: "lucas@gmail.com", password: "password")
     }
-
+    
     func update(result: UserAuthenticationResult) {
         switch result {
         case .Success:
