@@ -17,7 +17,7 @@ class UserRegistrationViewController: UIViewController, UserRegistrationObserver
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        ServerInterface.sharedInstance.performUserRegistration(User(id: nil, name: "Igor", email: "igor_martire@gmail.com", password: "igor", reputation: nil, maximumItemsAmount: nil))
+        ServerInterface.sharedInstance.performUserRegistration(User(id: nil, name: "Igor", email: "igor_martire@gmail.com", phone: "123456789", password: "igor", reputation: nil, maximumItemsAmount: nil))
     }
 
     func update(result: UserRegistrationResult) {

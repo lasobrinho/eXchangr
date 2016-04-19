@@ -93,13 +93,14 @@ struct ServerAPI {
         guard let id = userJSON["id"] as? Int,
             let name = userJSON["name"] as? String,
             let email = userJSON["email"] as? String,
+            let phone = userJSON["phone"] as? String,
             let password = userJSON["password"] as? String,
             let reputation = userJSON["reputation"] as? Double,
             let maximumItemsAmount = userJSON["maximumItemsAmount"] as? Int else {
                 fatalError()
         }
 
-        return User(id: id, name: name, email: email, password: password, reputation: reputation, maximumItemsAmount: maximumItemsAmount)
+        return User(id: id, name: name, email: email, phone: phone, password: password, reputation: reputation, maximumItemsAmount: maximumItemsAmount)
     }
 
     private static func extractUserFrom(serverResponse serverResponse: [String : AnyObject]) -> [String : AnyObject] {
