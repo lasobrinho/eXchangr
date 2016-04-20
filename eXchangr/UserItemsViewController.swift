@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserItemsViewController: UIViewController, ItemAdditionObserver {
+class UserItemsViewController: UITableViewController, ItemAdditionObserver {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,9 +10,22 @@ import UIKit
 
 class LoginViewController: UIViewController, UserAuthenticationObserver {
     
+    var mainStoryboard: UIStoryboard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
+        mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+    }
+    
+    // Shows navigation bar for other views, at the moment that this view will disappear
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
+    // Hides navigation bar from login view, at the moment that this view will appear
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -21,13 +34,22 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     }
     
     func update(result: UserAuthenticationResult) {
-        switch result {
-        case .Success:
-            navigationController?.pushViewController(BrowserViewController(), animated: true)
-            ServerInterface.sharedInstance.removeUserAuthenticationObserver(self)
-        case let .Failure(message):
-            print(message)
-        }
+//        switch result {
+//        case .Success:
+//            navigationController?.pushViewController(BrowserViewController(), animated: true)
+//            ServerInterface.sharedInstance.removeUserAuthenticationObserver(self)
+//        case let .Failure(message):
+//            print(message)
+//        }
     }
-
+    
+    @IBAction func registerNewUserTapped(sender: AnyObject) {
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("NewUserViewController") as! UserRegistrationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func LoginUserTapped(sender: AnyObject) {
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseViewController") as! BrowserViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

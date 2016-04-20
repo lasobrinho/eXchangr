@@ -140,8 +140,8 @@ class ServerInterface {
     }
 
     func performItemAddition(item: Item) {
-        let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
-        emitEvent(ClientEvent.itemAddition, data: data)
+        //let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
+        //emitEvent(ClientEvent.itemAddition, data: data)
     }
 
     private func emitEvent(event: String, data: AnyObject) {

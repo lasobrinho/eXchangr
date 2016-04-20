@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aSb-Nq-7gC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2f0-83-4T7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -27,6 +27,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdA-GW-vMk">
                                 <rect key="frame" x="271" y="520" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerNewUserTapped:" destination="aSb-Nq-7gC" eventType="touchUpInside" id="R0Z-gE-xJC"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w6j-d6-XTn">
                                 <rect key="frame" x="212.5" y="215" width="175" height="30"/>
@@ -47,6 +50,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF4-bF-ZpJ">
                                 <rect key="frame" x="281" y="285" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="LoginUserTapped:" destination="aSb-Nq-7gC" eventType="touchUpInside" id="cDe-PT-c5F"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eXchangr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qE-BA-4hL">
                                 <rect key="frame" x="263" y="144" width="73" height="21"/>
@@ -79,15 +85,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="VaN-oU-g3G"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcF-ww-nqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="443" y="476"/>
+            <point key="canvasLocation" x="1255" y="476"/>
         </scene>
         <!--User Registration View Controller-->
         <scene sceneID="pUO-PZ-9e5">
             <objects>
-                <viewController id="Qho-bd-Nxh" customClass="UserRegistrationViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewUserViewController" id="Qho-bd-Nxh" customClass="UserRegistrationViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nEA-Oi-Jpc"/>
                         <viewControllerLayoutGuide type="bottom" id="ENM-pq-dM0"/>
@@ -179,32 +186,26 @@
                                 <rect key="frame" x="226" y="425" width="149" height="30"/>
                                 <state key="normal" title="Start using eXchangr!"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNH-nD-hp2">
-                                <rect key="frame" x="276" y="475" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Upr-UE-3Oy" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="2lc-bM-Z3c"/>
                             <constraint firstItem="Upr-UE-3Oy" firstAttribute="bottom" secondItem="NYc-eE-pk0" secondAttribute="top" constant="-50" id="2pF-5z-7CW"/>
-                            <constraint firstItem="WNH-nD-hp2" firstAttribute="top" secondItem="hyN-Pg-1Pj" secondAttribute="bottom" constant="20" id="92c-VV-pQU"/>
                             <constraint firstItem="hyN-Pg-1Pj" firstAttribute="top" secondItem="NYc-eE-pk0" secondAttribute="bottom" constant="5" id="elR-6k-1KB"/>
                             <constraint firstItem="NYc-eE-pk0" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="fP0-NU-Nde"/>
                             <constraint firstItem="hyN-Pg-1Pj" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="ga9-fS-gkb"/>
-                            <constraint firstItem="WNH-nD-hp2" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="vZU-NI-eeI"/>
                             <constraint firstItem="NYc-eE-pk0" firstAttribute="centerY" secondItem="9Gl-B9-5hC" secondAttribute="centerY" id="zYF-yu-dbx"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfC-ob-VGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="476"/>
+            <point key="canvasLocation" x="2018" y="476"/>
         </scene>
         <!--eXchangr-->
         <scene sceneID="7dZ-th-XoA">
             <objects>
-                <viewController id="m7k-Wr-9WG" customClass="BrowserViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BrowseViewController" id="m7k-Wr-9WG" customClass="BrowserViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hRT-14-uNt"/>
                         <viewControllerLayoutGuide type="bottom" id="koM-Pc-8C3"/>
@@ -213,7 +214,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-hj-vYB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-hj-vYB">
                                 <rect key="frame" x="150" y="72" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.50196078430000002" green="0.88235294119999996" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -221,23 +222,23 @@
                                     <constraint firstAttribute="width" secondItem="kwR-hj-vYB" secondAttribute="height" multiplier="1:1" id="fQp-wo-TZi"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-7o-tpb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO8-7o-tpb">
                                 <rect key="frame" x="150" y="377" width="135" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Nm-Lly">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Nm-Lly">
                                 <rect key="frame" x="150" y="415.5" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
                                 <rect key="frame" x="150" y="461.5" width="45" height="30"/>
                                 <state key="normal" title="Dislike"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
                                 <rect key="frame" x="420" y="461.5" width="30" height="30"/>
                                 <state key="normal" title="Like"/>
                             </button>
@@ -258,30 +259,66 @@
                     </view>
                     <navigationItem key="navigationItem" title="eXchangr" id="wIQ-IY-day">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="5FW-qg-lqw"/>
-                        <barButtonItem key="rightBarButtonItem" title="My Items" id="5Nc-ux-aA3"/>
+                        <barButtonItem key="rightBarButtonItem" title="My Items" id="5Nc-ux-aA3">
+                            <connections>
+                                <action selector="MyItemBarButtonTapped:" destination="m7k-Wr-9WG" id="kvH-CI-1Iz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8i-yt-Vi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2833" y="476"/>
+            <point key="canvasLocation" x="2693" y="476"/>
+        </scene>
+        <!--My Items-->
+        <scene sceneID="wtI-v9-OIZ">
+            <objects>
+                <tableViewController storyboardIdentifier="UserItemsViewController" id="MqV-DR-Nwz" customClass="UserItemsViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JVc-Mf-xeN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KXJ-LT-gQ8">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KXJ-LT-gQ8" id="FZR-Cm-GOC">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MqV-DR-Nwz" id="0G5-Vm-1An"/>
+                            <outlet property="delegate" destination="MqV-DR-Nwz" id="NXQ-ld-J0z"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Items" id="s0Q-QF-dIa">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="oef-TG-5WF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CLN-eu-UQ2"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TbF-Ku-ZQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3375" y="476"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="VgX-0C-nd6">
+        <scene sceneID="9JO-Qs-uwb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cHy-CO-wtd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2f0-83-4T7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yWh-wz-I9u">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R6M-IW-aXI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="m7k-Wr-9WG" kind="relationship" relationship="rootViewController" id="jQf-ej-D8y"/>
+                        <segue destination="aSb-Nq-7gC" kind="relationship" relationship="rootViewController" id="iHS-Hz-U7X"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="huE-fF-cza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PKg-rS-l2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2021" y="476"/>
+            <point key="canvasLocation" x="443" y="476"/>
         </scene>
     </scenes>
 </document>
