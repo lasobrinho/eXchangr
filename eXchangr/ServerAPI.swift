@@ -75,7 +75,8 @@ struct ServerAPI {
         dict["name"] = user.name
         dict["email"] = user.email
         dict["password"] = user.password
-
+        dict["phone"] = user.phone
+        
         if user.id != nil {
             dict["id"] = user.id
         }
