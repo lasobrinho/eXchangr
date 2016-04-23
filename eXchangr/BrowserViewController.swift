@@ -26,4 +26,15 @@ class BrowserViewController: UIViewController {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("UserItemsViewController") as! UserItemsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func LogOutButtonTapped(sender: AnyObject) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    @IBAction func ExchangeButtonTapped(sender: AnyObject) {
+        // Code to Exchange an item
+        // Shows a new item to the user
+    }
+    @IBAction func IgnoreButtonTapped(sender: AnyObject) {
+        // Code to Ignore an item
+        // Shows a new item to the user
+    }
 }
