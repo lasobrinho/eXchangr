@@ -10,9 +10,12 @@ import UIKit
 
 class UserItemsViewController: UITableViewController, ItemAdditionObserver {
 
+    var mainStoryboard: UIStoryboard!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
+        mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -37,6 +40,15 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
             pictures: [pic1, pic2, pic3, pic4]))
     }
 
+    @IBAction func BackButtonTapped(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func AddItemButtonTapped(sender: AnyObject) {
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func update(result: ItemAdditionResult) {
         print("Addition Result")
         print(result)
