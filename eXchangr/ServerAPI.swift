@@ -192,6 +192,31 @@ struct ServerAPI {
         return pictures
     }
 
+    static func createElegibleItemsRequestData(authenticatedUser: User) -> AnyObject {
+        return ["user" : ["id" : authenticatedUser.id]]
+    }
+
+    static func parseElegibleItemsResponse(data: [AnyObject]) -> [Item] {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        if responseCode != 0 {
+            let message = extractMessageFrom(serverResponse: serverResponse)
+            fatalError(message)
+        }
+
+        guard let itemsResponse = serverResponse["items"] as? [[String : AnyObject]] else {
+            fatalError("Could not retrieve items from server response")
+        }
+
+
+        var items = [Item]()
+        for item in itemsResponse {
+            items.append(itemFrom(itemJSON: item))
+        }
+        return items
+    }
+
     //MARK: General
 
     private static func parseServerResponseData(data: [AnyObject]) -> [String : AnyObject] {

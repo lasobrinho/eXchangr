@@ -76,6 +76,34 @@ class ServerInterface {
         }
     }
 
+    func performUserRegistration(user: User) {
+        let data = ServerAPI.createUserRegistrationData(user)
+        emitEvent(ClientEvent.userRegistration, data: data)
+    }
+
+    func performUserAuthentication(email email: String, password: String) {
+        let data = ServerAPI.createUserAuthenticationData(email: email, password: password)
+        emitEvent(ClientEvent.userAuthentication,  data: data)
+    }
+
+    func performItemAddition(item: Item) {
+        let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
+        emitEvent(ClientEvent.itemAddition, data: data)
+    }
+
+    func requestElegibleItemsList(callback: (items: [Item]) -> ()) {
+        if authenticatedUser != nil {
+            socket.on("itemBrowsingResponse") {
+                data, ack in
+                callback(items: ServerAPI.parseElegibleItemsResponse(data))
+            }
+
+            emitEvent("itemBrowsing", data: ServerAPI.createElegibleItemsRequestData(authenticatedUser!))
+        } else {
+            fatalError()
+        }
+    }
+
     private func registerCallbacks() {
         registerCallbackForUserRegistration()
         registerCallbackForUserAuthentication()
@@ -127,21 +155,6 @@ class ServerInterface {
         for observer in itemAdditionObservers {
             observer.update(result)
         }
-    }
-
-    func performUserRegistration(user: User) {
-        let data = ServerAPI.createUserRegistrationData(user)
-        emitEvent(ClientEvent.userRegistration, data: data)
-    }
-
-    func performUserAuthentication(email email: String, password: String) {
-        let data = ServerAPI.createUserAuthenticationData(email: email, password: password)
-        emitEvent(ClientEvent.userAuthentication,  data: data)
-    }
-
-    func performItemAddition(item: Item) {
-        //let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
-        //emitEvent(ClientEvent.itemAddition, data: data)
     }
 
     private func emitEvent(event: String, data: AnyObject) {
