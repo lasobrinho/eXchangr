@@ -111,7 +111,7 @@ class ServerInterface {
     }
 
     private func registerCallbackForUserRegistration() {
-        socket.once(ServerResponseEvent.userRegistrationResponse) {
+        socket.on(ServerResponseEvent.userRegistrationResponse) {
             [weak self] (data, ack) in
             let registrationResult = ServerAPI.parseUserRegistrationResponse(data)
             self?.notifyUserRegistrationObservers(registrationResult)
@@ -119,7 +119,7 @@ class ServerInterface {
     }
 
     private func registerCallbackForUserAuthentication() {
-        socket.once(ServerResponseEvent.userAuthenticationResponse) {
+        socket.on(ServerResponseEvent.userAuthenticationResponse) {
             [weak self] (data, ack)  in
             let authenticationResult = ServerAPI.parseUserAuthenticationResponse(data)
             switch authenticationResult {
@@ -132,7 +132,7 @@ class ServerInterface {
     }
 
     private func registerCallbackForItemAddition() {
-        socket.once(ServerResponseEvent.itemAdditionResponse) {
+        socket.on(ServerResponseEvent.itemAdditionResponse) {
             [weak self] (data, ack) in
             let additionResult = ServerAPI.parseItemAdditionResponse(data)
             self?.notifyItemAdditionObservers(additionResult)
