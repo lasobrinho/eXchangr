@@ -22,9 +22,23 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
         super.viewDidAppear(animated)
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemTableViewCell") as! ItemTableViewCell
-        
+        cell.editItemButton.addTarget(self, action: #selector(editButtonTapped), forControlEvents: .TouchUpInside)
+        return cell
+    }
+    
+    func editButtonTapped() {
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func BackButtonTapped(sender: AnyObject) {

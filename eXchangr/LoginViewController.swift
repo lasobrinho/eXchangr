@@ -12,9 +12,11 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     
     var mainStoryboard: UIStoryboard!
     
+    @IBOutlet weak var usernameLabel: UITextField!
+    @IBOutlet weak var passwordLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
     }
     
@@ -25,22 +27,24 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     
     // Hides navigation bar from login view, at the moment that this view will appear
     override func viewWillAppear(animated: Bool) {
+        ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
         self.navigationController?.navigationBarHidden = true
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        ServerInterface.sharedInstance.performUserAuthentication(email: "lucas@gmail.com", password: "password")
+//        ServerInterface.sharedInstance.performUserAuthentication(email: "lucas@gmail.com", password: "password")
     }
     
     func update(result: UserAuthenticationResult) {
-//        switch result {
-//        case .Success:
-//            navigationController?.pushViewController(BrowserViewController(), animated: true)
-//            ServerInterface.sharedInstance.removeUserAuthenticationObserver(self)
-//        case let .Failure(message):
-//            print(message)
-//        }
+        switch result {
+        case .Success:
+            let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseViewController") as! BrowserViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            ServerInterface.sharedInstance.removeUserAuthenticationObserver(self)
+        case let .Failure(message):
+            print(message)
+        }
     }
     
     @IBAction func registerNewUserTapped(sender: AnyObject) {
@@ -49,7 +53,6 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     }
     
     @IBAction func LoginUserTapped(sender: AnyObject) {
-        let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseViewController") as! BrowserViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        ServerInterface.sharedInstance.performUserAuthentication(email: usernameLabel.text!, password: passwordLabel.text!)
     }
 }

@@ -87,6 +87,10 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="VaN-oU-g3G"/>
+                    <connections>
+                        <outlet property="passwordLabel" destination="HKj-HV-qXJ" id="XKZ-Qj-OX1"/>
+                        <outlet property="usernameLabel" destination="w6j-d6-XTn" id="fua-dX-LGV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcF-ww-nqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,7 +160,7 @@
                                             <constraint firstAttribute="width" constant="175" id="vUb-fc-NgQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-Pc-MXc">
                                         <rect key="frame" x="0.0" y="183" width="175" height="21"/>
@@ -186,6 +190,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-Pg-1Pj">
                                 <rect key="frame" x="226" y="425" width="149" height="30"/>
                                 <state key="normal" title="Start using eXchangr!"/>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="Qho-bd-Nxh" eventType="touchUpInside" id="Vdd-tW-bVp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,6 +205,12 @@
                             <constraint firstItem="NYc-eE-pk0" firstAttribute="centerY" secondItem="9Gl-B9-5hC" secondAttribute="centerY" id="zYF-yu-dbx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="Zgy-ID-0Pv" id="hHS-TO-7Gt"/>
+                        <outlet property="nameLabel" destination="tfr-Yc-JJA" id="gxo-8i-KGl"/>
+                        <outlet property="passwordLabel" destination="kBP-Zq-Ara" id="zep-n8-oxb"/>
+                        <outlet property="phoneLabel" destination="wDc-oN-Zgs" id="zV4-bp-lvc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfC-ob-VGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,7 +298,7 @@
         <scene sceneID="wtI-v9-OIZ">
             <objects>
                 <tableViewController storyboardIdentifier="UserItemsViewController" id="MqV-DR-Nwz" customClass="UserItemsViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JVc-Mf-xeN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="JVc-Mf-xeN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
