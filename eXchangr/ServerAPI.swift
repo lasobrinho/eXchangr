@@ -192,7 +192,7 @@ struct ServerAPI {
         return pictures
     }
 
-    static func createElegibleItemsRequestData(authenticatedUser: User) -> AnyObject {
+    static func createRequestItemsData(authenticatedUser: User) -> AnyObject {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
