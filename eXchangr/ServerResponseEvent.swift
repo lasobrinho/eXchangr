@@ -16,4 +16,5 @@ struct ServerResponseEvent {
     static let itemBrowsingResponse = "itemBrowsingResponse"
     static let itemRemovalResponse = "itemRemovalResponse"
     static let itemRetrievalResponse = "itemRetrievalResponse"
+    static let itemDistanceResponse = "itemDistanceResponse"
 }

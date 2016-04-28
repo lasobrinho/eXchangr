@@ -117,6 +117,19 @@ class ServerInterface {
         }
     }
 
+    func requestDistanceForItem(item: Item, callback: (distance: Double) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.itemRetrievalResponse) {
+                data, ack in
+                callback(distance: ServerAPI.parseRequestDistanceForItemResponse(data))
+            }
+
+            emitEvent(ClientEvent.itemRetrieval, data: ServerAPI.createRequestDistanceForItemData(item, authenticatedUser: authenticatedUser!))
+        } else {
+            fatalError()
+        }
+
+    }
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()

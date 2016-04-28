@@ -10,7 +10,7 @@ import UIKit
 
 struct ServerAPI {
 
-    private static let serverURL = NSURL(string: "http://localhost:3000")!
+    static let serverURL = NSURL(string: "http://localhost:3000")!
 
     // MARK: User Registration
 
@@ -196,6 +196,14 @@ struct ServerAPI {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
+    static func createRequestDistanceForItemData(item: Item, authenticatedUser: User) -> AnyObject {
+        var data = [String : [String : AnyObject]]()
+        data["user"] = ["id" : authenticatedUser.id]
+        data["item"] = ["id" : item.id!]
+        return data
+
+    }
+
     static func parseItemArrayResponse(data: [AnyObject]) -> [Item] {
         let serverResponse = parseServerResponseData(data)
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
@@ -209,12 +217,27 @@ struct ServerAPI {
             fatalError("Could not retrieve items from server response")
         }
 
-
         var items = [Item]()
         for item in itemsResponse {
             items.append(itemFrom(itemJSON: item))
         }
         return items
+    }
+
+    static func parseRequestDistanceForItemResponse(data: [AnyObject]) -> Double {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        if responseCode != 0 {
+            let message = extractMessageFrom(serverResponse: serverResponse)
+            fatalError(message)
+        }
+
+        guard let distance = serverResponse["distance"] as? Double else {
+            fatalError("Could not retrieve distance from server response")
+        }
+
+        return distance
     }
 
     //MARK: General

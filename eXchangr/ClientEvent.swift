@@ -16,4 +16,5 @@ struct ClientEvent {
     static let itemBrowsing = "itemBrowsing"
     static let itemRemoval = "itemRemoval"
     static let itemRetrieval = "itemRetrieval"
+    static let itemDistance = "itemDistance"
 }
