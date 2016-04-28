@@ -196,7 +196,7 @@ struct ServerAPI {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
-    static func parseElegibleItemsResponse(data: [AnyObject]) -> [Item] {
+    static func parseItemArrayResponse(data: [AnyObject]) -> [Item] {
         let serverResponse = parseServerResponseData(data)
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
 

@@ -93,16 +93,18 @@ class ServerInterface {
 
     func requestElegibleItemsList(callback: (items: [Item]) -> ()) {
         if authenticatedUser != nil {
-            socket.on("itemBrowsingResponse") {
+            socket.on(ServerResponseEvent.itemBrowsingResponse) {
                 data, ack in
-                callback(items: ServerAPI.parseElegibleItemsResponse(data))
+                callback(items: ServerAPI.parseItemArrayResponse(data))
             }
 
-            emitEvent("itemBrowsing", data: ServerAPI.createElegibleItemsRequestData(authenticatedUser!))
+            emitEvent(ClientEvent.itemBrowsing, data: ServerAPI.createElegibleItemsRequestData(authenticatedUser!))
         } else {
             fatalError()
         }
     }
+
+
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()
