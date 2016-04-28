@@ -11,11 +11,17 @@ import UIKit
 class UserItemsViewController: UITableViewController, ItemAdditionObserver {
 
     var mainStoryboard: UIStoryboard!
+    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        loadUserItems()
+    }
+    
+    func loadUserItems() {
+        
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -27,16 +33,19 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemTableViewCell") as! ItemTableViewCell
-        cell.editItemButton.addTarget(self, action: #selector(editButtonTapped), forControlEvents: .TouchUpInside)
+        let item = items[indexPath.row]
+        let bytes = item.pictures[0].bytes
+        cell.itemImage.image = UIImage(data: bytes)
+        cell.itemNameLabel.text = item.name
         return cell
     }
     
-    func editButtonTapped() {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }

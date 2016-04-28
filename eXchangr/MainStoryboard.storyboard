@@ -298,7 +298,7 @@
         <scene sceneID="wtI-v9-OIZ">
             <objects>
                 <tableViewController storyboardIdentifier="UserItemsViewController" id="MqV-DR-Nwz" customClass="UserItemsViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="JVc-Mf-xeN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="JVc-Mf-xeN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -324,22 +324,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS8-p2-Tcd">
-                                            <rect key="frame" x="557" y="22" width="30" height="30"/>
-                                            <state key="normal" title="Edit"/>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Rqj-jo-oEo" firstAttribute="centerY" secondItem="FZR-Cm-GOC" secondAttribute="centerY" id="Bc4-es-Kpf"/>
                                         <constraint firstItem="tbL-vk-SBS" firstAttribute="centerY" secondItem="FZR-Cm-GOC" secondAttribute="centerY" id="DqR-gQ-o96"/>
-                                        <constraint firstItem="oS8-p2-Tcd" firstAttribute="centerY" secondItem="FZR-Cm-GOC" secondAttribute="centerY" id="s1M-o0-Rsb"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="oS8-p2-Tcd" secondAttribute="trailing" constant="5" id="vq9-mV-6uL"/>
                                         <constraint firstItem="Rqj-jo-oEo" firstAttribute="leading" secondItem="FZR-Cm-GOC" secondAttribute="leadingMargin" id="xJl-w8-nGA"/>
                                         <constraint firstItem="tbL-vk-SBS" firstAttribute="leading" secondItem="Rqj-jo-oEo" secondAttribute="trailing" constant="10" id="xqF-jh-4YJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="editItemButton" destination="oS8-p2-Tcd" id="fbJ-f8-rrY"/>
                                     <outlet property="itemImage" destination="Rqj-jo-oEo" id="gL1-0p-ZB5"/>
                                     <outlet property="itemNameLabel" destination="tbL-vk-SBS" id="bjh-3i-JY2"/>
                                 </connections>
