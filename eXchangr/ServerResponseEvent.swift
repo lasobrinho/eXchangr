@@ -13,4 +13,7 @@ struct ServerResponseEvent {
     static let userRegistrationResponse = "userRegistrationResponse"
     static let userAuthenticationResponse = "userAuthenticationResponse"
     static let itemAdditionResponse = "itemAdditionResponse"
+    static let itemBrowsingResponse = "itemBrowsingResponse"
+    static let itemRemovalResponse = "itemRemovalResponse"
+    static let itemRetrievalResponse = "itemRetrievalResponse"
 }
