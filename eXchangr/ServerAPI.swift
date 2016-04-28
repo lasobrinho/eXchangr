@@ -10,7 +10,7 @@ import UIKit
 
 struct ServerAPI {
 
-    static let serverURL = NSURL(string: "http://localhost:3000")!
+    private static let serverURL = NSURL(string: "http://localhost:3000")!
 
     // MARK: User Registration
 
