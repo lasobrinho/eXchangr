@@ -143,7 +143,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
-    func update(result: ItemAdditionResult) {
+    func update(result: ItemAddOrUpdateResult) {
         switch result {
         case .Success:
             navigationController?.popViewControllerAnimated(true)

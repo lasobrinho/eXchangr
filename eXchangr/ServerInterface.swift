@@ -91,8 +91,24 @@ class ServerInterface {
     }
 
     func performItemAddition(item: Item) {
-        let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
+        let data = ServerAPI.createItemData(item, user: self.authenticatedUser!)
         emitEvent(ClientEvent.itemAddition, data: data)
+    }
+
+    func performItemUpdate(item: Item, callback: (result: ItemAddOrUpdateResult) -> ()) {
+        if authenticatedUser != nil {
+
+            socket.once(ServerResponseEvent.itemUpdateResponse) {
+                data, ack in
+                ServerAPI.parseItemAdditionResponse(data)
+            }
+
+            let data = ServerAPI.createItemData(item, user: self.authenticatedUser!)
+            emitEvent(ClientEvent.itemUpdate, data: data)
+            
+        } else {
+            fatalError()
+        }
     }
 
     func requestElegibleItemsList(callback: (items: [Item]) -> ()) {
@@ -195,7 +211,7 @@ class ServerInterface {
         }
     }
 
-    private func notifyItemAdditionObservers(result: ItemAdditionResult) {
+    private func notifyItemAdditionObservers(result: ItemAddOrUpdateResult) {
         for observer in itemAdditionObservers {
             observer.update(result)
         }
