@@ -30,20 +30,13 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
         configureItemImageButtons()
-        if item != nil {
-            displayItemInformation()
-            item = nil
-        }
-    }
-    
-    @IBAction func toggleActiveStatus(sender: AnyObject) {
-        item?.active = sender.on
     }
     
     override func viewWillAppear(animated: Bool) {
         if isEditingItem {
             activeStackView.hidden = false
             navigationBarTitle.title = "Edit Item"
+            displayItemInformation()
         } else {
             activeStackView.hidden = true
             navigationBarTitle.title = "New Item"
@@ -107,14 +100,33 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     
     @IBAction func AddItemButtonTapped(sender: AnyObject) {
         if itemNameTextField.hasText() && itemDescriptionTextField.hasText() && (itemImage1.currentBackgroundImage != nil || itemImage2.currentBackgroundImage != nil || itemImage3.currentBackgroundImage != nil) {
-            for image in images {
-                pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(image.resize(0.5))!))
+            if isEditingItem {
+                item?.name = itemNameTextField.text!
+                item?.description = itemDescriptionTextField.text!
+                item?.active = sender.on
+                getUserPictures()
+                ServerInterface.sharedInstance.performItemUpdate(item!, callback: { [unowned self] (result) in
+                    switch result {
+                    case let .Failure(msg):
+                        print(msg)
+                    case .Success(_):
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                })
+            } else {
+                getUserPictures()
+                item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: pictures)
+                ServerInterface.sharedInstance.performItemAddition(item!)
             }
             
-            item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: pictures)
-            ServerInterface.sharedInstance.performItemAddition(item!)
         } else {
             print("All fields are required")
+        }
+    }
+    
+    func getUserPictures() {
+        for image in images {
+            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(image.resize(0.5))!))
         }
     }
     
