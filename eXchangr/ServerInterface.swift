@@ -100,7 +100,7 @@ class ServerInterface {
 
             socket.once(ServerResponseEvent.itemUpdateResponse) {
                 data, ack in
-                ServerAPI.parseItemAdditionResponse(data)
+                callback(result: ServerAPI.parseItemAdditionResponse(data))
             }
 
             let data = ServerAPI.createItemData(item, user: self.authenticatedUser!)

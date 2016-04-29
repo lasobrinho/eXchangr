@@ -25,6 +25,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var activeStackView: UIStackView!
     @IBOutlet weak var navigationBarTitle: UINavigationItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,12 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         if isEditingItem {
             activeStackView.hidden = false
             navigationBarTitle.title = "Edit Item"
+            saveButton.title = "Save"
             displayItemInformation()
         } else {
             activeStackView.hidden = true
             navigationBarTitle.title = "New Item"
+            saveButton.title = "Add"
         }
     }
     
@@ -104,8 +107,10 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                 item?.name = itemNameTextField.text!
                 item?.description = itemDescriptionTextField.text!
                 item?.active = activeSwitch.on
+                updatePictureList()
                 getUserPictures()
-                ServerInterface.sharedInstance.performItemUpdate(item!, callback: { [unowned self] (result) in
+                item?.pictures = pictures
+                ServerInterface.sharedInstance.performItemUpdate(self.item!, callback: { [unowned self] (result) in
                     switch result {
                     case let .Failure(msg):
                         print(msg)
@@ -124,7 +129,24 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
+    func updatePictureList() {
+        images = []
+        print(itemImage1.currentBackgroundImage)
+        print(itemImage2.currentBackgroundImage)
+        print(itemImage3.currentBackgroundImage)
+        if itemImage1.currentBackgroundImage != nil {
+            images.append(itemImage1.currentBackgroundImage!)
+        }
+        if itemImage2.currentBackgroundImage != nil {
+            images.append(itemImage2.currentBackgroundImage!)
+        }
+        if itemImage3.currentBackgroundImage != nil {
+            images.append(itemImage3.currentBackgroundImage!)
+        }
+    }
+    
     func getUserPictures() {
+        pictures = []
         for image in images {
             pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(image.resize(0.5))!))
         }

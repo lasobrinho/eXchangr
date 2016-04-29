@@ -456,7 +456,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o2-Qb-bxA">
                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sz0-4C-dNZ">
@@ -481,7 +481,7 @@
                                 <action selector="BackButtonTapped:" destination="Yss-Sa-rJy" id="BdN-aD-ehF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kPI-kf-Jz6">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="kPI-kf-Jz6">
                             <connections>
                                 <action selector="AddItemButtonTapped:" destination="Yss-Sa-rJy" id="f1s-Vg-ZIv"/>
                             </connections>
@@ -496,6 +496,7 @@
                         <outlet property="itemImage3" destination="PkR-24-M4l" id="1u6-Eb-t8D"/>
                         <outlet property="itemNameTextField" destination="yBH-TH-qjy" id="uJU-G8-XSw"/>
                         <outlet property="navigationBarTitle" destination="FT3-Lb-psA" id="06r-Rl-CmH"/>
+                        <outlet property="saveButton" destination="kPI-kf-Jz6" id="uzS-XB-ITp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oj4-Rd-s4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
