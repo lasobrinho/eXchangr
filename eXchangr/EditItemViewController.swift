@@ -22,6 +22,8 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var itemImage1: UIButton!
     @IBOutlet weak var itemImage2: UIButton!
     @IBOutlet weak var itemImage3: UIButton!
+    @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var activeStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,18 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         if item != nil {
             displayItemInformation()
             item = nil
+        }
+    }
+    
+    @IBAction func toggleActiveStatus(sender: AnyObject) {
+        item?.active = sender.on
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if isEditingItem {
+            activeStackView.hidden = false
+        } else {
+            activeStackView.hidden = true
         }
     }
     
@@ -43,6 +57,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     func displayItemInformation() {
         itemNameTextField.text = item?.name
         itemDescriptionTextField.text = item?.description
+        activeSwitch.on = (item?.active)!
         setUIImagesFromBytes(item!.pictures)
     }
     

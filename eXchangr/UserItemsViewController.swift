@@ -47,7 +47,13 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            items.removeAtIndex(indexPath.row)
+            ServerInterface.sharedInstance.requestItemRemoval(items[indexPath.row]) { (success) in
+                if success {
+                    self.items.removeAtIndex(indexPath.row)
+                } else {
+                    print("Error deleting item \(self.items[indexPath.row])")
+                }
+            }
         }
     }
     
@@ -71,6 +77,7 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
         vc.item = items[indexPath.row]
+        vc.isEditingItem = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -80,6 +87,7 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
     
     @IBAction func AddItemButtonTapped(sender: AnyObject) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
+        vc.isEditingItem = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
