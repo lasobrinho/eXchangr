@@ -196,12 +196,12 @@ struct ServerAPI {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
-    static func createRequestDistanceForItemData(item: Item, authenticatedUser: User) -> AnyObject {
+
+    static func createSimpleItemRequestData(item: Item, authenticatedUser: User) -> AnyObject {
         var data = [String : [String : AnyObject]]()
         data["user"] = ["id" : authenticatedUser.id]
         data["item"] = ["id" : item.id!]
         return data
-
     }
 
     static func parseItemArrayResponse(data: [AnyObject]) -> [Item] {
@@ -238,6 +238,13 @@ struct ServerAPI {
         }
 
         return distance
+    }
+
+    static func parseItemRemovalResponse(data: [AnyObject]) -> Bool {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        return responseCode == 0
     }
 
     //MARK: General
