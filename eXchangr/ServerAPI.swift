@@ -110,14 +110,14 @@ struct ServerAPI {
 
     //MARK: Item
 
-    static func createItemAdditionData(item: Item, user: User) -> [String : AnyObject]{
+    static func createItemData(item: Item, user: User) -> [String : AnyObject]{
         var data = [String : AnyObject]()
         data["item"] = dictionaryFrom(item: item)
         data["user"] = dictionaryFrom(user: user)
         return data
     }
 
-    static func parseItemAdditionResponse(data: [AnyObject]) -> ItemAdditionResult {
+    static func parseItemAdditionResponse(data: [AnyObject]) -> ItemAddOrUpdateResult {
 
         let serverResponse = parseServerResponseData(data)
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
@@ -195,7 +195,6 @@ struct ServerAPI {
     static func createRequestItemsData(authenticatedUser: User) -> AnyObject {
         return ["user" : ["id" : authenticatedUser.id]]
     }
-
 
     static func createSimpleItemRequestData(item: Item, authenticatedUser: User) -> AnyObject {
         var data = [String : [String : AnyObject]]()

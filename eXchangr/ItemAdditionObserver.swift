@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ItemAdditionObserver: class {
-    func update(result: ItemAdditionResult)
+    func update(result: ItemAddOrUpdateResult)
 }

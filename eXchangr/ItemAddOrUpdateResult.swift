@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ItemAdditionResult {
+enum ItemAddOrUpdateResult {
     case Success(Item)
     case Failure(String)
 }

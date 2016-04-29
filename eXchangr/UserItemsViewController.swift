@@ -91,7 +91,7 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func update(result: ItemAdditionResult) {
+    func update(result: ItemAddOrUpdateResult) {
         print("Addition Result")
         print(result)
     }
