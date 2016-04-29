@@ -11,7 +11,6 @@ import UIKit
 class EditItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ItemAdditionObserver {
     
     var imagePicker: UIImagePickerController? = UIImagePickerController()
-    var images = [UIImage]()
     var pictures = [Picture]()
     var item: Item?
     var clickedImage = 0
@@ -57,10 +56,10 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         itemNameTextField.text = item?.name
         itemDescriptionTextField.text = item?.description
         activeSwitch.on = (item?.active)!
-        setUIImagesFromBytes(item!.pictures)
+        setImagesFromBytes(item!.pictures)
     }
     
-    func setUIImagesFromBytes(itemPictures: [Picture]) {
+    func setImagesFromBytes(itemPictures: [Picture]) {
         let imageButtons = [itemImage1, itemImage2, itemImage3]
         for index in 0..<itemPictures.count {
             imageButtons[index].setTitle("", forState: .Normal)
@@ -97,7 +96,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBAction func BackButtonTapped(sender: AnyObject) {
         item = nil
         pictures = []
-        images = []
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -108,7 +106,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                 item?.description = itemDescriptionTextField.text!
                 item?.active = activeSwitch.on
                 updatePictureList()
-                getUserPictures()
                 item?.pictures = pictures
                 ServerInterface.sharedInstance.performItemUpdate(self.item!, callback: { [unowned self] (result) in
                     switch result {
@@ -119,44 +116,37 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                     }
                 })
             } else {
-                getUserPictures()
+                updatePictureList()
                 item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: pictures)
                 ServerInterface.sharedInstance.performItemAddition(item!)
-            }
-            
+            }            
         } else {
             print("All fields are required")
         }
     }
     
     func updatePictureList() {
-        images = []
-        print(itemImage1.currentBackgroundImage)
-        print(itemImage2.currentBackgroundImage)
-        print(itemImage3.currentBackgroundImage)
+        pictures = []
         if itemImage1.currentBackgroundImage != nil {
-            images.append(itemImage1.currentBackgroundImage!)
+            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(itemImage1.currentBackgroundImage!)!))
         }
         if itemImage2.currentBackgroundImage != nil {
-            images.append(itemImage2.currentBackgroundImage!)
+            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(itemImage2.currentBackgroundImage!)!))
         }
         if itemImage3.currentBackgroundImage != nil {
-            images.append(itemImage3.currentBackgroundImage!)
+            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(itemImage3.currentBackgroundImage!)!))
         }
     }
     
     func getUserPictures() {
         pictures = []
-        for image in images {
-            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(image.resize(0.5))!))
-        }
     }
     
     func presentUIImagePicker(){
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
             
             imagePicker!.delegate = self
-            imagePicker!.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+            imagePicker!.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
             imagePicker!.allowsEditing = false
             
             self.presentViewController(imagePicker!, animated: true, completion: nil)
@@ -181,18 +171,19 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        images.append(image)
+        let compressedImage = image.resizeToWidth(500)
+        pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(compressedImage)!))
         
-        switch(clickedImage){
+        switch(clickedImage) {
         case 1:
             itemImage1.setTitle("", forState: .Normal)
-            itemImage1.setBackgroundImage(image, forState: .Normal)
+            itemImage1.setBackgroundImage(compressedImage, forState: .Normal)
         case 2:
             itemImage2.setTitle("", forState: .Normal)
-            itemImage2.setBackgroundImage(image, forState: .Normal)
+            itemImage2.setBackgroundImage(compressedImage, forState: .Normal)
         case 3:
             itemImage3.setTitle("", forState: .Normal)
-            itemImage3.setBackgroundImage(image, forState: .Normal)
+            itemImage3.setBackgroundImage(compressedImage, forState: .Normal)
         default:
             print("Invalid value for clickedImage")
         }
