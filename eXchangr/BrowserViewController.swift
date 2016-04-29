@@ -32,9 +32,11 @@ class BrowserViewController: UIViewController {
     @IBAction func ExchangeButtonTapped(sender: AnyObject) {
         // Code to Exchange an item
         // Shows a new item to the user
+        // YOUR CODE HERE
     }
     @IBAction func IgnoreButtonTapped(sender: AnyObject) {
         // Code to Ignore an item
         // Shows a new item to the user
+        // YOUR CODE HERE
     }
 }

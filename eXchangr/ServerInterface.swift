@@ -67,7 +67,7 @@ class ServerInterface {
         itemAdditionObservers.append(observer)
     }
 
-    func removeItemAdditionObserver(observer: UserAuthenticationObserver) {
+    func removeItemAdditionObserver(observer: ItemAdditionObserver) {
         for (index,existingObserver) in itemAdditionObservers.enumerate() {
             if observer === existingObserver {
                 itemAdditionObservers.removeAtIndex(index)

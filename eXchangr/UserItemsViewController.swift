@@ -11,21 +11,44 @@ import UIKit
 class UserItemsViewController: UITableViewController, ItemAdditionObserver {
 
     var mainStoryboard: UIStoryboard!
-    var items = [Item]()
+    var items = [Item]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil {
+            ServerInterface.sharedInstance.removeItemAdditionObserver(self)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         loadUserItems()
     }
     
     func loadUserItems() {
-        
+        ServerInterface.sharedInstance.fetchAuthenticatedUserItemsList { [unowned self] (retrievedItems) in
+            self.items = retrievedItems
+            self.tableView.reloadData()
+        }
     }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    override func removeFromParentViewController() {
+        items = []
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            items.removeAtIndex(indexPath.row)
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -47,6 +70,7 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
+        vc.item = items[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

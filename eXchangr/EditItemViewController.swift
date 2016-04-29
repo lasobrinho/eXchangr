@@ -10,11 +10,12 @@ import UIKit
 
 class EditItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ItemAdditionObserver {
     
-    var imagePicker = UIImagePickerController()
+    var imagePicker: UIImagePickerController? = UIImagePickerController()
     var images = [UIImage]()
     var pictures = [Picture]()
     var item: Item?
     var clickedImage = 0
+    var isEditingItem = false
 
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var itemDescriptionTextField: UITextField!
@@ -26,6 +27,31 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
         configureItemImageButtons()
+        if item != nil {
+            displayItemInformation()
+            item = nil
+        }
+    }
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil {
+            ServerInterface.sharedInstance.removeItemAdditionObserver(self)
+        }
+    }
+    
+    func displayItemInformation() {
+        itemNameTextField.text = item?.name
+        itemDescriptionTextField.text = item?.description
+        setUIImagesFromBytes(item!.pictures)
+    }
+    
+    func setUIImagesFromBytes(itemPictures: [Picture]) {
+        let imageButtons = [itemImage1, itemImage2, itemImage3]
+        for index in 0..<itemPictures.count {
+            imageButtons[index].setTitle("", forState: .Normal)
+            imageButtons[index].setBackgroundImage(UIImage(data: itemPictures[index].bytes), forState: .Normal)
+        }
     }
     
     func configureItemImageButtons() {
@@ -52,6 +78,9 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     }
 
     @IBAction func BackButtonTapped(sender: AnyObject) {
+        item = nil
+        pictures = []
+        images = []
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -71,11 +100,11 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     func presentUIImagePicker(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
             
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
-            imagePicker.allowsEditing = false
+            imagePicker!.delegate = self
+            imagePicker!.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+            imagePicker!.allowsEditing = false
             
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.presentViewController(imagePicker!, animated: true, completion: nil)
         }
     }
     
@@ -122,5 +151,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             print(message)
         }
     }
+    
+    
     
 }

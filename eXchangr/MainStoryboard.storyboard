@@ -373,8 +373,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wl1-Vc-Fsj">
+                                <rect key="frame" x="145" y="351.5" width="310" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldL-sA-MgV">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="H0K-Gg-dq9"/>
+                                            <constraint firstAttribute="height" constant="100" id="Hla-Aj-oGw"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Picture"/>
+                                        <connections>
+                                            <action selector="itemImage1Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="abE-Nr-g94"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVt-CR-Ri1">
+                                        <rect key="frame" x="105" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="a5t-pX-2as"/>
+                                            <constraint firstAttribute="height" constant="100" id="mXf-TB-5Ca"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Picture"/>
+                                        <connections>
+                                            <action selector="itemImage2Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="HTt-wv-1BM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-24-M4l">
+                                        <rect key="frame" x="210" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="SdC-bB-aUe"/>
+                                            <constraint firstAttribute="width" constant="100" id="j9Y-eW-dyX"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Picture"/>
+                                        <connections>
+                                            <action selector="itemImage3Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="3xq-mM-qkT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AnK-fR-RIk">
-                                <rect key="frame" x="213" y="192" width="175" height="117"/>
+                                <rect key="frame" x="213" y="173.5" width="175" height="153"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUd-8W-1h6">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
@@ -412,44 +450,20 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wl1-Vc-Fsj">
-                                <rect key="frame" x="145" y="334" width="310" height="100"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldL-sA-MgV">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="H0K-Gg-dq9"/>
-                                            <constraint firstAttribute="height" constant="100" id="Hla-Aj-oGw"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Picture"/>
-                                        <connections>
-                                            <action selector="itemImage1Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="abE-Nr-g94"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVt-CR-Ri1">
-                                        <rect key="frame" x="105" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="a5t-pX-2as"/>
-                                            <constraint firstAttribute="height" constant="100" id="mXf-TB-5Ca"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Picture"/>
-                                        <connections>
-                                            <action selector="itemImage2Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="HTt-wv-1BM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-24-M4l">
-                                        <rect key="frame" x="210" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="SdC-bB-aUe"/>
-                                            <constraint firstAttribute="width" constant="100" id="j9Y-eW-dyX"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Picture"/>
-                                        <connections>
-                                            <action selector="itemImage3Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="3xq-mM-qkT"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4k9-2o-Wim">
+                                        <rect key="frame" x="0.0" y="122" width="175" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o2-Qb-bxA">
+                                                <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sz0-4C-dNZ">
+                                                <rect key="frame" x="126" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
