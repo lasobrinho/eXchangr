@@ -117,6 +117,32 @@ class ServerInterface {
         }
     }
 
+    func requestItemRemoval(item: Item, callback: (success: Bool) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.itemRemovalResponse) {
+                data, ack in
+                callback(success: ServerAPI.parseItemRemovalResponse(data))
+            }
+
+            emitEvent(ClientEvent.itemRemoval, data: ServerAPI.createSimpleItemRequestData(item, authenticatedUser: authenticatedUser!))
+        } else {
+            fatalError()
+        }
+    }
+
+    func requestDistanceForItem(item: Item, callback: (distance: Double) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.itemRetrievalResponse) {
+                data, ack in
+                callback(distance: ServerAPI.parseRequestDistanceForItemResponse(data))
+            }
+
+            emitEvent(ClientEvent.itemRetrieval, data: ServerAPI.createSimpleItemRequestData(item, authenticatedUser: authenticatedUser!))
+        } else {
+            fatalError()
+        }
+
+    }
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()

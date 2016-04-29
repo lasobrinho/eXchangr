@@ -196,6 +196,14 @@ struct ServerAPI {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
+
+    static func createSimpleItemRequestData(item: Item, authenticatedUser: User) -> AnyObject {
+        var data = [String : [String : AnyObject]]()
+        data["user"] = ["id" : authenticatedUser.id]
+        data["item"] = ["id" : item.id!]
+        return data
+    }
+
     static func parseItemArrayResponse(data: [AnyObject]) -> [Item] {
         let serverResponse = parseServerResponseData(data)
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
@@ -209,12 +217,34 @@ struct ServerAPI {
             fatalError("Could not retrieve items from server response")
         }
 
-
         var items = [Item]()
         for item in itemsResponse {
             items.append(itemFrom(itemJSON: item))
         }
         return items
+    }
+
+    static func parseRequestDistanceForItemResponse(data: [AnyObject]) -> Double {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        if responseCode != 0 {
+            let message = extractMessageFrom(serverResponse: serverResponse)
+            fatalError(message)
+        }
+
+        guard let distance = serverResponse["distance"] as? Double else {
+            fatalError("Could not retrieve distance from server response")
+        }
+
+        return distance
+    }
+
+    static func parseItemRemovalResponse(data: [AnyObject]) -> Bool {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        return responseCode == 0
     }
 
     //MARK: General
