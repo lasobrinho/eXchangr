@@ -412,7 +412,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AnK-fR-RIk">
-                                <rect key="frame" x="213" y="173.5" width="175" height="153"/>
+                                <rect key="frame" x="213" y="173" width="175" height="153"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUd-8W-1h6">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
@@ -453,7 +453,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4k9-2o-Wim">
                                         <rect key="frame" x="0.0" y="122" width="175" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o2-Qb-bxA">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o2-Qb-bxA">
                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -461,6 +461,9 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sz0-4C-dNZ">
                                                 <rect key="frame" x="126" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="toggleActiveStatus:" destination="Yss-Sa-rJy" eventType="valueChanged" id="dbd-Gx-dn5"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
@@ -488,6 +491,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activeStackView" destination="4k9-2o-Wim" id="WWw-jA-j5F"/>
+                        <outlet property="activeSwitch" destination="sz0-4C-dNZ" id="pWl-gB-4gl"/>
                         <outlet property="itemDescriptionTextField" destination="hxl-wm-7R6" id="lrI-MQ-yRj"/>
                         <outlet property="itemImage1" destination="ldL-sA-MgV" id="SS8-C7-S2i"/>
                         <outlet property="itemImage2" destination="jVt-CR-Ri1" id="rht-JU-P11"/>
