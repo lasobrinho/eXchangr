@@ -498,6 +498,7 @@
                         <outlet property="itemImage2" destination="jVt-CR-Ri1" id="rht-JU-P11"/>
                         <outlet property="itemImage3" destination="PkR-24-M4l" id="1u6-Eb-t8D"/>
                         <outlet property="itemNameTextField" destination="yBH-TH-qjy" id="uJU-G8-XSw"/>
+                        <outlet property="navigationBarTitle" destination="FT3-Lb-psA" id="06r-Rl-CmH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oj4-Rd-s4l" userLabel="First Responder" sceneMemberID="firstResponder"/>

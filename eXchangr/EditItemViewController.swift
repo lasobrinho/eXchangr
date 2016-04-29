@@ -24,6 +24,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var itemImage3: UIButton!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var activeStackView: UIStackView!
+    @IBOutlet weak var navigationBarTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,10 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     override func viewWillAppear(animated: Bool) {
         if isEditingItem {
             activeStackView.hidden = false
+            navigationBarTitle.title = "Edit Item"
         } else {
             activeStackView.hidden = true
+            navigationBarTitle.title = "New Item"
         }
     }
     
@@ -76,16 +79,19 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         itemImage1.layer.cornerRadius = 5
         itemImage1.layer.borderColor = UIColor.lightGrayColor().CGColor
         itemImage1.layer.borderWidth = 1
+        itemImage1.clipsToBounds = true
         
         itemImage2.backgroundColor = veryLightGrayColor
         itemImage2.layer.cornerRadius = 5
         itemImage2.layer.borderColor = UIColor.lightGrayColor().CGColor
         itemImage2.layer.borderWidth = 1
+        itemImage2.clipsToBounds = true
         
         itemImage3.backgroundColor = veryLightGrayColor
         itemImage3.layer.cornerRadius = 5
         itemImage3.layer.borderColor = UIColor.lightGrayColor().CGColor
         itemImage3.layer.borderWidth = 1
+        itemImage3.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
