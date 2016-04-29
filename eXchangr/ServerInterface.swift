@@ -86,6 +86,10 @@ class ServerInterface {
         emitEvent(ClientEvent.userAuthentication,  data: data)
     }
 
+    func performUserLogout() {
+        authenticatedUser = nil
+    }
+
     func performItemAddition(item: Item) {
         let data = ServerAPI.createItemAdditionData(item, user: self.authenticatedUser!)
         emitEvent(ClientEvent.itemAddition, data: data)
