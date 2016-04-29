@@ -103,13 +103,13 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             if isEditingItem {
                 item?.name = itemNameTextField.text!
                 item?.description = itemDescriptionTextField.text!
-                item?.active = sender.on
+                item?.active = activeSwitch.on
                 getUserPictures()
                 ServerInterface.sharedInstance.performItemUpdate(item!, callback: { [unowned self] (result) in
                     switch result {
                     case let .Failure(msg):
                         print(msg)
-                    case .Success(_):
+                    case .Success:
                         self.navigationController?.popViewControllerAnimated(true)
                     }
                 })
