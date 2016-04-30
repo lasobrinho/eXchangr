@@ -85,8 +85,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         for index in 0..<itemPictures.count {
             imageButtons[index].setTitle("", forState: .Normal)
             imageButtons[index].setBackgroundImage(UIImage(data: itemPictures[index].bytes), forState: .Normal)
-            print(removePictureButtons[index].titleLabel?.text)
-            print(removePictureButtons[index].userInteractionEnabled)
             removePictureButtons[index].setTitle("Remove Picture", forState: .Normal)
             removePictureButtons[index].userInteractionEnabled = true
         }
