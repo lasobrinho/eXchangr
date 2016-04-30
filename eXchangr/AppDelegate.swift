@@ -14,23 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //self.window = UIWindow()
-        //self.window!.rootViewController = buildApplicationContainer()
-        //self.window!.makeKeyAndVisible()
+        self.window = UIWindow()
+        self.window!.rootViewController = buildApplicationContainer()
+        self.window!.makeKeyAndVisible()
         return true
     }
 
     func buildApplicationContainer() -> UIViewController {
         let rootViewController = buildRootViewController()
-        let appContainer = UINavigationController(rootViewController: rootViewController)
-        appContainer.toolbarHidden = true
-        appContainer.navigationBarHidden = true
+        let appContainer = MainContainerViewController()
+        appContainer.setMainViewController(rootViewController)
         return appContainer
     }
 
-    func buildRootViewController() -> UIViewController {
-        let rootViewController = LoginViewController()
-        return rootViewController
+    func buildRootViewController() -> UINavigationController {
+        let rootViewController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController")
+        return UINavigationController(rootViewController: rootViewController)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

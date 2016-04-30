@@ -6,7 +6,7 @@
 //  Copyright © 2016 eXchangr. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Picture {
     var id: Int?
@@ -15,5 +15,9 @@ class Picture {
     init(id: Int?, bytes: NSData) {
         self.id = id
         self.bytes = bytes
+    }
+
+    func asUIImage() -> UIImage {
+        return UIImage(data: bytes)!
     }
 }

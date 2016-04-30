@@ -150,14 +150,26 @@ class ServerInterface {
         }
     }
 
+    func reactToItem(item: Item, interested: Bool, callback: (success: Bool) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.reactionResponse) {
+                data, ack in
+                callback(success: ServerAPI.parseReactionResponse(data))
+            }
+            emitEvent(ClientEvent.reaction, data: ServerAPI.createReactionData(item, interested: interested, authenticatedUser: authenticatedUser!))
+        } else {
+            fatalError()
+        }
+    }
+
     func requestDistanceForItem(item: Item, callback: (distance: Double) -> ()) {
         if authenticatedUser != nil {
-            socket.once(ServerResponseEvent.itemRetrievalResponse) {
+            socket.once(ServerResponseEvent.itemDistanceResponse) {
                 data, ack in
                 callback(distance: ServerAPI.parseRequestDistanceForItemResponse(data))
             }
 
-            emitEvent(ClientEvent.itemRetrieval, data: ServerAPI.createSimpleItemRequestData(item, authenticatedUser: authenticatedUser!))
+            emitEvent(ClientEvent.itemDistance, data: ServerAPI.createSimpleItemRequestData(item, authenticatedUser: authenticatedUser!))
         } else {
             fatalError()
         }
