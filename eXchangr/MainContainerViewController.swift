@@ -16,11 +16,34 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificate(_:)), name: "showMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification), name: "showMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(removeMenuNotification), name: "removeMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pushControllerAndRemoveMenuNotification), name: "pushControllerAndRemoveMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performUserLogoutNotification), name: "performUserLogout", object: nil)
     }
 
-    func notificate(notification: NSNotification) {
-        print(notification.name)
+    func showMenuNotification(notification: NSNotification) {
+        if let menuController = notification.userInfo?["menuController"] as? UIViewController {
+            showMenuController(menuController)
+        }
+    }
+
+    func removeMenuNotification(notification: NSNotification) {
+        removeMenuViewController()
+    }
+
+    func pushControllerAndRemoveMenuNotification(notification: NSNotification) {
+        removeMenuNotification(notification)
+        if let targetController = notification.userInfo?["targetController"] as? UIViewController {
+            main?.pushViewController(targetController, animated: true)
+        } else {
+            fatalError("Could not downcast _targetController to UIViewController")
+        }
+    }
+
+    func performUserLogoutNotification(notification: NSNotification) {
+        removeMenuNotification(notification)
+        main?.popToRootViewControllerAnimated(true)
     }
 
     func setMainViewController(controller: UINavigationController) {
@@ -33,6 +56,7 @@ class MainContainerViewController: UIViewController {
         controller.view.frame = self.view.frame
         self.view.insertSubview(controller.view, atIndex: 0)
         controller.didMoveToParentViewController(self)
+        main = controller
     }
 
     func showMenuController(menuController: UIViewController) {
@@ -44,6 +68,7 @@ class MainContainerViewController: UIViewController {
         menuController.view.frame = makeHidenMenuViewControllerFrame()
         self.view.addSubview(menuController.view)
         menuController.didMoveToParentViewController(self)
+        menu = menuController
     }
 
     func makeHidenMenuViewControllerFrame() -> CGRect {

@@ -29,6 +29,7 @@
 		A0B9949A1CB0EB270072C9F2 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B994991CB0EB270072C9F2 /* Picture.swift */; };
 		A0C1B84B1CD555E700566CD8 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1B84A1CD555E700566CD8 /* MainContainerViewController.swift */; };
 		A0C1B84F1CD5593300566CD8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0C1B84E1CD5593300566CD8 /* MainStoryboard.storyboard */; };
+		A0C1B8511CD56C1900566CD8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1B8501CD56C1900566CD8 /* MenuViewController.swift */; };
 		A0C9B40B1CAFA26B00420332 /* UserAuthenticationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C9B40A1CAFA26B00420332 /* UserAuthenticationObserver.swift */; };
 		A0C9B40D1CAFA27700420332 /* UserRegistrationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C9B40C1CAFA27700420332 /* UserRegistrationObserver.swift */; };
 		A0DEA78F1CAD1871000894A5 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA77A1CAD1871000894A5 /* SocketAckEmitter.swift */; };
@@ -80,6 +81,7 @@
 		A0B994991CB0EB270072C9F2 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		A0C1B84A1CD555E700566CD8 /* MainContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
 		A0C1B84E1CD5593300566CD8 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A0C1B8501CD56C1900566CD8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A0C9B40A1CAFA26B00420332 /* UserAuthenticationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationObserver.swift; sourceTree = "<group>"; };
 		A0C9B40C1CAFA27700420332 /* UserRegistrationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationObserver.swift; sourceTree = "<group>"; };
 		A0DEA77A1CAD1871000894A5 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				A010C9881CCAF99600B4B1C4 /* EditItemViewController.swift */,
 				A01D98201CCC2F8B00186392 /* ItemTableViewCell.swift */,
 				A0C1B84A1CD555E700566CD8 /* MainContainerViewController.swift */,
+				A0C1B8501CD56C1900566CD8 /* MenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				A0DEA7931CAD1871000894A5 /* SocketEngine.swift in Sources */,
 				A0DEA7981CAD1871000894A5 /* SocketEngineWebsocket.swift in Sources */,
 				A06523481CB07B1300D7CF11 /* ItemAdditionObserver.swift in Sources */,
+				A0C1B8511CD56C1900566CD8 /* MenuViewController.swift in Sources */,
 				A0DEA79D1CAD1871000894A5 /* SocketLogger.swift in Sources */,
 				A0DEA7971CAD1871000894A5 /* SocketEngineSpec.swift in Sources */,
 				A07BBA161CAE4F1B0015B89B /* ServerInterface.swift in Sources */,

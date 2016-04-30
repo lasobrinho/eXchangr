@@ -36,9 +36,9 @@ class BrowserViewController: UIViewController {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("UserItemsViewController") as! UserItemsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    @IBAction func LogOutButtonTapped(sender: AnyObject) {
-        ServerInterface.sharedInstance.performUserLogout()
-        self.navigationController?.popToRootViewControllerAnimated(true)
+    @IBAction func MenuButtonTapped(sender: AnyObject) {
+        let menuController = mainStoryboard.instantiateViewControllerWithIdentifier("MenuViewController")
+        NSNotificationCenter.defaultCenter().postNotificationName("showMenu", object: nil, userInfo: ["menuController" : menuController])
     }
     @IBAction func ExchangeButtonTapped(sender: AnyObject) {
         performReaction(true)

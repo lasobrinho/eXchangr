@@ -216,6 +216,38 @@
             </objects>
             <point key="canvasLocation" x="2018" y="476"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="Be4-Lt-4Pi">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="QCZ-Ll-oMm" customClass="MenuViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pRO-CO-X6v"/>
+                        <viewControllerLayoutGuide type="bottom" id="cqv-f2-6sw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8oq-mq-Olw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqZ-MT-w0I">
+                                <rect key="frame" x="20" y="285" width="560" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="LogoutButtonTapped" destination="QCZ-Ll-oMm" eventType="touchUpInside" id="5SR-qK-ohc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DqZ-MT-w0I" firstAttribute="centerY" secondItem="8oq-mq-Olw" secondAttribute="centerY" id="0su-S0-Zo3"/>
+                            <constraint firstItem="DqZ-MT-w0I" firstAttribute="leading" secondItem="8oq-mq-Olw" secondAttribute="leadingMargin" id="YfH-V4-KF6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DqZ-MT-w0I" secondAttribute="trailing" id="cxA-Q4-IiR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tQ3-yV-drM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2019" y="1147"/>
+        </scene>
         <!--eXchangr-->
         <scene sceneID="7dZ-th-XoA">
             <objects>
@@ -278,9 +310,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="eXchangr" id="wIQ-IY-day">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="5FW-qg-lqw">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="5FW-qg-lqw">
                             <connections>
-                                <action selector="LogOutButtonTapped:" destination="m7k-Wr-9WG" id="F5w-zS-dtU"/>
+                                <action selector="MenuButtonTapped:" destination="m7k-Wr-9WG" id="GPb-Qy-UqM"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="My Items" id="5Nc-ux-aA3">
@@ -555,4 +587,7 @@
             <point key="canvasLocation" x="4073" y="476"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="48" height="48"/>
+    </resources>
 </document>

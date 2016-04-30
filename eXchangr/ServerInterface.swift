@@ -88,6 +88,7 @@ class ServerInterface {
 
     func performUserLogout() {
         authenticatedUser = nil
+        NSNotificationCenter.defaultCenter().postNotificationName("performUserLogout", object: nil)
     }
 
     func performItemAddition(item: Item) {
