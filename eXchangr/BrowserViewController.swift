@@ -37,8 +37,7 @@ class BrowserViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func MenuButtonTapped(sender: AnyObject) {
-        let menuController = UIViewController()
-        menuController.view.backgroundColor = UIColor.blackColor()
+        let menuController = mainStoryboard.instantiateViewControllerWithIdentifier("MenuViewController")
         NSNotificationCenter.defaultCenter().postNotificationName("showMenu", object: nil, userInfo: ["menuController" : menuController])
     }
     @IBAction func ExchangeButtonTapped(sender: AnyObject) {

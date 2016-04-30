@@ -16,9 +16,10 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification(_:)), name: "showMenu", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(removeMenuNotification(_:)), name: "removeMenu", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pushControllerAndRemoveMenuNotification(_:)), name: "pushControllerAndRemoveMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification), name: "showMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(removeMenuNotification), name: "removeMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pushControllerAndRemoveMenuNotification), name: "pushControllerAndRemoveMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performUserLogoutNotification), name: "performUserLogout", object: nil)
     }
 
     func showMenuNotification(notification: NSNotification) {
@@ -40,6 +41,11 @@ class MainContainerViewController: UIViewController {
         }
     }
 
+    func performUserLogoutNotification(notification: NSNotification) {
+        removeMenuNotification(notification)
+        main?.popToRootViewControllerAnimated(true)
+    }
+
     func setMainViewController(controller: UINavigationController) {
         if main != nil {
             removeMainViewController()
@@ -50,6 +56,7 @@ class MainContainerViewController: UIViewController {
         controller.view.frame = self.view.frame
         self.view.insertSubview(controller.view, atIndex: 0)
         controller.didMoveToParentViewController(self)
+        main = controller
     }
 
     func showMenuController(menuController: UIViewController) {
@@ -61,6 +68,7 @@ class MainContainerViewController: UIViewController {
         menuController.view.frame = makeHidenMenuViewControllerFrame()
         self.view.addSubview(menuController.view)
         menuController.didMoveToParentViewController(self)
+        menu = menuController
     }
 
     func makeHidenMenuViewControllerFrame() -> CGRect {
