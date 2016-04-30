@@ -11,7 +11,7 @@ import UIKit
 class EditItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ItemAdditionObserver {
     
     var imagePicker: UIImagePickerController? = UIImagePickerController()
-    var pictures = [Picture]()
+    var pictures: [Picture?] = [nil, nil, nil]
     var item: Item?
     var clickedImage = 0
     var isEditingItem = false
@@ -35,24 +35,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         configureItemImageButtons()
         configureDescriptionTextView()
         configureRemovePictureButtons()
-    }
-    
-    func configureDescriptionTextView() {
-        itemDescriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-        itemDescriptionTextField.layer.borderWidth = 1.0
-        itemDescriptionTextField.layer.cornerRadius = 5
-    }
-    
-    func configureRemovePictureButtons() {
-        removePictureButton1.setTitle("", forState: .Normal)
-        removePictureButton1.userInteractionEnabled = false
-        removePictureButton2.setTitle("", forState: .Normal)
-        removePictureButton2.userInteractionEnabled = false
-        removePictureButton3.setTitle("", forState: .Normal)
-        removePictureButton3.userInteractionEnabled = false
-    }
-    
-    override func viewWillAppear(animated: Bool) {
         if isEditingItem {
             activeStackView.hidden = false
             navigationBarTitle.title = "Edit Item"
@@ -62,31 +44,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             activeStackView.hidden = true
             navigationBarTitle.title = "New Item"
             saveButton.title = "Add"
-        }
-    }
-    
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        super.willMoveToParentViewController(parent)
-        if parent == nil {
-            ServerInterface.sharedInstance.removeItemAdditionObserver(self)
-        }
-    }
-    
-    func displayItemInformation() {
-        itemNameTextField.text = item?.name
-        itemDescriptionTextField.text = item?.description
-        activeSwitch.on = (item?.active)!
-        setImagesFromBytes(item!.pictures)
-    }
-    
-    func setImagesFromBytes(itemPictures: [Picture]) {
-        let imageButtons = [itemImage1, itemImage2, itemImage3]
-        let removePictureButtons = [removePictureButton1, removePictureButton2, removePictureButton3]
-        for index in 0..<itemPictures.count {
-            imageButtons[index].setTitle("", forState: .Normal)
-            imageButtons[index].setBackgroundImage(UIImage(data: itemPictures[index].bytes), forState: .Normal)
-            removePictureButtons[index].setTitle("Remove Picture", forState: .Normal)
-            removePictureButtons[index].userInteractionEnabled = true
         }
     }
     
@@ -111,11 +68,43 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         itemImage3.layer.borderWidth = 1
         itemImage3.clipsToBounds = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func configureDescriptionTextView() {
+        itemDescriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+        itemDescriptionTextField.layer.borderWidth = 1.0
+        itemDescriptionTextField.layer.cornerRadius = 5
     }
-
+    
+    func configureRemovePictureButtons() {
+        removePictureButton1.setTitle("", forState: .Normal)
+        removePictureButton1.userInteractionEnabled = false
+        removePictureButton2.setTitle("", forState: .Normal)
+        removePictureButton2.userInteractionEnabled = false
+        removePictureButton3.setTitle("", forState: .Normal)
+        removePictureButton3.userInteractionEnabled = false
+    }
+    
+    func displayItemInformation() {
+        itemNameTextField.text = item?.name
+        itemDescriptionTextField.text = item?.description
+        activeSwitch.on = (item?.active)!
+        setImageButtonsFromBytes()
+    }
+    
+    func setImageButtonsFromBytes() {
+        let imageButtons = [itemImage1, itemImage2, itemImage3]
+        let removePictureButtons = [removePictureButton1, removePictureButton2, removePictureButton3]
+        if item != nil {
+            for index in 0..<item!.pictures.count {
+                imageButtons[index].setTitle("", forState: .Normal)
+                imageButtons[index].setBackgroundImage(UIImage(data: item!.pictures[index].bytes), forState: .Normal)
+                pictures[index] = item!.pictures[index]
+                removePictureButtons[index].setTitle("Remove Picture", forState: .Normal)
+                removePictureButtons[index].userInteractionEnabled = true
+            }
+        }
+    }
+    
     @IBAction func BackButtonTapped(sender: AnyObject) {
         item = nil
         pictures = []
@@ -128,8 +117,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                 item?.name = itemNameTextField.text!
                 item?.description = itemDescriptionTextField.text!
                 item?.active = activeSwitch.on
-                updatePictureList()
-                item?.pictures = pictures
+                item?.pictures = getCurrentPictures()
                 ServerInterface.sharedInstance.performItemUpdate(self.item!, callback: { [unowned self] (result) in
                     switch result {
                     case let .Failure(msg):
@@ -139,8 +127,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                     }
                 })
             } else {
-                updatePictureList()
-                item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: pictures)
+                item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: getCurrentPictures())
                 ServerInterface.sharedInstance.performItemAddition(item!)
             }            
         } else {
@@ -148,17 +135,14 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
-    func updatePictureList() {
-        pictures = []
-        if itemImage1.currentBackgroundImage != nil {
-            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(itemImage1.currentBackgroundImage!)!))
+    func getCurrentPictures() -> [Picture] {
+        var currentPictures = [Picture]()
+        for picture in pictures {
+            if picture != nil {
+                currentPictures.append(picture!)
+            }
         }
-        if itemImage2.currentBackgroundImage != nil {
-            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(itemImage2.currentBackgroundImage!)!))
-        }
-        if itemImage3.currentBackgroundImage != nil {
-            pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(itemImage3.currentBackgroundImage!)!))
-        }
+        return currentPictures
     }
     
     func presentUIImagePicker(){
@@ -191,22 +175,25 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         self.dismissViewControllerAnimated(true, completion: nil)
         
         let compressedImage = image.resizeToWidth(500)
-        pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(compressedImage)!))
+        let selectedPicture = Picture(id: nil, bytes: UIImagePNGRepresentation(compressedImage)!)
         
         switch clickedImage {
         case 1:
             itemImage1.setTitle("", forState: .Normal)
             itemImage1.setBackgroundImage(compressedImage, forState: .Normal)
+            pictures[0] = selectedPicture
             removePictureButton1.setTitle("Remove Picture", forState: .Normal)
             removePictureButton1.userInteractionEnabled = true
         case 2:
             itemImage2.setTitle("", forState: .Normal)
             itemImage2.setBackgroundImage(compressedImage, forState: .Normal)
+            pictures[1] = selectedPicture
             removePictureButton2.setTitle("Remove Picture", forState: .Normal)
             removePictureButton2.userInteractionEnabled = true
         case 3:
             itemImage3.setTitle("", forState: .Normal)
             itemImage3.setBackgroundImage(compressedImage, forState: .Normal)
+            pictures[2] = selectedPicture
             removePictureButton3.setTitle("Remove Picture", forState: .Normal)
             removePictureButton3.userInteractionEnabled = true
         default:
@@ -219,12 +206,15 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         case "removePicture1":
             itemImage1.setBackgroundImage(nil, forState: .Normal)
             itemImage1.setTitle("Add Picture", forState: .Normal)
+            pictures[0] = nil
         case "removePicture2":
             itemImage2.setBackgroundImage(nil, forState: .Normal)
             itemImage2.setTitle("Add Picture", forState: .Normal)
+            pictures[1] = nil
         case "removePicture3":
             itemImage3.setBackgroundImage(nil, forState: .Normal)
             itemImage3.setTitle("Add Picture", forState: .Normal)
+            pictures[2] = nil
         default:
             break
         }
@@ -241,6 +231,15 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil {
+            ServerInterface.sharedInstance.removeItemAdditionObserver(self)
+        }
+    }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
 }
