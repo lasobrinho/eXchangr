@@ -13,7 +13,6 @@ user will be able to register items and exchange them for other people's items.
 ### Client Application
 * User registration
 * User authentication
-* User account configuration
 * User items managing:
 	* Item registration (including pictures upload)
 	* Item editing
@@ -23,7 +22,6 @@ user will be able to register items and exchange them for other people's items.
 	* Ability to see item's owner contact
 	* Only items within a limited radius around the user's location will be
 	  shown
-* Ability to block another user
 
 
 ### Server Application
@@ -90,10 +88,7 @@ user will be able to register items and exchange them for other people's items.
 * Item
 * Picture
 * Reaction
-* Statistic
 * User
-* BlockedUser
-* Session
 
 ### Controller
 
