@@ -374,7 +374,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wl1-Vc-Fsj">
-                                <rect key="frame" x="145" y="400.5" width="310" height="100"/>
+                                <rect key="frame" x="145" y="401" width="310" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldL-sA-MgV">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -412,7 +412,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AnK-fR-RIk">
-                                <rect key="frame" x="213" y="124.5" width="175" height="251"/>
+                                <rect key="frame" x="213" y="125" width="175" height="251"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUd-8W-1h6">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
@@ -466,9 +466,52 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gpL-aa-h1P">
+                                <rect key="frame" x="145" y="501" width="310" height="20"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="removePicture1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYZ-qb-VtO">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="0Ay-1K-t9J"/>
+                                            <constraint firstAttribute="width" constant="100" id="xcy-M6-pK0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Remove Picture"/>
+                                        <connections>
+                                            <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="g4I-5J-Xiy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="removePicture2" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5NP-tl-aAg">
+                                        <rect key="frame" x="105" y="0.0" width="100" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="GwT-KH-qoa"/>
+                                            <constraint firstAttribute="height" constant="20" id="ZFN-mh-vES"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Remove Picture"/>
+                                        <connections>
+                                            <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="F2k-H3-KJL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="removePicture3" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ski-8b-onH">
+                                        <rect key="frame" x="210" y="0.0" width="100" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="4R4-ff-wbd"/>
+                                            <constraint firstAttribute="width" constant="100" id="Sve-zx-1S4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Remove Picture"/>
+                                        <connections>
+                                            <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="jP3-Qm-EGv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gpL-aa-h1P" firstAttribute="centerX" secondItem="SqP-LD-TTG" secondAttribute="centerX" id="Bak-1h-xOf"/>
+                            <constraint firstItem="gpL-aa-h1P" firstAttribute="top" secondItem="wl1-Vc-Fsj" secondAttribute="bottom" id="aIP-PG-VDM"/>
                             <constraint firstItem="wl1-Vc-Fsj" firstAttribute="centerX" secondItem="SqP-LD-TTG" secondAttribute="centerX" id="cbQ-w7-fDB"/>
                             <constraint firstItem="wl1-Vc-Fsj" firstAttribute="top" secondItem="AnK-fR-RIk" secondAttribute="bottom" constant="25" id="eiq-8S-1AE"/>
                             <constraint firstItem="AnK-fR-RIk" firstAttribute="centerY" secondItem="SqP-LD-TTG" secondAttribute="centerY" constant="-50" id="p8J-jC-uaT"/>
@@ -496,6 +539,9 @@
                         <outlet property="itemImage3" destination="PkR-24-M4l" id="1u6-Eb-t8D"/>
                         <outlet property="itemNameTextField" destination="yBH-TH-qjy" id="uJU-G8-XSw"/>
                         <outlet property="navigationBarTitle" destination="FT3-Lb-psA" id="06r-Rl-CmH"/>
+                        <outlet property="removePictureButton1" destination="FYZ-qb-VtO" id="GnP-6o-XaY"/>
+                        <outlet property="removePictureButton2" destination="5NP-tl-aAg" id="wEY-2R-5EF"/>
+                        <outlet property="removePictureButton3" destination="ski-8b-onH" id="8Ou-nU-L07"/>
                         <outlet property="saveButton" destination="kPI-kf-Jz6" id="uzS-XB-ITp"/>
                     </connections>
                 </viewController>
