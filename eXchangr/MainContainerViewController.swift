@@ -16,11 +16,18 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notificate(_:)), name: "showMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification(_:)), name: "showMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(removeMenuNotification(_:)), name: "removeMenu", object: nil)
     }
 
-    func notificate(notification: NSNotification) {
-        print(notification.name)
+    func showMenuNotification(notification: NSNotification) {
+        if let menuController = notification.userInfo?["menuController"] as? UIViewController {
+            showMenuController(menuController)
+        }
+    }
+
+    func removeMenuNotification(notification: NSNotification) {
+        removeMenuViewController()
     }
 
     func setMainViewController(controller: UINavigationController) {
