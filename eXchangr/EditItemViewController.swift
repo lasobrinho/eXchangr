@@ -201,7 +201,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     @IBAction func removePictureTapped(sender: UIButton) {
-        print(sender.restorationIdentifier)
         switch sender.restorationIdentifier! {
         case "removePicture1":
             itemImage1.setBackgroundImage(nil, forState: .Normal)
