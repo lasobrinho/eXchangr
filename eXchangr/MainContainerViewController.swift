@@ -18,6 +18,7 @@ class MainContainerViewController: UIViewController {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification(_:)), name: "showMenu", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(removeMenuNotification(_:)), name: "removeMenu", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pushControllerAndRemoveMenuNotification(_:)), name: "pushControllerAndRemoveMenu", object: nil)
     }
 
     func showMenuNotification(notification: NSNotification) {
@@ -28,6 +29,15 @@ class MainContainerViewController: UIViewController {
 
     func removeMenuNotification(notification: NSNotification) {
         removeMenuViewController()
+    }
+
+    func pushControllerAndRemoveMenuNotification(notification: NSNotification) {
+        removeMenuNotification(notification)
+        if let targetController = notification.userInfo?["targetController"] as? UIViewController {
+            main?.pushViewController(targetController, animated: true)
+        } else {
+            fatalError("Could not downcast _targetController to UIViewController")
+        }
     }
 
     func setMainViewController(controller: UINavigationController) {
