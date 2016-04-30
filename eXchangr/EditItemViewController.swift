@@ -131,7 +131,11 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                 ServerInterface.sharedInstance.performItemAddition(item!)
             }            
         } else {
-            print("All fields are required")
+            let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true, completion: {})
+
         }
     }
     
