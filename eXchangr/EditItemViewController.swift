@@ -25,18 +25,31 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var activeStackView: UIStackView!
     @IBOutlet weak var navigationBarTitle: UINavigationItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var removePictureButton1: UIButton!
+    @IBOutlet weak var removePictureButton2: UIButton!
+    @IBOutlet weak var removePictureButton3: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
         configureItemImageButtons()
         configureDescriptionTextView()
+        configureRemovePictureButtons()
     }
     
     func configureDescriptionTextView() {
         itemDescriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         itemDescriptionTextField.layer.borderWidth = 1.0
         itemDescriptionTextField.layer.cornerRadius = 5
+    }
+    
+    func configureRemovePictureButtons() {
+        removePictureButton1.setTitle("", forState: .Normal)
+        removePictureButton1.userInteractionEnabled = false
+        removePictureButton2.setTitle("", forState: .Normal)
+        removePictureButton2.userInteractionEnabled = false
+        removePictureButton3.setTitle("", forState: .Normal)
+        removePictureButton3.userInteractionEnabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,9 +81,14 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     
     func setImagesFromBytes(itemPictures: [Picture]) {
         let imageButtons = [itemImage1, itemImage2, itemImage3]
+        let removePictureButtons = [removePictureButton1, removePictureButton2, removePictureButton3]
         for index in 0..<itemPictures.count {
             imageButtons[index].setTitle("", forState: .Normal)
             imageButtons[index].setBackgroundImage(UIImage(data: itemPictures[index].bytes), forState: .Normal)
+            print(removePictureButtons[index].titleLabel?.text)
+            print(removePictureButtons[index].userInteractionEnabled)
+            removePictureButtons[index].setTitle("Remove Picture", forState: .Normal)
+            removePictureButtons[index].userInteractionEnabled = true
         }
     }
     
@@ -145,10 +163,6 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
-    func getUserPictures() {
-        pictures = []
-    }
-    
     func presentUIImagePicker(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
             
@@ -181,19 +195,43 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         let compressedImage = image.resizeToWidth(500)
         pictures.append(Picture(id: nil, bytes: UIImagePNGRepresentation(compressedImage)!))
         
-        switch(clickedImage) {
+        switch clickedImage {
         case 1:
             itemImage1.setTitle("", forState: .Normal)
             itemImage1.setBackgroundImage(compressedImage, forState: .Normal)
+            removePictureButton1.setTitle("Remove Picture", forState: .Normal)
+            removePictureButton1.userInteractionEnabled = true
         case 2:
             itemImage2.setTitle("", forState: .Normal)
             itemImage2.setBackgroundImage(compressedImage, forState: .Normal)
+            removePictureButton2.setTitle("Remove Picture", forState: .Normal)
+            removePictureButton2.userInteractionEnabled = true
         case 3:
             itemImage3.setTitle("", forState: .Normal)
             itemImage3.setBackgroundImage(compressedImage, forState: .Normal)
+            removePictureButton3.setTitle("Remove Picture", forState: .Normal)
+            removePictureButton3.userInteractionEnabled = true
         default:
             print("Invalid value for clickedImage")
         }
+    }
+    @IBAction func removePictureTapped(sender: UIButton) {
+        print(sender.restorationIdentifier)
+        switch sender.restorationIdentifier! {
+        case "removePicture1":
+            itemImage1.setBackgroundImage(nil, forState: .Normal)
+            itemImage1.setTitle("Add Picture", forState: .Normal)
+        case "removePicture2":
+            itemImage2.setBackgroundImage(nil, forState: .Normal)
+            itemImage2.setTitle("Add Picture", forState: .Normal)
+        case "removePicture3":
+            itemImage3.setBackgroundImage(nil, forState: .Normal)
+            itemImage3.setTitle("Add Picture", forState: .Normal)
+        default:
+            break
+        }
+        sender.setTitle("", forState: .Normal)
+        sender.userInteractionEnabled = false
     }
     
     func update(result: ItemAddOrUpdateResult) {
