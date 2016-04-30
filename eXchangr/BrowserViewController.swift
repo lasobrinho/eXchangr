@@ -9,17 +9,27 @@
 import UIKit
 
 class BrowserViewController: UIViewController {
-    
+
     var mainStoryboard: UIStoryboard!
+
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var distance: UILabel!
+
+    var browseItems = [Item]() {
+        didSet {
+            loadUIElements()
+        }
+    }
+
+    var currentItem: Item!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        //navigationController?.pushViewController(UserItemsViewController(), animated: true)
+        ServerInterface.sharedInstance.requestElegibleItemsList { [unowned self] (items) in
+            self.browseItems = items
+        }
     }
 
     @IBAction func MyItemBarButtonTapped(sender: AnyObject) {
@@ -27,16 +37,42 @@ class BrowserViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func LogOutButtonTapped(sender: AnyObject) {
+        ServerInterface.sharedInstance.performUserLogout()
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     @IBAction func ExchangeButtonTapped(sender: AnyObject) {
-        // Code to Exchange an item
-        // Shows a new item to the user
-        // YOUR CODE HERE
+        performReaction(true)
     }
+
     @IBAction func IgnoreButtonTapped(sender: AnyObject) {
-        // Code to Ignore an item
-        // Shows a new item to the user
-        // YOUR CODE HERE
+        performReaction(false)
+    }
+
+    private func performReaction(interested: Bool) {
+        if currentItem != nil {
+            ServerInterface.sharedInstance.reactToItem(currentItem, interested: interested, callback: increaseCurrentIndexCallback)
+        }
+    }
+
+    func increaseCurrentIndexCallback(success: Bool) {
+        if success {
+            loadUIElements()
+        }
+    }
+
+    func loadUIElements() {
+        if browseItems.count > 0 {
+            currentItem = browseItems.popLast()
+
+            image.image = currentItem.pictures[0].asUIImage()
+            name.text = currentItem.name
+            ServerInterface.sharedInstance.requestDistanceForItem(currentItem, callback: { (distance) in
+                self.distance.text = "\(distance) miles"
+            })
+        } else {
+            image.image = nil
+            name.text = "Nothing to show"
+            self.distance.text = ""
+        }
     }
 }

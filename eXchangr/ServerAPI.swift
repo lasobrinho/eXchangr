@@ -193,6 +193,14 @@ struct ServerAPI {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
+    static func createReactionData(item: Item, interested: Bool, authenticatedUser: User) -> AnyObject {
+        var data = [String : [String : AnyObject]]()
+        data["user"] = ["id" : authenticatedUser.id]
+        data["item"] = ["id" : item.id!]
+        data["reaction"] = ["interested" : interested]
+        return data
+    }
+
     static func createSimpleItemRequestData(item: Item, authenticatedUser: User) -> AnyObject {
         var data = [String : [String : AnyObject]]()
         data["user"] = ["id" : authenticatedUser.id]
@@ -237,6 +245,13 @@ struct ServerAPI {
     }
 
     static func parseItemRemovalResponse(data: [AnyObject]) -> Bool {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        return responseCode == 0
+    }
+
+    static func parseReactionResponse(data: [AnyObject]) -> Bool {
         let serverResponse = parseServerResponseData(data)
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
 
