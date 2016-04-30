@@ -17,7 +17,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     var isEditingItem = false
 
     @IBOutlet weak var itemNameTextField: UITextField!
-    @IBOutlet weak var itemDescriptionTextField: UITextField!
+    @IBOutlet weak var itemDescriptionTextField: UITextView!
     @IBOutlet weak var itemImage1: UIButton!
     @IBOutlet weak var itemImage2: UIButton!
     @IBOutlet weak var itemImage3: UIButton!
@@ -30,6 +30,13 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidLoad()
         ServerInterface.sharedInstance.addItemAdditionObserver(self)
         configureItemImageButtons()
+        configureDescriptionTextView()
+    }
+    
+    func configureDescriptionTextView() {
+        itemDescriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+        itemDescriptionTextField.layer.borderWidth = 1.0
+        itemDescriptionTextField.layer.cornerRadius = 5
     }
     
     override func viewWillAppear(animated: Bool) {
