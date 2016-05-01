@@ -119,7 +119,7 @@ class ServerInterface {
                 callback(items: ServerAPI.parseItemArrayResponse(data))
             }
 
-            emitEvent(ClientEvent.itemBrowsing, data: ServerAPI.createRequestItemsData(authenticatedUser!))
+            emitEvent(ClientEvent.itemBrowsing, data: ServerAPI.createSimpleUserRequestData(authenticatedUser!))
         } else {
             fatalError()
         }
@@ -132,7 +132,7 @@ class ServerInterface {
                 callback(items: ServerAPI.parseItemArrayResponse(data))
             }
 
-            emitEvent(ClientEvent.itemRetrieval, data: ServerAPI.createRequestItemsData(authenticatedUser!))
+            emitEvent(ClientEvent.itemRetrieval, data: ServerAPI.createSimpleUserRequestData(authenticatedUser!))
         } else {
             fatalError()
         }
@@ -171,6 +171,19 @@ class ServerInterface {
             }
 
             emitEvent(ClientEvent.itemDistance, data: ServerAPI.createSimpleItemRequestData(item, authenticatedUser: authenticatedUser!))
+        } else {
+            fatalError()
+        }
+    }
+
+    func requestExchangesList(callback: (exchanges: [Exchange]) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.exchangesResponse) {
+                data, ack in
+                callback(exchanges: ServerAPI.parseExchangesResponse(data))
+            }
+
+            emitEvent(ClientEvent.exchanges, data: ServerAPI.createSimpleUserRequestData(authenticatedUser!))
         } else {
             fatalError()
         }

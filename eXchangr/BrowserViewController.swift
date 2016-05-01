@@ -23,9 +23,22 @@ class BrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        if image != nil {
+            image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+        }
+
+
         ServerInterface.sharedInstance.requestElegibleItemsList { [unowned self] (items) in
             self.browseItems = items
             self.loadUIElements()
+        }
+    }
+
+    func imageTapped() {
+        if currentItem != nil {
+            let detailsVC = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseDetailsViewController") as! BrowseDetailsViewController
+            detailsVC.item = currentItem
+            navigationController?.pushViewController(detailsVC, animated: true)
         }
     }
 
