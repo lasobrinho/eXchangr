@@ -510,20 +510,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Nm-Lly">
-                                <rect key="frame" x="150" y="371.5" width="55" height="21"/>
+                                <rect key="frame" x="150" y="371" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
-                                <rect key="frame" x="150" y="417.5" width="44" height="30"/>
+                                <rect key="frame" x="150" y="417" width="44" height="30"/>
                                 <state key="normal" title="Ignore"/>
                                 <connections>
                                     <action selector="IgnoreButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="Ruk-TK-OFu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
-                                <rect key="frame" x="383" y="417.5" width="67" height="30"/>
+                                <rect key="frame" x="383" y="417" width="67" height="30"/>
                                 <state key="normal" title="Exchange"/>
                                 <connections>
                                     <action selector="ExchangeButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="ca8-A5-eva"/>
@@ -537,20 +537,37 @@
                                     <constraint firstAttribute="width" secondItem="kwR-hj-vYB" secondAttribute="height" multiplier="1:1" id="fQp-wo-TZi"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
+                                <rect key="frame" x="20" y="289.5" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Sea-oh-k13" firstAttribute="leading" secondItem="saQ-xe-zol" secondAttribute="leadingMargin" id="3lG-nh-HKd"/>
                             <constraint firstItem="Mfv-Nm-Lly" firstAttribute="top" secondItem="AO8-7o-tpb" secondAttribute="bottom" constant="5" id="Bto-BD-E9f"/>
                             <constraint firstItem="XFF-Q8-zeD" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="FTs-Lq-g0C"/>
                             <constraint firstItem="kwR-hj-vYB" firstAttribute="top" secondItem="hRT-14-uNt" secondAttribute="bottom" constant="8" id="FUI-JH-fpq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sea-oh-k13" secondAttribute="trailing" id="FzF-Ac-Mc4"/>
                             <constraint firstItem="AO8-7o-tpb" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="Hz5-k6-78g"/>
                             <constraint firstItem="kwR-hj-vYB" firstAttribute="centerX" secondItem="saQ-xe-zol" secondAttribute="centerX" id="Iav-0r-M7I"/>
+                            <constraint firstItem="Sea-oh-k13" firstAttribute="centerX" secondItem="saQ-xe-zol" secondAttribute="centerX" id="NB3-f8-Kg2"/>
                             <constraint firstItem="AO8-7o-tpb" firstAttribute="top" secondItem="kwR-hj-vYB" secondAttribute="bottom" constant="5" id="YCo-DH-eD9"/>
+                            <constraint firstItem="Sea-oh-k13" firstAttribute="centerY" secondItem="saQ-xe-zol" secondAttribute="centerY" id="ZZg-6N-A3f"/>
                             <constraint firstItem="Ubi-Ly-ASn" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="25" id="Znk-0E-fkh"/>
                             <constraint firstItem="Mfv-Nm-Lly" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="cdF-oP-1Wo"/>
+                            <constraint firstItem="Sea-oh-k13" firstAttribute="centerY" secondItem="saQ-xe-zol" secondAttribute="centerY" id="mTu-0O-Qv7"/>
                             <constraint firstItem="Ubi-Ly-ASn" firstAttribute="trailing" secondItem="kwR-hj-vYB" secondAttribute="trailing" id="wtn-qk-nKH"/>
                             <constraint firstItem="XFF-Q8-zeD" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="25" id="zSm-AS-A7E"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NB3-f8-Kg2"/>
+                                <exclude reference="mTu-0O-Qv7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="eXchangr" id="wIQ-IY-day">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="5FW-qg-lqw">
@@ -566,8 +583,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="distance" destination="Mfv-Nm-Lly" id="Wiw-aP-w9D"/>
+                        <outlet property="exchangeButton" destination="Ubi-Ly-ASn" id="4TU-9v-TOW"/>
+                        <outlet property="ignoreButton" destination="XFF-Q8-zeD" id="j8f-9e-IN0"/>
                         <outlet property="image" destination="kwR-hj-vYB" id="Itb-bR-UK4"/>
                         <outlet property="name" destination="AO8-7o-tpb" id="2ZL-HU-mZO"/>
+                        <outlet property="noMoreItems" destination="Sea-oh-k13" id="7wC-LK-Dn2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8i-yt-Vi9" userLabel="First Responder" sceneMemberID="firstResponder"/>

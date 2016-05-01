@@ -150,13 +150,13 @@
 		A00852F01CACE9240076F011 /* eXchangr */ = {
 			isa = PBXGroup;
 			children = (
-				A0B90BA11CD17590006CD83C /* Extensions */,
-				A0B65C801CC1BCD0001D78FB /* View */,
-				A0F359271CAF8FA9007F18AC /* Controller */,
 				A00852F11CACE9240076F011 /* AppDelegate.swift */,
+				A0F359271CAF8FA9007F18AC /* Controller */,
+				A0B90BA11CD17590006CD83C /* Extensions */,
 				A07BBA101CAE43CF0015B89B /* Model */,
 				A07BBA091CAE42470015B89B /* Server Communication */,
 				A00853031CACE9540076F011 /* Support Files */,
+				A0B65C801CC1BCD0001D78FB /* View */,
 			);
 			path = eXchangr;
 			sourceTree = "<group>";

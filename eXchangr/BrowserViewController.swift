@@ -12,9 +12,12 @@ class BrowserViewController: UIViewController {
 
     var mainStoryboard: UIStoryboard!
 
+    @IBOutlet weak var noMoreItems: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var ignoreButton: UIButton!
+    @IBOutlet weak var exchangeButton: UIButton!
 
     var browseItems = [Item]()
 
@@ -26,8 +29,10 @@ class BrowserViewController: UIViewController {
         if image != nil {
             image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
         }
+        refreshData()
+    }
 
-
+    func refreshData() {
         ServerInterface.sharedInstance.requestElegibleItemsList { [unowned self] (items) in
             self.browseItems = items
             self.loadUIElements()
@@ -72,8 +77,8 @@ class BrowserViewController: UIViewController {
 
     func loadUIElements() {
         if browseItems.count > 0 {
+            toggleInterface(false)
             currentItem = browseItems.popLast()
-
             image.image = currentItem.pictures[0].asUIImage()
             name.text = currentItem.name
             ServerInterface.sharedInstance.requestDistanceForItem(currentItem, callback: { (distance) in
@@ -81,8 +86,16 @@ class BrowserViewController: UIViewController {
             })
         } else {
             image.image = nil
-            name.text = "Nothing to show"
-            self.distance.text = ""
+            toggleInterface(true)
         }
+    }
+
+    func toggleInterface(hidden: Bool) {
+        image.hidden = hidden
+        name.hidden = hidden
+        ignoreButton.hidden = hidden
+        exchangeButton.hidden = hidden
+        distance.hidden = hidden
+        noMoreItems.hidden = !hidden
     }
 }
