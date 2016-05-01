@@ -209,6 +209,11 @@ struct ServerAPI {
         data["item"] = ["id" : item.id!]
         return data
     }
+    
+    static func createCoordinatesData(authenticatedUser: User) -> AnyObject {
+        return ["user" : ["id" : authenticatedUser.id]]
+    }
+    
 
     static func parseItemArrayResponse(data: [AnyObject]) -> [Item] {
         let serverResponse = parseServerResponseData(data)
@@ -299,6 +304,21 @@ struct ServerAPI {
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
 
         return responseCode == 0
+    }
+    
+    static func parseCoordinatesResponse(data: [AnyObject]) -> (latitude: Double, longitude: Double) {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+        
+        if responseCode != 0 {
+            let message = extractMessageFrom(serverResponse: serverResponse)
+            fatalError(message)
+        }
+        
+        guard let response = serverResponse["coordinates"] as? [String : AnyObject] else {
+            fatalError()
+        }
+        return (response["latitude"] as! Double, response["longitude"] as! Double)
     }
     
 

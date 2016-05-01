@@ -15,9 +15,10 @@ struct ClientEvent {
     static let itemAddition = "itemAddition"
     static let itemBrowsing = "itemBrowsing"
     static let itemRemoval = "itemRemoval"
+    static let reaction = "reaction"
     static let itemRetrieval = "itemRetrieval"
     static let itemDistance = "itemDistance"
     static let itemUpdate = "itemUpdate"
-    static let reaction = "reaction"
-    static let exchanges = "exchanges"
+    static let userCoordinates = "userCoordinates"
+    static let exchanges = "exchanges"    
 }
