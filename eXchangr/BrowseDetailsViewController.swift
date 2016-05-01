@@ -27,6 +27,14 @@ class BrowseDetailsViewController: UIViewController {
                 self.distanceLabel.text = "\(distance) miles"
             })
         }
+
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+        swipeRecognizer.direction = .Down
+        self.view.addGestureRecognizer(swipeRecognizer)
+    }
+
+    func swipeGesture(sender: UISwipeGestureRecognizer) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

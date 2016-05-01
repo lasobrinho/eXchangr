@@ -38,7 +38,7 @@ class BrowserViewController: UIViewController {
         if currentItem != nil {
             let detailsVC = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseDetailsViewController") as! BrowseDetailsViewController
             detailsVC.item = currentItem
-            navigationController?.pushViewController(detailsVC, animated: true)
+            presentViewController(detailsVC, animated: true, completion: nil)
         }
     }
 
@@ -51,14 +51,14 @@ class BrowserViewController: UIViewController {
         NSNotificationCenter.defaultCenter().postNotificationName("showMenu", object: nil, userInfo: ["menuController" : menuController])
     }
     @IBAction func ExchangeButtonTapped(sender: AnyObject) {
-        performReaction(true)
+        performReaction(interested: true)
     }
 
     @IBAction func IgnoreButtonTapped(sender: AnyObject) {
-        performReaction(false)
+        performReaction(interested: false)
     }
 
-    private func performReaction(interested: Bool) {
+    private func performReaction(interested interested: Bool) {
         if currentItem != nil {
             ServerInterface.sharedInstance.reactToItem(currentItem, interested: interested, callback: increaseCurrentIndexCallback)
         }
