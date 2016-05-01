@@ -189,7 +189,7 @@ struct ServerAPI {
         return pictures
     }
 
-    static func createRequestItemsData(authenticatedUser: User) -> AnyObject {
+    static func createSimpleUserRequestData(authenticatedUser: User) -> AnyObject {
         return ["user" : ["id" : authenticatedUser.id]]
     }
 
@@ -226,6 +226,47 @@ struct ServerAPI {
             items.append(itemFrom(itemJSON: item))
         }
         return items
+    }
+
+    static func parseExchangesResponse(data: [AnyObject]) -> [Exchange] {
+        let serverResponse = parseServerResponseData(data)
+        let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
+
+        if responseCode != 0 {
+            let message = extractMessageFrom(serverResponse: serverResponse)
+            fatalError(message)
+        }
+
+        guard let exchangesResponse = serverResponse["exchanges"] as? [[String : AnyObject]] else {
+            fatalError("Could not retrieve exchanges list from server response")
+        }
+
+        var exchanges = [Exchange]()
+
+        for exchangeJSON in exchangesResponse {
+            guard let distance = exchangeJSON["distance"] as? Double,
+                let userJSON = exchangeJSON["otherUser"] as? [String : AnyObject],
+                let otherUserItemsThatILikeData = exchangeJSON["otherUserItemsThatILike"] as? [AnyObject],
+                let itemsLikedByTheOtherUserData = exchangeJSON["itemsLikedByTheOtherUser"] as? [AnyObject] else {
+                    fatalError("Could not retrieve exchanges list from server response")
+            }
+            let otherUser = userFrom(userJSON: userJSON)
+
+            var otherUserItemsThatILike = [Item]()
+            var itemsLikedByTheOtherUser = [Item]()
+
+            for itemData in otherUserItemsThatILikeData {
+                otherUserItemsThatILike.append(itemFrom(itemJSON: itemData as! [String : AnyObject]))
+            }
+
+            for itemData in itemsLikedByTheOtherUserData {
+                itemsLikedByTheOtherUser.append(itemFrom(itemJSON: itemData as! [String : AnyObject]))
+            }
+
+            exchanges.append(Exchange(distance: distance, otherUser: otherUser, itemsLikedByTheOtherUser: itemsLikedByTheOtherUser, otherUserItemsThatILike: otherUserItemsThatILike))
+        }
+
+        return exchanges
     }
 
     static func parseRequestDistanceForItemResponse(data: [AnyObject]) -> Double {

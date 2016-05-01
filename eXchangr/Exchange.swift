@@ -9,11 +9,14 @@
 import Foundation
 
 class Exchange {
+
+    let distance: Double
     let otherUser: User
     let itemsLikedByTheOtherUser: [Item]
     let otherUserItemsThatILike: [Item]
 
-    init(otherUser: User, itemsLikedByTheOtherUser: [Item], otherUserItemsThatILike: [Item]) {
+    init(distance: Double, otherUser: User, itemsLikedByTheOtherUser: [Item], otherUserItemsThatILike: [Item]) {
+        self.distance = distance
         self.otherUser = otherUser
         self.itemsLikedByTheOtherUser = itemsLikedByTheOtherUser
         self.otherUserItemsThatILike = otherUserItemsThatILike
