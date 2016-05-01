@@ -61,14 +61,22 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
+                                <rect key="frame" x="240" y="323" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2qE-BA-4hL" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="0CB-fz-JHO"/>
                             <constraint firstItem="w6j-d6-XTn" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="34o-NJ-fOo"/>
+                            <constraint firstItem="G9H-kS-kZ0" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="A3P-4r-St6"/>
                             <constraint firstItem="HgR-8b-2Kh" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="GGn-RT-xJc"/>
                             <constraint firstItem="w6j-d6-XTn" firstAttribute="bottom" secondItem="HKj-HV-qXJ" secondAttribute="top" constant="-5" id="IR0-CR-ekq"/>
                             <constraint firstItem="JdA-GW-vMk" firstAttribute="top" secondItem="HgR-8b-2Kh" secondAttribute="bottom" constant="5" id="Pzd-Pq-yD6"/>
+                            <constraint firstItem="G9H-kS-kZ0" firstAttribute="top" secondItem="VF4-bF-ZpJ" secondAttribute="bottom" constant="8" symbolic="YES" id="SWQ-wc-duC"/>
                             <constraint firstItem="VF4-bF-ZpJ" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="UC5-ZI-g9w"/>
                             <constraint firstItem="JdA-GW-vMk" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="Xf0-34-iR1"/>
                             <constraint firstItem="HgR-8b-2Kh" firstAttribute="top" secondItem="VF4-bF-ZpJ" secondAttribute="bottom" constant="20" id="Xy8-et-Zci"/>
@@ -88,8 +96,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="VaN-oU-g3G"/>
                     <connections>
-                        <outlet property="passwordLabel" destination="HKj-HV-qXJ" id="XKZ-Qj-OX1"/>
-                        <outlet property="usernameLabel" destination="w6j-d6-XTn" id="fua-dX-LGV"/>
+                        <outlet property="feedbackLabel" destination="G9H-kS-kZ0" id="M5B-0j-FMa"/>
+                        <outlet property="loginButton" destination="VF4-bF-ZpJ" id="LMO-6l-Kep"/>
+                        <outlet property="passwordField" destination="HKj-HV-qXJ" id="b2a-3P-gYe"/>
+                        <outlet property="usernameField" destination="w6j-d6-XTn" id="vfS-Mh-ACK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcF-ww-nqk" userLabel="First Responder" sceneMemberID="firstResponder"/>

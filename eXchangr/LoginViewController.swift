@@ -12,8 +12,10 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     
     var mainStoryboard: UIStoryboard!
     
-    @IBOutlet weak var usernameLabel: UITextField!
-    @IBOutlet weak var passwordLabel: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var feedbackLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +31,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     // Hides navigation bar from login view, at the moment that this view will appear
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    func update(result: UserAuthenticationResult) {
-        switch result {
-        case .Success:
-            let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseViewController") as! BrowserViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        case let .Failure(message):
-            print(message)
-        }
+        feedbackLabel.hidden = true
     }
     
     @IBAction func registerNewUserTapped(sender: AnyObject) {
@@ -51,6 +40,28 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     }
     
     @IBAction func LoginUserTapped(sender: AnyObject) {
-        ServerInterface.sharedInstance.performUserAuthentication(email: usernameLabel.text!, password: passwordLabel.text!)
+        if fieldsAreValid() {
+            loginButton.enabled = false
+            ServerInterface.sharedInstance.performUserAuthentication(email: usernameField.text!, password: passwordField.text!)
+        } else {
+            feedbackLabel.text = "Please provide your credentials."
+            feedbackLabel.hidden = false
+        }
+    }
+
+    func fieldsAreValid() -> Bool {
+        return !(usernameField.text!.isEmpty || passwordField.text!.isEmpty)
+    }
+
+    func update(result: UserAuthenticationResult) {
+        switch result {
+        case .Success:
+            let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseViewController") as! BrowserViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case let .Failure(message):
+            feedbackLabel.text = message
+            feedbackLabel.hidden = false
+        }
+        loginButton.enabled = true
     }
 }
