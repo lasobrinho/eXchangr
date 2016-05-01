@@ -188,6 +188,7 @@ class ServerInterface {
             fatalError()
         }
     }
+    
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()
@@ -251,6 +252,10 @@ class ServerInterface {
                 self.socket.emit(event, data)
             }
         }
+    }
+    
+    func getAuthenticatedUser() -> User {
+        return authenticatedUser!
     }
     
 }
