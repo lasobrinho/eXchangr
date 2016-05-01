@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0070B6B1CD69A7F0024E66C /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0070B6A1CD69A7F0024E66C /* LocationController.swift */; };
 		A00852F21CACE9240076F011 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00852F11CACE9240076F011 /* AppDelegate.swift */; };
 		A00852F91CACE9240076F011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00852F81CACE9240076F011 /* Assets.xcassets */; };
 		A00852FC1CACE9240076F011 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00852FA1CACE9240076F011 /* LaunchScreen.storyboard */; };
@@ -29,7 +30,6 @@
 		A08DC8FB1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8FA1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift */; };
 		A0B736871CD5CAA100F6BD17 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B736861CD5CAA100F6BD17 /* Exchange.swift */; };
 		A0B736891CD5E24D00F6BD17 /* BrowseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B736881CD5E24D00F6BD17 /* BrowseDetailsViewController.swift */; };
-		A0B7368B1CD5FDF900F6BD17 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B7368A1CD5FDF900F6BD17 /* LocationController.swift */; };
 		A0B7368D1CD5FE0300F6BD17 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B7368C1CD5FE0300F6BD17 /* Coordinate.swift */; };
 		A0B90BA31CD175AF006CD83C /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B90BA21CD175AF006CD83C /* UIImageResizeExtension.swift */; };
 		A0B9949A1CB0EB270072C9F2 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B994991CB0EB270072C9F2 /* Picture.swift */; };
@@ -63,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0070B6A1CD69A7F0024E66C /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		A00852EE1CACE9240076F011 /* eXchangr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eXchangr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00852F11CACE9240076F011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A00852F81CACE9240076F011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		A08DC8FA1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemAddOrUpdateResult.swift; sourceTree = "<group>"; };
 		A0B736861CD5CAA100F6BD17 /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		A0B736881CD5E24D00F6BD17 /* BrowseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseDetailsViewController.swift; sourceTree = "<group>"; };
-		A0B7368A1CD5FDF900F6BD17 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		A0B7368C1CD5FE0300F6BD17 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		A0B90BA21CD175AF006CD83C /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
 		A0B994991CB0EB270072C9F2 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
@@ -307,6 +307,7 @@
 				A02AC2641CD5816E00DC856D /* MatchesTableViewController.swift */,
 				A0B736881CD5E24D00F6BD17 /* BrowseDetailsViewController.swift */,
 				A02AC2661CD6032300DC856D /* MatchTableViewCell.swift */,
+				A0070B6A1CD69A7F0024E66C /* LocationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -400,7 +401,6 @@
 				A0DEA7931CAD1871000894A5 /* SocketEngine.swift in Sources */,
 				A0DEA7981CAD1871000894A5 /* SocketEngineWebsocket.swift in Sources */,
 				A06523481CB07B1300D7CF11 /* ItemAdditionObserver.swift in Sources */,
-				A0B7368B1CD5FDF900F6BD17 /* LocationController.swift in Sources */,
 				A0C1B8511CD56C1900566CD8 /* MenuViewController.swift in Sources */,
 				A0B736891CD5E24D00F6BD17 /* BrowseDetailsViewController.swift in Sources */,
 				A0DEA79D1CAD1871000894A5 /* SocketLogger.swift in Sources */,
@@ -432,6 +432,7 @@
 				A0DEA79E1CAD1871000894A5 /* SocketPacket.swift in Sources */,
 				A0B9949A1CB0EB270072C9F2 /* Picture.swift in Sources */,
 				A0DEA7921CAD1871000894A5 /* SocketClientSpec.swift in Sources */,
+				A0070B6B1CD69A7F0024E66C /* LocationController.swift in Sources */,
 				A08DC8FB1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
