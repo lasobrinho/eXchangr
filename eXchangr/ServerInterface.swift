@@ -76,8 +76,8 @@ class ServerInterface {
         }
     }
 
-    func performUserRegistration(user: User) {
-        let data = ServerAPI.createUserRegistrationData(user)
+    func performUserRegistration(user: User, coordinate: Coordinate) {
+        let data = ServerAPI.createUserRegistrationData(user, coordinate: coordinate)
         emitEvent(ClientEvent.userRegistration, data: data)
     }
 

@@ -14,9 +14,11 @@ struct ServerAPI {
 
     // MARK: User Registration
 
-    static func createUserRegistrationData(user: User) -> [String : AnyObject]{
+    static func createUserRegistrationData(user: User, coordinate: Coordinate) -> [String : AnyObject]{
         var data = [String : AnyObject]()
         data["user"] = dictionaryFrom(user: user)
+        data["coordinate"] = ["latitude" : coordinate.latitude, "longitude" : coordinate.longitude]
+
         return data
     }
 
