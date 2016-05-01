@@ -25,7 +25,10 @@ class MatchesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("ExchangeCell", forIndexPath: indexPath)
+        cell.textLabel?.text = exchanges![indexPath.row].otherUser.name
+        cell.imageView?.image = exchanges![indexPath.row].otherUserItemsThatILike[0].pictures[0].asUIImage()
+        return cell
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
