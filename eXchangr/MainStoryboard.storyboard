@@ -299,7 +299,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExchangeCell" id="wZU-0d-tMy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchCell" id="wZU-0d-tMy" customClass="MatchTableViewCell" customModule="eXchangr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wZU-0d-tMy" id="yij-6r-0ia">
@@ -370,6 +370,14 @@
                                         <constraint firstItem="x1L-PN-IOr" firstAttribute="top" secondItem="KRU-45-gAk" secondAttribute="bottom" id="w8J-EB-Lyi"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="leftItemImage" destination="fpx-Sx-Imv" id="gyr-Y3-ZbX"/>
+                                    <outlet property="leftItemNameLabel" destination="STT-h8-cYm" id="0ha-D0-YJj"/>
+                                    <outlet property="rightItemDistanceLabel" destination="Bhk-Mg-WY1" id="Jrt-xD-PmI"/>
+                                    <outlet property="rightItemImage" destination="gji-Pq-yqx" id="D15-zN-HEe"/>
+                                    <outlet property="rightItemLocationLabel" destination="x1L-PN-IOr" id="Lc6-Wk-6eQ"/>
+                                    <outlet property="rightItemNameLabel" destination="KRU-45-gAk" id="3XZ-ma-JcT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

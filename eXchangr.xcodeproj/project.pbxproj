@@ -13,6 +13,7 @@
 		A010C9891CCAF99600B4B1C4 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010C9881CCAF99600B4B1C4 /* EditItemViewController.swift */; };
 		A01D98211CCC2F8B00186392 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D98201CCC2F8B00186392 /* ItemTableViewCell.swift */; };
 		A02AC2651CD5816E00DC856D /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02AC2641CD5816E00DC856D /* MatchesTableViewController.swift */; };
+		A02AC2671CD6032300DC856D /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02AC2661CD6032300DC856D /* MatchTableViewCell.swift */; };
 		A06523481CB07B1300D7CF11 /* ItemAdditionObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06523471CB07B1300D7CF11 /* ItemAdditionObserver.swift */; };
 		A07BBA0B1CAE42600015B89B /* ServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA0A1CAE42600015B89B /* ServerAPI.swift */; };
 		A07BBA0D1CAE42FE0015B89B /* ServerResponseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07BBA0C1CAE42FE0015B89B /* ServerResponseEvent.swift */; };
@@ -68,6 +69,7 @@
 		A010C9881CCAF99600B4B1C4 /* EditItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		A01D98201CCC2F8B00186392 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		A02AC2641CD5816E00DC856D /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
+		A02AC2661CD6032300DC856D /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		A06523471CB07B1300D7CF11 /* ItemAdditionObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemAdditionObserver.swift; sourceTree = "<group>"; };
 		A07BBA0A1CAE42600015B89B /* ServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAPI.swift; sourceTree = "<group>"; };
 		A07BBA0C1CAE42FE0015B89B /* ServerResponseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponseEvent.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				A0C1B8501CD56C1900566CD8 /* MenuViewController.swift */,
 				A02AC2641CD5816E00DC856D /* MatchesTableViewController.swift */,
 				A0B736881CD5E24D00F6BD17 /* BrowseDetailsViewController.swift */,
+				A02AC2661CD6032300DC856D /* MatchTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				A0C1B8511CD56C1900566CD8 /* MenuViewController.swift in Sources */,
 				A0B736891CD5E24D00F6BD17 /* BrowseDetailsViewController.swift in Sources */,
 				A0DEA79D1CAD1871000894A5 /* SocketLogger.swift in Sources */,
+				A02AC2671CD6032300DC856D /* MatchTableViewCell.swift in Sources */,
 				A0DEA7971CAD1871000894A5 /* SocketEngineSpec.swift in Sources */,
 				A07BBA161CAE4F1B0015B89B /* ServerInterface.swift in Sources */,
 				A0DEA7A01CAD1871000894A5 /* SocketStringReader.swift in Sources */,
