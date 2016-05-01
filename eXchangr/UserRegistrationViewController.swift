@@ -23,6 +23,12 @@ class UserRegistrationViewController: UIViewController, UserRegistrationObserver
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
     }
 
+    override func didMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            ServerInterface.sharedInstance.removeUserRegistrationObserver(self)
+        }
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
