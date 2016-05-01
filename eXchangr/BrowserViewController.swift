@@ -16,11 +16,7 @@ class BrowserViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var distance: UILabel!
 
-    var browseItems = [Item]() {
-        didSet {
-            loadUIElements()
-        }
-    }
+    var browseItems = [Item]()
 
     var currentItem: Item!
 
@@ -29,6 +25,7 @@ class BrowserViewController: UIViewController {
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         ServerInterface.sharedInstance.requestElegibleItemsList { [unowned self] (items) in
             self.browseItems = items
+            self.loadUIElements()
         }
     }
 
