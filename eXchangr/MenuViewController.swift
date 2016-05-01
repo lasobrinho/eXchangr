@@ -14,6 +14,22 @@ class MenuViewController: UIViewController {
     var mainStoryboard: UIStoryboard!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userLocationLabel: UILabel!
+    var placemark: CLPlacemark? {
+        didSet {
+            userLocationLabel.text = "\(placemark!.addressDictionary!["City"]!), \(placemark!.addressDictionary!["State"]!)"
+        }
+    }
+    var coordinates: (latitude: Double, longitude: Double)? {
+        didSet {
+            let clg = CLGeocoder()
+            let cll = CLLocation(latitude: CLLocationDegrees(floatLiteral: coordinates!.latitude), longitude: CLLocationDegrees(floatLiteral: coordinates!.longitude))
+            clg.reverseGeocodeLocation(cll, completionHandler: { (placemarks, error) -> Void in
+                var placeMark: CLPlacemark!
+                placeMark = placemarks?[0]
+                self.placemark = CLPlacemark(placemark: placeMark)
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +40,9 @@ class MenuViewController: UIViewController {
     func configureUserInformationLabels() {
         let currentUser = ServerInterface.sharedInstance.getAuthenticatedUser()
         userNameLabel.text = currentUser.name
+        ServerInterface.sharedInstance.getUserCoordinates(currentUser) { (coordinates) in
+            self.coordinates = coordinates
+        }
     }
 
     @IBAction func LogoutButtonTapped() {

@@ -19,4 +19,5 @@ struct ServerResponseEvent {
     static let itemDistanceResponse = "itemDistanceResponse"
     static let itemUpdateResponse = "itemUpdateResponse"
     static let reactionResponse = "reactionResponse"
+    static let userCoordinateResponse = "userCoordinatesResponse"
 }

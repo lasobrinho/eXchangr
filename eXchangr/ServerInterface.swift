@@ -176,6 +176,18 @@ class ServerInterface {
         }
     }
     
+    func getUserCoordinates(user: User, callback: (coordinates: (latitude: Double, longitude: Double)) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.userCoordinateResponse) {
+                data, ack in
+                callback(coordinates: ServerAPI.parseCoordinatesResponse(data))
+            }
+            emitEvent(ClientEvent.userCoordinates, data: ServerAPI.createCoordinatesData(authenticatedUser!))
+        } else {
+            fatalError()
+        }
+    }
+    
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()

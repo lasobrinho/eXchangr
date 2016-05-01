@@ -19,4 +19,5 @@ struct ClientEvent {
     static let itemDistance = "itemDistance"
     static let itemUpdate = "itemUpdate"
     static let reaction = "reaction"
+    static let userCoordinates = "userCoordinates"
 }
