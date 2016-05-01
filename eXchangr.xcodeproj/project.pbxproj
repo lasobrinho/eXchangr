@@ -26,6 +26,7 @@
 		A08DC8F51CB06E7A00A7C4DF /* UserItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8F41CB06E7A00A7C4DF /* UserItemsViewController.swift */; };
 		A08DC8F71CB0715B00A7C4DF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8F61CB0715B00A7C4DF /* Item.swift */; };
 		A08DC8FB1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08DC8FA1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift */; };
+		A0B736871CD5CAA100F6BD17 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B736861CD5CAA100F6BD17 /* Exchange.swift */; };
 		A0B90BA31CD175AF006CD83C /* UIImageResizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B90BA21CD175AF006CD83C /* UIImageResizeExtension.swift */; };
 		A0B9949A1CB0EB270072C9F2 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B994991CB0EB270072C9F2 /* Picture.swift */; };
 		A0C1B84B1CD555E700566CD8 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1B84A1CD555E700566CD8 /* MainContainerViewController.swift */; };
@@ -79,6 +80,7 @@
 		A08DC8F41CB06E7A00A7C4DF /* UserItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItemsViewController.swift; sourceTree = "<group>"; };
 		A08DC8F61CB0715B00A7C4DF /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A08DC8FA1CB077A700A7C4DF /* ItemAddOrUpdateResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemAddOrUpdateResult.swift; sourceTree = "<group>"; };
+		A0B736861CD5CAA100F6BD17 /* Exchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		A0B90BA21CD175AF006CD83C /* UIImageResizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageResizeExtension.swift; sourceTree = "<group>"; };
 		A0B994991CB0EB270072C9F2 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		A0C1B84A1CD555E700566CD8 /* MainContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				A07BBA111CAE43EC0015B89B /* User.swift */,
 				A08DC8F61CB0715B00A7C4DF /* Item.swift */,
 				A0B994991CB0EB270072C9F2 /* Picture.swift */,
+				A0B736861CD5CAA100F6BD17 /* Exchange.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				A07BBA1E1CAE5EF60015B89B /* UserAuthenticationResult.swift in Sources */,
 				A0DEA79C1CAD1871000894A5 /* SocketIOClientStatus.swift in Sources */,
 				A0DEA7A11CAD1871000894A5 /* SocketTypes.swift in Sources */,
+				A0B736871CD5CAA100F6BD17 /* Exchange.swift in Sources */,
 				A0DEA7A31CAD1871000894A5 /* WebSocket.swift in Sources */,
 				A07BBA0D1CAE42FE0015B89B /* ServerResponseEvent.swift in Sources */,
 				A0DEA7951CAD1871000894A5 /* SocketEnginePacketType.swift in Sources */,
