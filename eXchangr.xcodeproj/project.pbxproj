@@ -307,6 +307,7 @@
 				A02AC2641CD5816E00DC856D /* MatchesTableViewController.swift */,
 				A0B736881CD5E24D00F6BD17 /* BrowseDetailsViewController.swift */,
 				A02AC2661CD6032300DC856D /* MatchTableViewCell.swift */,
+				A0B7368A1CD5FDF900F6BD17 /* LocationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

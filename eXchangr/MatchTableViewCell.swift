@@ -16,6 +16,9 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet weak var rightItemNameLabel: UILabel!
     @IBOutlet weak var rightItemLocationLabel: UILabel!
     @IBOutlet weak var rightItemDistanceLabel: UILabel!
+    @IBOutlet weak var rightItemsStackView: UIStackView!
+    @IBOutlet weak var rightItemsUserName: UILabel!
+    @IBOutlet weak var leftItemsStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
