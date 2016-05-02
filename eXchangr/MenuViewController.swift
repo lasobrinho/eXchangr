@@ -14,11 +14,13 @@ class MenuViewController: UIViewController {
     var mainStoryboard: UIStoryboard!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userLocationLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        activityIndicator.startAnimating()
         configureUserInformationLabels()
     }
 
@@ -31,7 +33,9 @@ class MenuViewController: UIViewController {
             clg.reverseGeocodeLocation(cll, completionHandler: { (placemarks, error) -> Void in
                 var placeMark: CLPlacemark!
                 placeMark = placemarks?[0]
+                self.activityIndicator.stopAnimating()
                 self.userLocationLabel.text = "\(placeMark!.addressDictionary!["City"]!), \(placeMark!.addressDictionary!["State"]!)"
+                self.userLocationLabel.hidden = false
             })
         }
     }

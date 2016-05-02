@@ -295,7 +295,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, STATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yad-bZ-ziL">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, STATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yad-bZ-ziL">
                                 <rect key="frame" x="20" y="56" width="560" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -310,11 +310,15 @@
                                     <action selector="matchesButtonTapped:" destination="QCZ-Ll-oMm" eventType="touchUpInside" id="99k-TS-w6x"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oeb-rk-Yb7">
+                                <rect key="frame" x="20" y="54" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DqZ-MT-w0I" firstAttribute="top" secondItem="xag-yI-aHc" secondAttribute="bottom" constant="2" id="0a0-Wp-GX0"/>
                             <constraint firstItem="xag-yI-aHc" firstAttribute="leading" secondItem="8oq-mq-Olw" secondAttribute="leadingMargin" id="ESz-Bj-ka2"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="oeb-rk-Yb7" secondAttribute="leading" id="JbF-V8-5EB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Yad-bZ-ziL" secondAttribute="leading" id="Lpt-EW-JmR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nXj-RV-Oin" secondAttribute="trailing" id="MWn-b6-gak"/>
                             <constraint firstItem="nXj-RV-Oin" firstAttribute="top" secondItem="pRO-CO-X6v" secondAttribute="bottom" constant="10" id="OQR-ci-gxJ"/>
@@ -324,10 +328,12 @@
                             <constraint firstItem="Yad-bZ-ziL" firstAttribute="top" secondItem="nXj-RV-Oin" secondAttribute="bottom" constant="2" id="cbe-jy-6RA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DqZ-MT-w0I" secondAttribute="trailing" id="cxA-Q4-IiR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Yad-bZ-ziL" secondAttribute="trailing" id="fBe-AG-TpV"/>
+                            <constraint firstItem="oeb-rk-Yb7" firstAttribute="top" secondItem="nXj-RV-Oin" secondAttribute="bottom" id="hAH-E9-zEM"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nXj-RV-Oin" secondAttribute="leading" id="o5C-g6-bQd"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="oeb-rk-Yb7" id="5cP-Od-TIV"/>
                         <outlet property="userLocationLabel" destination="Yad-bZ-ziL" id="X6d-WA-AKe"/>
                         <outlet property="userNameLabel" destination="nXj-RV-Oin" id="uz2-qw-hdh"/>
                     </connections>
