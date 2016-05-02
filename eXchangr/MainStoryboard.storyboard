@@ -49,12 +49,6 @@
                                     <action selector="LoginUserTapped:" destination="aSb-Nq-7gC" eventType="touchUpInside" id="cDe-PT-c5F"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
-                                <rect key="frame" x="240" y="323" width="121" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eXchangr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uC-LU-KX6">
                                 <rect key="frame" x="243" y="153" width="113" height="32.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -65,6 +59,12 @@
                                 <rect key="frame" x="260" y="494" width="81" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
+                                <rect key="frame" x="240" y="323" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1255" y="476"/>
         </scene>
-        <!--User Registration View Controller-->
+        <!--User Registration-->
         <scene sceneID="pUO-PZ-9e5">
             <objects>
-                <viewController storyboardIdentifier="NewUserViewController" id="Qho-bd-Nxh" customClass="UserRegistrationViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewUserViewController" title="User Registration" id="Qho-bd-Nxh" customClass="UserRegistrationViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nEA-Oi-Jpc"/>
                         <viewControllerLayoutGuide type="bottom" id="ENM-pq-dM0"/>
@@ -124,8 +124,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-Pg-1Pj">
+                                <rect key="frame" x="226" y="301" width="149" height="30"/>
+                                <state key="normal" title="Start using eXchangr!"/>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="Qho-bd-Nxh" eventType="touchUpInside" id="Vdd-tW-bVp"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-eE-pk0">
-                                <rect key="frame" x="213" y="181" width="175" height="239"/>
+                                <rect key="frame" x="213" y="57" width="175" height="239"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eV-Y5-lMo">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
@@ -197,35 +204,30 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upr-UE-3Oy">
-                                <rect key="frame" x="214" y="110" width="171" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXC-ij-bSk">
+                                <rect key="frame" x="240" y="339" width="121" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-Pg-1Pj">
-                                <rect key="frame" x="226" y="425" width="149" height="30"/>
-                                <state key="normal" title="Start using eXchangr!"/>
-                                <connections>
-                                    <action selector="registerButtonTapped:" destination="Qho-bd-Nxh" eventType="touchUpInside" id="Vdd-tW-bVp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Upr-UE-3Oy" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="2lc-bM-Z3c"/>
-                            <constraint firstItem="Upr-UE-3Oy" firstAttribute="bottom" secondItem="NYc-eE-pk0" secondAttribute="top" constant="-50" id="2pF-5z-7CW"/>
+                            <constraint firstItem="WXC-ij-bSk" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="FDP-gg-qhz"/>
+                            <constraint firstItem="WXC-ij-bSk" firstAttribute="top" secondItem="hyN-Pg-1Pj" secondAttribute="bottom" constant="8" symbolic="YES" id="RND-yB-cNd"/>
                             <constraint firstItem="hyN-Pg-1Pj" firstAttribute="top" secondItem="NYc-eE-pk0" secondAttribute="bottom" constant="5" id="elR-6k-1KB"/>
                             <constraint firstItem="NYc-eE-pk0" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="fP0-NU-Nde"/>
                             <constraint firstItem="hyN-Pg-1Pj" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="ga9-fS-gkb"/>
-                            <constraint firstItem="NYc-eE-pk0" firstAttribute="centerY" secondItem="9Gl-B9-5hC" secondAttribute="centerY" id="zYF-yu-dbx"/>
+                            <constraint firstItem="NYc-eE-pk0" firstAttribute="top" secondItem="nEA-Oi-Jpc" secondAttribute="bottom" constant="37" id="oGB-Pd-NRd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Zgy-ID-0Pv" id="tQO-Zb-xMa"/>
+                        <outlet property="feedbackLabel" destination="WXC-ij-bSk" id="XWt-G8-6Dm"/>
                         <outlet property="nameTextField" destination="tfr-Yc-JJA" id="ZJA-CQ-wCN"/>
                         <outlet property="passwordTextField" destination="kBP-Zq-Ara" id="Cxy-Ep-Wwx"/>
                         <outlet property="phoneTextField" destination="wDc-oN-Zgs" id="bnn-cz-s9w"/>
+                        <outlet property="registrationBtn" destination="hyN-Pg-1Pj" id="09t-sb-xrF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfC-ob-VGv" userLabel="First Responder" sceneMemberID="firstResponder"/>

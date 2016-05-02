@@ -67,7 +67,10 @@ class LoginViewController: UIViewController, UserAuthenticationObserver, UITextF
             self.loginButton.alpha = 1
             self.newUserLabel.alpha = 1
             self.createAnAccountButton.alpha = 1
-            }, completion: nil)
+            }, completion: {
+                success in
+                self.usernameField.becomeFirstResponder()
+        })
     }
 
 
