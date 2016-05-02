@@ -123,10 +123,30 @@ class BrowserViewController: UIViewController {
     }
     @IBAction func ExchangeButtonTapped(sender: AnyObject) {
         performReaction(interested: true)
+        let image = UIImageView(image: UIImage(named: "exchange"))
+        image.center = self.view.center
+        image.alpha = 0.0
+        self.view.addSubview(image)
+        UIView.animateWithDuration(0.5, animations: {
+            image.alpha = 1
+            image.transform = CGAffineTransformMakeScale(3, 3)
+            }) { (success) in
+                image.removeFromSuperview()
+        }
     }
 
     @IBAction func IgnoreButtonTapped(sender: AnyObject) {
         performReaction(interested: false)
+        let image = UIImageView(image: UIImage(named: "ignore"))
+        image.center = self.view.center
+        image.alpha = 0.0
+        self.view.addSubview(image)
+        UIView.animateWithDuration(0.5, animations: {
+            image.alpha = 1
+            image.transform = CGAffineTransformMakeScale(3, 3)
+        }) { (success) in
+            image.removeFromSuperview()
+        }
     }
 
     private func performReaction(interested interested: Bool) {
