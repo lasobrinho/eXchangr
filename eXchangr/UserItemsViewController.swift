@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserItemsViewController: UITableViewController, ItemAdditionObserver {
+class UserItemsViewController: UITableViewController {
 
     var mainStoryboard: UIStoryboard!
     var items = [Item]() {
@@ -17,17 +17,9 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
         }
     }
     
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        super.willMoveToParentViewController(parent)
-        if parent == nil {
-            ServerInterface.sharedInstance.removeItemAdditionObserver(self)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
-        ServerInterface.sharedInstance.addItemAdditionObserver(self)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
     }
     
@@ -90,10 +82,6 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
         vc.isEditingItem = false
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func update(result: ItemAddOrUpdateResult) {
-        
     }
 
 }
