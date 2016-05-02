@@ -78,7 +78,7 @@ struct ServerAPI {
         dict["email"] = user.email
         dict["password"] = user.password
         dict["phone"] = user.phone
-        
+
         if user.id != nil {
             dict["id"] = user.id
         }
@@ -209,11 +209,11 @@ struct ServerAPI {
         data["item"] = ["id" : item.id!]
         return data
     }
-    
+
     static func createCoordinatesData(authenticatedUser: User) -> AnyObject {
         return ["user" : ["id" : authenticatedUser.id]]
     }
-    
+
 
     static func parseItemArrayResponse(data: [AnyObject]) -> [Item] {
         let serverResponse = parseServerResponseData(data)
@@ -305,29 +305,29 @@ struct ServerAPI {
 
         return responseCode == 0
     }
-    
+
     static func parseCoordinatesResponse(data: [AnyObject]) -> (latitude: Double, longitude: Double) {
         let serverResponse = parseServerResponseData(data)
         let responseCode = extractResponseCodeFrom(serverResponse: serverResponse)
-        
+
         if responseCode != 0 {
             let message = extractMessageFrom(serverResponse: serverResponse)
             fatalError(message)
         }
-        
+
         guard let response = serverResponse["coordinates"] as? [String : AnyObject] else {
             fatalError()
         }
         return (response["latitude"] as! Double, response["longitude"] as! Double)
     }
-    
+
 
     //MARK: General
 
     private static func parseServerResponseData(data: [AnyObject]) -> [String : AnyObject] {
         return data[0] as! [String : AnyObject]
     }
-
+    
     private static func extractResponseCodeFrom(serverResponse serverResponse: [String : AnyObject]) -> Int {
         return serverResponse["responseCode"] as! Int
     }

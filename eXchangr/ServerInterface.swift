@@ -106,7 +106,7 @@ class ServerInterface {
 
             let data = ServerAPI.createItemData(item, user: self.authenticatedUser!)
             emitEvent(ClientEvent.itemUpdate, data: data)
-            
+
         } else {
             fatalError()
         }
@@ -188,7 +188,7 @@ class ServerInterface {
             fatalError()
         }
     }
-    
+
     func getUserCoordinates(user: User, callback: (coordinates: (latitude: Double, longitude: Double)) -> ()) {
         if authenticatedUser != nil {
             socket.once(ServerResponseEvent.userCoordinateResponse) {
@@ -200,7 +200,7 @@ class ServerInterface {
             fatalError()
         }
     }
-    
+
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()

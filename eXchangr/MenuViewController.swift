@@ -10,18 +10,18 @@ import UIKit
 import MapKit
 
 class MenuViewController: UIViewController {
-    
+
     var mainStoryboard: UIStoryboard!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userLocationLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         configureUserInformationLabels()
     }
-    
+
     func configureUserInformationLabels() {
         let currentUser = ServerInterface.sharedInstance.getAuthenticatedUser()
         userNameLabel.text = currentUser.name
@@ -39,7 +39,7 @@ class MenuViewController: UIViewController {
     @IBAction func LogoutButtonTapped() {
         ServerInterface.sharedInstance.performUserLogout()
     }
-    
+
     @IBAction func matchesButtonTapped(sender: AnyObject) {
         let matchesController = mainStoryboard.instantiateViewControllerWithIdentifier("MatchesTableViewController")
         NSNotificationCenter.defaultCenter().postNotificationName("pushControllerAndRemoveMenu", object: nil, userInfo: ["targetController" : matchesController])

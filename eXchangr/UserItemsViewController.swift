@@ -16,28 +16,28 @@ class UserItemsViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         loadUserItems()
     }
-    
+
     func loadUserItems() {
         ServerInterface.sharedInstance.fetchAuthenticatedUserItemsList { [unowned self] (retrievedItems) in
             self.items = retrievedItems
             self.tableView.reloadData()
         }
     }
-    
+
     override func removeFromParentViewController() {
         items = []
     }
-    
+
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             ServerInterface.sharedInstance.requestItemRemoval(items[indexPath.row]) { (success) in
@@ -49,15 +49,15 @@ class UserItemsViewController: UITableViewController {
             }
         }
     }
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemTableViewCell") as! ItemTableViewCell
         let item = items[indexPath.row]
@@ -66,7 +66,7 @@ class UserItemsViewController: UITableViewController {
         cell.itemNameLabel.text = item.name
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
         vc.item = items[indexPath.row]
@@ -77,11 +77,11 @@ class UserItemsViewController: UITableViewController {
     @IBAction func BackButtonTapped(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
-    
+
     @IBAction func AddItemButtonTapped(sender: AnyObject) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("EditItemViewController") as! EditItemViewController
         vc.isEditingItem = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class EditItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, ItemAdditionObserver {
-    
+
     var imagePicker: UIImagePickerController? = UIImagePickerController()
     var pictures: [Picture?] = [nil, nil, nil]
     var item: Item?
@@ -29,7 +29,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var removePictureButton2: UIButton!
     @IBOutlet weak var removePictureButton3: UIButton!
     @IBOutlet weak var feedbackLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
@@ -48,35 +48,35 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             saveButton.title = "Add"
         }
     }
-    
+
     func configureItemImageButtons() {
         let veryLightGrayColor = UIColor(white: 0.95, alpha: 1.0)
-        
+
         itemImage1.backgroundColor = veryLightGrayColor
         itemImage1.layer.cornerRadius = 5
         itemImage1.layer.borderColor = UIColor.lightGrayColor().CGColor
         itemImage1.layer.borderWidth = 1
         itemImage1.clipsToBounds = true
-        
+
         itemImage2.backgroundColor = veryLightGrayColor
         itemImage2.layer.cornerRadius = 5
         itemImage2.layer.borderColor = UIColor.lightGrayColor().CGColor
         itemImage2.layer.borderWidth = 1
         itemImage2.clipsToBounds = true
-        
+
         itemImage3.backgroundColor = veryLightGrayColor
         itemImage3.layer.cornerRadius = 5
         itemImage3.layer.borderColor = UIColor.lightGrayColor().CGColor
         itemImage3.layer.borderWidth = 1
         itemImage3.clipsToBounds = true
     }
-    
+
     func configureDescriptionTextView() {
         itemDescriptionTextField.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         itemDescriptionTextField.layer.borderWidth = 1.0
         itemDescriptionTextField.layer.cornerRadius = 5
     }
-    
+
     func configureRemovePictureButtons() {
         removePictureButton1.setTitle("", forState: .Normal)
         removePictureButton1.userInteractionEnabled = false
@@ -85,14 +85,14 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         removePictureButton3.setTitle("", forState: .Normal)
         removePictureButton3.userInteractionEnabled = false
     }
-    
+
     func displayItemInformation() {
         itemNameTextField.text = item?.name
         itemDescriptionTextField.text = item?.description
         activeSwitch.on = (item?.active)!
         setImageButtonsFromBytes()
     }
-    
+
     func setImageButtonsFromBytes() {
         let imageButtons = [itemImage1, itemImage2, itemImage3]
         let removePictureButtons = [removePictureButton1, removePictureButton2, removePictureButton3]
@@ -106,13 +106,13 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             }
         }
     }
-    
+
     @IBAction func BackButtonTapped(sender: AnyObject) {
         item = nil
         pictures = []
         navigationController?.popViewControllerAnimated(true)
     }
-    
+
     @IBAction func AddItemButtonTapped(sender: AnyObject) {
         if itemNameTextField.hasText() && itemDescriptionTextField.hasText() && (itemImage1.currentBackgroundImage != nil || itemImage2.currentBackgroundImage != nil || itemImage3.currentBackgroundImage != nil) {
             if isEditingItem {
@@ -127,11 +127,11 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                     case .Success:
                         self.navigationController?.popViewControllerAnimated(true)
                     }
-                })
+                    })
             } else {
                 item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: getCurrentPictures())
                 ServerInterface.sharedInstance.performItemAddition(item!)
-            }            
+            }
         } else {
             let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
@@ -140,7 +140,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
 
         }
     }
-    
+
     func getCurrentPictures() -> [Picture] {
         var currentPictures = [Picture]()
         for picture in pictures {
@@ -150,39 +150,39 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         }
         return currentPictures
     }
-    
+
     func presentUIImagePicker(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
-            
+
             imagePicker!.delegate = self
             imagePicker!.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
             imagePicker!.allowsEditing = false
-            
+
             self.presentViewController(imagePicker!, animated: true, completion: nil)
         }
     }
-    
+
     @IBAction func itemImage1Tapped(sender: AnyObject) {
         presentUIImagePicker()
         clickedImage = 1
     }
-    
+
     @IBAction func itemImage2Tapped(sender: AnyObject) {
         presentUIImagePicker()
         clickedImage = 2
     }
-    
+
     @IBAction func itemImage3Tapped(sender: AnyObject) {
         presentUIImagePicker()
         clickedImage = 3
     }
-    
+
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
         self.dismissViewControllerAnimated(true, completion: nil)
-        
+
         let compressedImage = image.resizeToWidth(500)
         let selectedPicture = Picture(id: nil, bytes: UIImagePNGRepresentation(compressedImage)!)
-        
+
         switch clickedImage {
         case 1:
             itemImage1.setTitle("", forState: .Normal)
@@ -226,7 +226,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         sender.setTitle("", forState: .Normal)
         sender.userInteractionEnabled = false
     }
-    
+
     func update(result: ItemAddOrUpdateResult) {
         switch result {
         case .Success:
@@ -235,14 +235,14 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             outputFeedback(message)
         }
     }
-    
+
     override func willMoveToParentViewController(parent: UIViewController?) {
         super.willMoveToParentViewController(parent)
         if parent == nil {
             ServerInterface.sharedInstance.removeItemAdditionObserver(self)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -251,10 +251,10 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         feedbackLabel.text = message
         feedbackLabel.alpha = 0.0
         feedbackLabel.hidden = false
-        UIView.animateWithDuration(0.5) { 
+        UIView.animateWithDuration(0.5) {
             self.feedbackLabel.alpha = 1.0
         }
-
+        
     }
     
 }

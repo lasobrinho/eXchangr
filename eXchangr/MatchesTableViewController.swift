@@ -13,7 +13,7 @@ class MatchesTableViewController: UITableViewController {
 
     var mainStoryboard: UIStoryboard!
     var exchanges: [Exchange]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
@@ -35,7 +35,7 @@ class MatchesTableViewController: UITableViewController {
         configureRightContent(cell, index: index)
         return cell
     }
-    
+
     func configureLeftContent(cell: MatchTableViewCell, index: Int) {
         if exchanges![index].itemsLikedByTheOtherUser.count > 1 {
             cell.leftItemNameLabel.text = "Matched \(exchanges![index].itemsLikedByTheOtherUser.count) items"
@@ -47,7 +47,7 @@ class MatchesTableViewController: UITableViewController {
             cell.leftItemsStackView.addArrangedSubview(UIImageView(image: item.pictures[0].asUIImage()))
         }
     }
-    
+
     func configureRightContent(cell: MatchTableViewCell, index: Int) {
         if exchanges![index].otherUserItemsThatILike.count > 1 {
             cell.rightItemNameLabel.text = "Matched \(exchanges![index].otherUserItemsThatILike.count) items"
@@ -74,11 +74,11 @@ class MatchesTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseDetailsViewController") as! BrowseDetailsViewController
         vc.item = exchanges![indexPath.row].otherUserItemsThatILike[0]
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }

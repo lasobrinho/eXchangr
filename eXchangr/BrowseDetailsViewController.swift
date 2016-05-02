@@ -14,7 +14,7 @@ class BrowseDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
+
     @IBOutlet weak var otherUserNameLabel: UILabel!
     @IBOutlet weak var otherUserEmailLabel: UILabel!
     @IBOutlet weak var otherUserPhoneLabel: UILabel!

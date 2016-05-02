@@ -87,7 +87,7 @@ class UserRegistrationViewController: UIViewController, UserRegistrationObserver
                 self.feedbackLabel.alpha = 1
             })
         }
-
+        
     }
     
 }

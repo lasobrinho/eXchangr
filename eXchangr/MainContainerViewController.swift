@@ -141,7 +141,7 @@ class MainContainerViewController: UIViewController {
     func animateMenu(origin origin: CGFloat ,completionHandler: ((Bool) -> ())?) {
         UIView.animateWithDuration(self.menuAnimationDuration, delay: self.menuAnimationDelay, usingSpringWithDamping: self.damping, initialSpringVelocity: self.startSpeed, options: [], animations: {
             self.menu!.view.frame.origin.x = origin
-
+            
             self.blurOverlay.alpha = 1 - self.blurOverlay.alpha
             }, completion: completionHandler)
     }

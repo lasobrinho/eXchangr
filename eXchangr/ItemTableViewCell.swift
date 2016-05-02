@@ -12,7 +12,7 @@ class ItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = UIColor.clearColor()
