@@ -36,6 +36,17 @@ class BrowserViewController: UIViewController {
         super.viewDidLoad()
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
 
+
+        let string: NSString = "eXchangr"
+        let title = NSMutableAttributedString(string: string as String)
+        let attribute = [NSForegroundColorAttributeName : UIColor.redColor()]
+        title.addAttributes(attribute, range: string.rangeOfString("X"))
+        let titleLabel = UILabel()
+        titleLabel.attributedText = title
+        titleLabel.sizeToFit()
+        navigationItem.titleView = titleLabel
+
+
         view.clipsToBounds = true
 
         image.layer.cornerRadius = 10

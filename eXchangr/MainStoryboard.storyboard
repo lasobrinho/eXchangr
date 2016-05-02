@@ -21,6 +21,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdA-GW-vMk">
                                 <rect key="frame" x="235" y="520" width="130" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Create an account!"/>
                                 <connections>
                                     <action selector="registerNewUserTapped:" destination="aSb-Nq-7gC" eventType="touchUpInside" id="R0Z-gE-xJC"/>
@@ -28,6 +29,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w6j-d6-XTn">
                                 <rect key="frame" x="212" y="215" width="175" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="bFw-TP-XlN"/>
                                 </constraints>
@@ -36,6 +38,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HKj-HV-qXJ">
                                 <rect key="frame" x="212" y="250" width="175" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="Yvo-3K-oGw"/>
                                 </constraints>
@@ -44,15 +47,17 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF4-bF-ZpJ">
                                 <rect key="frame" x="281" y="285" width="38" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="LoginUserTapped:" destination="aSb-Nq-7gC" eventType="touchUpInside" id="cDe-PT-c5F"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eXchangr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uC-LU-KX6">
-                                <rect key="frame" x="243" y="153" width="113" height="32.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
+                                <rect key="frame" x="240" y="323" width="121" height="21"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgR-8b-2Kh">
@@ -61,16 +66,39 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
-                                <rect key="frame" x="240" y="323" width="121" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZp-Wd-kHc">
+                                <rect key="frame" x="208" y="146" width="184.5" height="48.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="e">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="42" name="Helvetica-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="X">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="42" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="changr">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="42" name="Helvetica-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="w6j-d6-XTn" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="34o-NJ-fOo"/>
+                            <constraint firstItem="oZp-Wd-kHc" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="4Sa-qd-JVp"/>
+                            <constraint firstItem="oZp-Wd-kHc" firstAttribute="centerY" secondItem="eEO-i7-7au" secondAttribute="centerY" constant="-130" id="5iz-b0-7IF"/>
                             <constraint firstItem="G9H-kS-kZ0" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="A3P-4r-St6"/>
                             <constraint firstItem="HgR-8b-2Kh" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="GGn-RT-xJc"/>
                             <constraint firstItem="w6j-d6-XTn" firstAttribute="bottom" secondItem="HKj-HV-qXJ" secondAttribute="top" constant="-5" id="IR0-CR-ekq"/>
@@ -82,8 +110,6 @@
                             <constraint firstItem="HKj-HV-qXJ" firstAttribute="bottom" secondItem="VF4-bF-ZpJ" secondAttribute="top" constant="-5" id="aLj-2h-UVk"/>
                             <constraint firstItem="HKj-HV-qXJ" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="hH4-cJ-61O"/>
                             <constraint firstItem="HgR-8b-2Kh" firstAttribute="bottom" secondItem="JdA-GW-vMk" secondAttribute="top" constant="-5" id="hhQ-39-9eW"/>
-                            <constraint firstItem="5uC-LU-KX6" firstAttribute="centerY" secondItem="eEO-i7-7au" secondAttribute="centerY" constant="-130" id="m4Q-qs-cjB"/>
-                            <constraint firstItem="5uC-LU-KX6" firstAttribute="centerX" secondItem="eEO-i7-7au" secondAttribute="centerX" id="o36-8E-TO7"/>
                             <constraint firstItem="zPc-8k-a0A" firstAttribute="top" secondItem="JdA-GW-vMk" secondAttribute="bottom" constant="50" id="qSh-RJ-0uI"/>
                             <constraint firstItem="VF4-bF-ZpJ" firstAttribute="centerY" secondItem="eEO-i7-7au" secondAttribute="centerY" id="rmy-s3-GZk"/>
                         </constraints>
@@ -96,8 +122,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VaN-oU-g3G"/>
                     <connections>
-                        <outlet property="appLabel" destination="5uC-LU-KX6" id="HXM-62-TuV"/>
-                        <outlet property="appLabelYConstraint" destination="m4Q-qs-cjB" id="aEo-5K-IPy"/>
+                        <outlet property="appLabelYConstraint" destination="5iz-b0-7IF" id="tDo-Gb-SKc"/>
                         <outlet property="createAnAccountButton" destination="JdA-GW-vMk" id="3xi-oA-Icf"/>
                         <outlet property="feedbackLabel" destination="G9H-kS-kZ0" id="M5B-0j-FMa"/>
                         <outlet property="loginButton" destination="VF4-bF-ZpJ" id="LMO-6l-Kep"/>
@@ -110,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcF-ww-nqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="476"/>
+            <point key="canvasLocation" x="1317" y="476"/>
         </scene>
         <!--User Registration-->
         <scene sceneID="pUO-PZ-9e5">
@@ -124,8 +149,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXC-ij-bSk">
+                                <rect key="frame" x="240" y="339" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-Pg-1Pj">
                                 <rect key="frame" x="226" y="301" width="149" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Start using eXchangr!"/>
                                 <connections>
                                     <action selector="registerButtonTapped:" destination="Qho-bd-Nxh" eventType="touchUpInside" id="Vdd-tW-bVp"/>
@@ -136,15 +168,17 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eV-Y5-lMo">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="k2f-sp-GlB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tfr-Yc-JJA">
                                         <rect key="frame" x="0.0" y="26" width="175" height="30"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="bF0-sb-UjE"/>
                                         </constraints>
@@ -153,15 +187,17 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtN-ha-GVj">
                                         <rect key="frame" x="0.0" y="61" width="175" height="21"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="oxc-hV-fRP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zgy-ID-0Pv">
                                         <rect key="frame" x="0.0" y="87" width="175" height="30"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="BCk-tE-VOI"/>
                                         </constraints>
@@ -170,15 +206,17 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2V-Mz-zKZ">
                                         <rect key="frame" x="0.0" y="122" width="175" height="21"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="EIA-LF-tln"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wDc-oN-Zgs">
                                         <rect key="frame" x="0.0" y="148" width="175" height="30"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="vUb-fc-NgQ"/>
                                         </constraints>
@@ -187,15 +225,17 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-Pc-MXc">
                                         <rect key="frame" x="0.0" y="183" width="175" height="21"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="XWZ-cp-bJD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kBP-Zq-Ara">
                                         <rect key="frame" x="0.0" y="209" width="175" height="30"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="a5Y-nk-LVi"/>
                                         </constraints>
@@ -204,12 +244,6 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXC-ij-bSk">
-                                <rect key="frame" x="240" y="339" width="121" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -248,7 +282,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqZ-MT-w0I">
                                 <rect key="frame" x="20" y="114" width="560" height="30"/>
-                                <state key="normal" title="Logout"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="LogoutButtonTapped" destination="QCZ-Ll-oMm" eventType="touchUpInside" id="5SR-qK-ohc"/>
                                 </connections>
@@ -267,7 +303,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xag-yI-aHc">
                                 <rect key="frame" x="20" y="82" width="560" height="30"/>
-                                <state key="normal" title="My Matches"/>
+                                <state key="normal" title="My Matches">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="matchesButtonTapped:" destination="QCZ-Ll-oMm" eventType="touchUpInside" id="99k-TS-w6x"/>
                                 </connections>
@@ -507,7 +545,7 @@
             </objects>
             <point key="canvasLocation" x="2693" y="-203"/>
         </scene>
-        <!--eXchangr-->
+        <!--Browser View Controller-->
         <scene sceneID="7dZ-th-XoA">
             <objects>
                 <viewController storyboardIdentifier="BrowseViewController" id="m7k-Wr-9WG" customClass="BrowserViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
@@ -528,23 +566,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Nm-Lly">
                                 <rect key="frame" x="150" y="371" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
-                                <rect key="frame" x="150" y="489.5" width="44" height="30.5"/>
-                                <state key="normal" title="Ignore"/>
-                                <connections>
-                                    <action selector="IgnoreButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="Ruk-TK-OFu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
-                                <rect key="frame" x="383" y="489.5" width="67" height="30"/>
-                                <state key="normal" title="Exchange"/>
-                                <connections>
-                                    <action selector="ExchangeButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="ca8-A5-eva"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
                                 <rect key="frame" x="20" y="289" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -566,6 +590,24 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
+                                <rect key="frame" x="150" y="489" width="44" height="30.5"/>
+                                <state key="normal" title="Ignore">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="IgnoreButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="Ruk-TK-OFu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
+                                <rect key="frame" x="383" y="489.5" width="67" height="30"/>
+                                <state key="normal" title="Exchange">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ExchangeButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="ca8-A5-eva"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -595,7 +637,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="eXchangr" id="wIQ-IY-day">
+                    <navigationItem key="navigationItem" id="wIQ-IY-day">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="5FW-qg-lqw">
                             <connections>
                                 <action selector="MenuButtonTapped:" destination="m7k-Wr-9WG" id="GPb-Qy-UqM"/>
@@ -713,31 +755,37 @@
                                             <constraint firstAttribute="width" constant="100" id="H0K-Gg-dq9"/>
                                             <constraint firstAttribute="height" constant="100" id="Hla-Aj-oGw"/>
                                         </constraints>
-                                        <state key="normal" title="Add Picture"/>
+                                        <state key="normal" title="Add Picture">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="itemImage1Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="abE-Nr-g94"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVt-CR-Ri1">
-                                        <rect key="frame" x="105" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="a5t-pX-2as"/>
-                                            <constraint firstAttribute="height" constant="100" id="mXf-TB-5Ca"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Picture"/>
-                                        <connections>
-                                            <action selector="itemImage2Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="HTt-wv-1BM"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkR-24-M4l">
-                                        <rect key="frame" x="210" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="105" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="SdC-bB-aUe"/>
                                             <constraint firstAttribute="width" constant="100" id="j9Y-eW-dyX"/>
                                         </constraints>
-                                        <state key="normal" title="Add Picture"/>
+                                        <state key="normal" title="Add Picture">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="itemImage3Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="3xq-mM-qkT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVt-CR-Ri1">
+                                        <rect key="frame" x="210" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="a5t-pX-2as"/>
+                                            <constraint firstAttribute="height" constant="100" id="mXf-TB-5Ca"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Picture">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="itemImage2Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="HTt-wv-1BM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -751,11 +799,12 @@
                                             <constraint firstAttribute="height" constant="21" id="2U8-zR-NGi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yBH-TH-qjy">
                                         <rect key="frame" x="0.0" y="26" width="175" height="30"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="Vml-zl-oUf"/>
                                             <constraint firstAttribute="height" constant="30" id="o0o-dR-i2y"/>
@@ -769,12 +818,13 @@
                                             <constraint firstAttribute="height" constant="21" id="Pwo-np-F0T"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bwa-E0-GrN">
                                         <rect key="frame" x="0.0" y="87" width="175" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="AmD-56-1tq"/>
                                         </constraints>
@@ -787,11 +837,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o2-Qb-bxA">
                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sz0-4C-dNZ">
                                                 <rect key="frame" x="126" y="0.0" width="51" height="31"/>
+                                                <color key="onTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
@@ -807,7 +858,9 @@
                                             <constraint firstAttribute="width" constant="100" id="xcy-M6-pK0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" title="Remove Picture"/>
+                                        <state key="normal" title="Remove Picture">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="g4I-5J-Xiy"/>
                                         </connections>
@@ -819,7 +872,9 @@
                                             <constraint firstAttribute="height" constant="20" id="ZFN-mh-vES"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" title="Remove Picture"/>
+                                        <state key="normal" title="Remove Picture">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="F2k-H3-KJL"/>
                                         </connections>
@@ -831,7 +886,9 @@
                                             <constraint firstAttribute="width" constant="100" id="Sve-zx-1S4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" title="Remove Picture"/>
+                                        <state key="normal" title="Remove Picture">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="jP3-Qm-EGv"/>
                                         </connections>
