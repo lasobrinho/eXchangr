@@ -21,6 +21,7 @@ class UserRegistrationViewController: UIViewController, UserRegistrationObserver
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
 
         nameTextField.delegate = self
         emailTextField.delegate = self
@@ -86,7 +87,7 @@ class UserRegistrationViewController: UIViewController, UserRegistrationObserver
                 self.feedbackLabel.alpha = 1
             })
         }
-
+        
     }
     
 }

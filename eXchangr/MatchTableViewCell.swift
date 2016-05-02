@@ -19,10 +19,10 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet weak var rightItemsStackView: UIStackView!
     @IBOutlet weak var rightItemsUserName: UILabel!
     @IBOutlet weak var leftItemsStackView: UIStackView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -30,5 +30,5 @@ class MatchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

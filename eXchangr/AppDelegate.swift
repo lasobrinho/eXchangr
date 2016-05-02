@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func buildRootViewController() -> UINavigationController {
         let rootViewController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController")
-        return UINavigationController(rootViewController: rootViewController)
+        let navigationVC = UINavigationController(rootViewController: rootViewController)
+        navigationVC.navigationBar.tintColor = UIColor.redColor()
+        return navigationVC
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -39,5 +41,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         ServerInterface.sharedInstance.disconnect()
     }
-
+    
 }

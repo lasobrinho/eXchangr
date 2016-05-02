@@ -35,6 +35,18 @@ class BrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
+
+
+        let string: NSString = "eXchangr"
+        let title = NSMutableAttributedString(string: string as String)
+        let attribute = [NSForegroundColorAttributeName : UIColor.redColor()]
+        title.addAttributes(attribute, range: string.rangeOfString("X"))
+        let titleLabel = UILabel()
+        titleLabel.attributedText = title
+        titleLabel.sizeToFit()
+        navigationItem.titleView = titleLabel
+
 
         view.clipsToBounds = true
 

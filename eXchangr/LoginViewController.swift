@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver, UITextF
     @IBOutlet weak var appLabelYConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         super.viewDidLoad()
         passwordField.delegate = self
         usernameField.delegate = self
