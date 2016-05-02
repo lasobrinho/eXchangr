@@ -38,10 +38,6 @@ class MenuViewController: UIViewController {
     @IBAction func LogoutButtonTapped() {
         ServerInterface.sharedInstance.performUserLogout()
     }
-
-    @IBAction func backButtonTapped(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("removeMenu", object: nil, userInfo: nil)
-    }
     
     @IBAction func matchesButtonTapped(sender: AnyObject) {
         let matchesController = mainStoryboard.instantiateViewControllerWithIdentifier("MatchesTableViewController")

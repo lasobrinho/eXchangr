@@ -28,12 +28,38 @@ class MatchesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Match", forIndexPath: indexPath) as! MatchTableViewCell
-        cell.leftItemImage.image = exchanges![indexPath.row].itemsLikedByTheOtherUser[0].pictures[0].asUIImage()
-        cell.leftItemNameLabel.text = exchanges![indexPath.row].itemsLikedByTheOtherUser[0].name
-        cell.rightItemImage.image = exchanges![indexPath.row].otherUserItemsThatILike[0].pictures[0].asUIImage()
-        cell.rightItemDistanceLabel.text = "\(exchanges![indexPath.row].distance) miles"
-        ServerInterface.sharedInstance.getUserCoordinates(exchanges![indexPath.row].otherUser) { (coordinates) in
+        let cell = tableView.dequeueReusableCellWithIdentifier("MatchCell", forIndexPath: indexPath) as! MatchTableViewCell
+        let index = indexPath.row
+        configureLeftContent(cell, index: index)
+        configureRightContent(cell, index: index)
+        return cell
+    }
+    
+    func configureLeftContent(cell: MatchTableViewCell, index: Int) {
+        if exchanges![index].itemsLikedByTheOtherUser.count > 1 {
+            cell.leftItemNameLabel.text = "Matched \(exchanges![index].itemsLikedByTheOtherUser.count) items"
+        } else {
+            cell.leftItemNameLabel.text = exchanges![index].itemsLikedByTheOtherUser[0].name
+        }
+        for item in exchanges![index].itemsLikedByTheOtherUser {
+            cell.leftItemsStackView.constraints[0].constant += 40
+            cell.leftItemsStackView.addArrangedSubview(UIImageView(image: item.pictures[0].asUIImage()))
+        }
+    }
+    
+    func configureRightContent(cell: MatchTableViewCell, index: Int) {
+        if exchanges![index].otherUserItemsThatILike.count > 1 {
+            cell.rightItemNameLabel.text = "Matched \(exchanges![index].otherUserItemsThatILike.count) items"
+        } else {
+            cell.rightItemNameLabel.text = exchanges![index].otherUserItemsThatILike[0].name
+        }
+        for item in exchanges![index].otherUserItemsThatILike {
+            cell.rightItemsStackView.constraints[1].constant += 40
+            cell.rightItemsStackView.addArrangedSubview(UIImageView(image: item.pictures[0].asUIImage()))
+        }
+        cell.rightItemsUserName.text = exchanges![index].otherUser.name
+        cell.rightItemDistanceLabel.text = "\(exchanges![index].distance) miles"
+        ServerInterface.sharedInstance.getUserCoordinates(exchanges![index].otherUser) { (coordinates) in
             let clg = CLGeocoder()
             let cll = CLLocation(latitude: CLLocationDegrees(floatLiteral: coordinates.latitude), longitude: CLLocationDegrees(floatLiteral: coordinates.longitude))
             clg.reverseGeocodeLocation(cll, completionHandler: { (placemarks, error) -> Void in
@@ -42,7 +68,6 @@ class MatchesTableViewController: UITableViewController {
                 cell.rightItemLocationLabel.text = "\(placeMark!.addressDictionary!["City"]!), \(placeMark!.addressDictionary!["State"]!)"
             })
         }
-        return cell
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
