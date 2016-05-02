@@ -19,17 +19,49 @@ class BrowserViewController: UIViewController {
     @IBOutlet weak var ignoreButton: UIButton!
     @IBOutlet weak var exchangeButton: UIButton!
 
+
+
+    @IBOutlet weak var imageXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ignoreBtnYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var exchangeBtnYConstraint: NSLayoutConstraint!
+
     var browseItems = [Item]()
 
     var currentItem: Item!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.clipsToBounds = true
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         if image != nil {
             image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
         }
         refreshData()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        prepareForAnimation()
+    }
+
+    func prepareForAnimation() {
+        imageYConstraint.constant = -view.center.y - image.frame.height/3
+        ignoreBtnYConstraint.constant += view.frame.height * 3
+        exchangeBtnYConstraint.constant += view.frame.height * 3
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        imageYConstraint.constant = 8
+        self.ignoreBtnYConstraint.constant = 25
+        self.exchangeBtnYConstraint.constant = 25
+        UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
 
     func refreshData() {
@@ -71,7 +103,20 @@ class BrowserViewController: UIViewController {
 
     func increaseCurrentIndexCallback(success: Bool) {
         if success {
-            loadUIElements()
+            let duration: NSTimeInterval = 0.3
+            imageXConstraint.constant -= view.frame.width
+            UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: [], animations: {
+                self.view.layoutIfNeeded()
+                }, completion: {
+                    _ in
+                    self.loadUIElements()
+                    self.imageXConstraint.constant = self.view.center.x + self.view.frame.width
+                    self.view.layoutIfNeeded()
+                    self.imageXConstraint.constant = 0
+                    UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: [], animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+            })
         }
     }
 

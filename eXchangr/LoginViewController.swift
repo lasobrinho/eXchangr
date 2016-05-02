@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UserAuthenticationObserver {
+class LoginViewController: UIViewController, UserAuthenticationObserver, UITextFieldDelegate {
 
     var mainStoryboard: UIStoryboard!
 
@@ -24,12 +24,30 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     @IBOutlet weak var passwordXConstraint: NSLayoutConstraint!
     @IBOutlet weak var appLabelYConstraint: NSLayoutConstraint!
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.delegate = self
+        usernameField.delegate = self
+
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
+    }
+
+    func viewTapped(sender: UITapGestureRecognizer) {
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField === usernameField {
+            passwordField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+
+        return true
     }
 
     override func viewDidAppear(animated: Bool) {

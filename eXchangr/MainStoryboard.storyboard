@@ -176,7 +176,7 @@
                                             <constraint firstAttribute="width" constant="175" id="vUb-fc-NgQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-Pc-MXc">
                                         <rect key="frame" x="0.0" y="183" width="175" height="21"/>
@@ -545,6 +545,12 @@
                                     <action selector="ExchangeButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="ca8-A5-eva"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
+                                <rect key="frame" x="20" y="289.5" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-hj-vYB">
                                 <rect key="frame" x="150" y="28" width="300" height="300"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -553,12 +559,6 @@
                                     <constraint firstAttribute="width" secondItem="kwR-hj-vYB" secondAttribute="height" multiplier="1:1" id="fQp-wo-TZi"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
-                                <rect key="frame" x="20" y="289.5" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -599,9 +599,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="distance" destination="Mfv-Nm-Lly" id="Wiw-aP-w9D"/>
+                        <outlet property="exchangeBtnYConstraint" destination="Znk-0E-fkh" id="t7c-Wa-npL"/>
                         <outlet property="exchangeButton" destination="Ubi-Ly-ASn" id="4TU-9v-TOW"/>
+                        <outlet property="ignoreBtnYConstraint" destination="zSm-AS-A7E" id="VgX-IX-yKm"/>
                         <outlet property="ignoreButton" destination="XFF-Q8-zeD" id="j8f-9e-IN0"/>
                         <outlet property="image" destination="kwR-hj-vYB" id="Itb-bR-UK4"/>
+                        <outlet property="imageXConstraint" destination="Iav-0r-M7I" id="sil-qH-1Lp"/>
+                        <outlet property="imageYConstraint" destination="FUI-JH-fpq" id="D8g-B2-pAT"/>
                         <outlet property="name" destination="AO8-7o-tpb" id="2ZL-HU-mZO"/>
                         <outlet property="noMoreItems" destination="Sea-oh-k13" id="7wC-LK-Dn2"/>
                     </connections>
