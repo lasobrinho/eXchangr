@@ -48,4 +48,15 @@ class MenuViewController: UIViewController {
         let matchesController = mainStoryboard.instantiateViewControllerWithIdentifier("MatchesTableViewController")
         NSNotificationCenter.defaultCenter().postNotificationName("pushControllerAndRemoveMenu", object: nil, userInfo: ["targetController" : matchesController])
     }
+
+
+    @IBAction func refreshUserLocation() {
+        LocationController.sharedInstance.requestUserLocationAndExecute { (coordinate) in
+            ServerInterface.sharedInstance.updateUserCoordinates(coordinate) { (success) in
+                self.activityIndicator.startAnimating()
+                self.configureUserInformationLabels()
+                LocationController.sharedInstance.wipeQueue()
+            }
+        }
+    }
 }

@@ -36,6 +36,7 @@ struct ServerAPI {
 
     }
 
+
     //MARK: User Authentication
 
     static func parseUserAuthenticationResponse(data: [AnyObject]) -> UserAuthenticationResult {
@@ -70,6 +71,15 @@ struct ServerAPI {
     }
 
     //MARK: User
+
+    static func createUpdateUserCoordinatesData(user user: User, coordinate: Coordinate) -> AnyObject {
+        return ["user" : ["id": user.id, "coordinate": ["latitude" : coordinate.latitude, "longitude": coordinate.longitude]]]
+    }
+
+    static func parseUpdateUserCoordinatesData(data: [AnyObject]) -> Bool{
+        let serverResponse = parseServerResponseData(data)
+        return extractResponseCodeFrom(serverResponse: serverResponse) == 0
+    }
 
     private static func dictionaryFrom(user user: User) -> [String : AnyObject] {
         var dict = [String : AnyObject]()
@@ -320,7 +330,6 @@ struct ServerAPI {
         }
         return (response["latitude"] as! Double, response["longitude"] as! Double)
     }
-
 
     //MARK: General
 

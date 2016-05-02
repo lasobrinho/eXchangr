@@ -201,6 +201,18 @@ class ServerInterface {
         }
     }
 
+    func updateUserCoordinates(coordinate: Coordinate, callback: (success: Bool) -> ()) {
+        if authenticatedUser != nil {
+            socket.once(ServerResponseEvent.updateUserCoordinateResponse) {
+                data, ack in
+                callback(success: ServerAPI.parseUpdateUserCoordinatesData(data))
+            }
+            emitEvent(ClientEvent.updateUserCoordinates, data: ServerAPI.createUpdateUserCoordinatesData(user: authenticatedUser!, coordinate: coordinate))
+        } else {
+            fatalError()
+        }
+    }
+
 
     private func registerCallbacks() {
         registerCallbackForUserRegistration()
