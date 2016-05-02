@@ -76,7 +76,8 @@ class MatchesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseDetailsViewController") as! BrowseDetailsViewController
-        vc.item = exchanges![indexPath.row].otherUserItemsThatILike[0]
+        vc.otherUserDistance = exchanges![indexPath.row].distance
+        vc.exchange = exchanges![indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
