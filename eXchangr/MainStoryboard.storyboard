@@ -270,24 +270,14 @@
                                     <action selector="matchesButtonTapped:" destination="QCZ-Ll-oMm" eventType="touchUpInside" id="99k-TS-w6x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPJ-xX-vwT">
-                                <rect key="frame" x="20" y="146" width="560" height="30"/>
-                                <state key="normal" title="Go Back"/>
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="QCZ-Ll-oMm" eventType="touchUpInside" id="q5N-vf-jwu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DqZ-MT-w0I" firstAttribute="top" secondItem="xag-yI-aHc" secondAttribute="bottom" constant="2" id="0a0-Wp-GX0"/>
                             <constraint firstItem="xag-yI-aHc" firstAttribute="leading" secondItem="8oq-mq-Olw" secondAttribute="leadingMargin" id="ESz-Bj-ka2"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="QPJ-xX-vwT" secondAttribute="leading" id="Gq9-eV-8D0"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Yad-bZ-ziL" secondAttribute="leading" id="Lpt-EW-JmR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QPJ-xX-vwT" secondAttribute="trailing" id="M94-yF-YZb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nXj-RV-Oin" secondAttribute="trailing" id="MWn-b6-gak"/>
                             <constraint firstItem="nXj-RV-Oin" firstAttribute="top" secondItem="pRO-CO-X6v" secondAttribute="bottom" constant="10" id="OQR-ci-gxJ"/>
-                            <constraint firstItem="QPJ-xX-vwT" firstAttribute="top" secondItem="DqZ-MT-w0I" secondAttribute="bottom" constant="2" id="PVW-ct-jiG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xag-yI-aHc" secondAttribute="trailing" id="YIw-EE-f6e"/>
                             <constraint firstItem="DqZ-MT-w0I" firstAttribute="leading" secondItem="8oq-mq-Olw" secondAttribute="leadingMargin" id="YfH-V4-KF6"/>
                             <constraint firstItem="xag-yI-aHc" firstAttribute="top" secondItem="Yad-bZ-ziL" secondAttribute="bottom" constant="10" id="bX1-Rq-thI"/>
