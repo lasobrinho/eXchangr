@@ -63,6 +63,7 @@ class UserItemsViewController: UITableViewController {
         let item = items[indexPath.row]
         let bytes = item.pictures[0].bytes
         cell.itemImage.image = UIImage(data: bytes)
+        ViewCustomizers.makeRoundedView(cell.itemImage)
         cell.itemNameLabel.text = item.name
         return cell
     }
