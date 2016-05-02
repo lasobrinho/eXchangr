@@ -93,8 +93,7 @@ class UserItemsViewController: UITableViewController, ItemAdditionObserver {
     }
     
     func update(result: ItemAddOrUpdateResult) {
-        print("Addition Result")
-        print(result)
+        
     }
 
 }

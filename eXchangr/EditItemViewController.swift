@@ -28,6 +28,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var removePictureButton1: UIButton!
     @IBOutlet weak var removePictureButton2: UIButton!
     @IBOutlet weak var removePictureButton3: UIButton!
+    @IBOutlet weak var feedbackLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +123,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                 ServerInterface.sharedInstance.performItemUpdate(self.item!, callback: { [unowned self] (result) in
                     switch result {
                     case let .Failure(msg):
-                        print(msg)
+                        self.outputFeedback(msg)
                     case .Success:
                         self.navigationController?.popViewControllerAnimated(true)
                     }
@@ -202,7 +203,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             removePictureButton3.setTitle("Remove Picture", forState: .Normal)
             removePictureButton3.userInteractionEnabled = true
         default:
-            print("Invalid value for clickedImage")
+            outputFeedback("Invalid value for clickedImage")
         }
     }
     @IBAction func removePictureTapped(sender: UIButton) {
@@ -231,7 +232,7 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
         case .Success:
             navigationController?.popViewControllerAnimated(true)
         case let .Failure(message):
-            print(message)
+            outputFeedback(message)
         }
     }
     
@@ -244,6 +245,16 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    func outputFeedback(message: String) {
+        feedbackLabel.text = message
+        feedbackLabel.alpha = 0.0
+        feedbackLabel.hidden = false
+        UIView.animateWithDuration(0.5) { 
+            self.feedbackLabel.alpha = 1.0
+        }
+
     }
     
 }
