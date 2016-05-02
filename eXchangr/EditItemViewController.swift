@@ -139,8 +139,18 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
                     }
                     })
             } else {
-                item = Item(id: nil, name: itemNameTextField.text!, description: itemDescriptionTextField.text!, active: true, pictures: getCurrentPictures())
-                ServerInterface.sharedInstance.performItemAddition(item!)
+                ServerInterface.sharedInstance.fetchAuthenticatedUserItemsList { [unowned self] (retrievedItems) in
+                    let maximumItems = ServerInterface.sharedInstance.getAuthenticatedUser().maximumItemsAmount
+                    if retrievedItems.count >= maximumItems {
+                        let alertController = UIAlertController(title: "Error", message: "You reached the maximum amount of \(maximumItems) items", preferredStyle: .Alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+                        alertController.addAction(OKAction)
+                        self.presentViewController(alertController, animated: true, completion: {})
+                    } else {
+                        self.item = Item(id: nil, name: self.itemNameTextField.text!, description: self.itemDescriptionTextField.text!, active: true, pictures: self.getCurrentPictures())
+                        ServerInterface.sharedInstance.performItemAddition(self.item!)
+                    }
+                }
             }
         } else {
             let alertController = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .Alert)
