@@ -18,6 +18,7 @@ class BrowserViewController: UIViewController {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var ignoreButton: UIButton!
     @IBOutlet weak var exchangeButton: UIButton!
+    @IBOutlet weak var descriptionText: UILabel!
 
 
 
@@ -36,6 +37,7 @@ class BrowserViewController: UIViewController {
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        toggleInterface(true)
         refreshData()
     }
 
@@ -54,8 +56,8 @@ class BrowserViewController: UIViewController {
         super.viewDidAppear(animated)
 
         imageYConstraint.constant = 8
-        self.ignoreBtnYConstraint.constant = 25
-        self.exchangeBtnYConstraint.constant = 25
+        self.ignoreBtnYConstraint.constant = 8
+        self.exchangeBtnYConstraint.constant = 8
         UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
@@ -115,6 +117,7 @@ class BrowserViewController: UIViewController {
             currentItem = browseItems.popLast()
             image.image = currentItem.pictures[0].asUIImage()
             name.text = currentItem.name
+            descriptionText.text = currentItem.description
             ServerInterface.sharedInstance.requestDistanceForItem(currentItem, callback: { (distance) in
                 self.distance.text = "\(distance) miles"
             })
@@ -125,6 +128,7 @@ class BrowserViewController: UIViewController {
     }
 
     func toggleInterface(hidden: Bool) {
+        descriptionText.hidden = hidden
         image.hidden = hidden
         name.hidden = hidden
         ignoreButton.hidden = hidden

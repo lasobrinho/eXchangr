@@ -530,21 +530,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
-                                <rect key="frame" x="150" y="417" width="44" height="30"/>
+                                <rect key="frame" x="150" y="489.5" width="44" height="30.5"/>
                                 <state key="normal" title="Ignore"/>
                                 <connections>
                                     <action selector="IgnoreButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="Ruk-TK-OFu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
-                                <rect key="frame" x="383" y="417" width="67" height="30"/>
+                                <rect key="frame" x="383" y="489.5" width="67" height="30"/>
                                 <state key="normal" title="Exchange"/>
                                 <connections>
                                     <action selector="ExchangeButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="ca8-A5-eva"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
-                                <rect key="frame" x="20" y="289.5" width="560" height="21"/>
+                                <rect key="frame" x="20" y="289" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -557,24 +557,34 @@
                                     <constraint firstAttribute="width" secondItem="kwR-hj-vYB" secondAttribute="height" multiplier="1:1" id="fQp-wo-TZi"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtA-k7-DXW">
+                                <rect key="frame" x="150" y="400" width="300" height="81.5"/>
+                                <string key="text">140 character example: Mentioning St Francis on twitter creates unique context for constructing meaning unlike  oral or print communication</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="leading" secondItem="saQ-xe-zol" secondAttribute="leadingMargin" id="3lG-nh-HKd"/>
+                            <constraint firstItem="WtA-k7-DXW" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="8" id="4nz-SB-Ss9"/>
                             <constraint firstItem="Mfv-Nm-Lly" firstAttribute="top" secondItem="AO8-7o-tpb" secondAttribute="bottom" constant="5" id="Bto-BD-E9f"/>
                             <constraint firstItem="XFF-Q8-zeD" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="FTs-Lq-g0C"/>
                             <constraint firstItem="kwR-hj-vYB" firstAttribute="top" secondItem="hRT-14-uNt" secondAttribute="bottom" constant="8" id="FUI-JH-fpq"/>
+                            <constraint firstItem="Ubi-Ly-ASn" firstAttribute="top" secondItem="WtA-k7-DXW" secondAttribute="bottom" constant="8" id="Fub-2c-N6z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Sea-oh-k13" secondAttribute="trailing" id="FzF-Ac-Mc4"/>
                             <constraint firstItem="AO8-7o-tpb" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="Hz5-k6-78g"/>
                             <constraint firstItem="kwR-hj-vYB" firstAttribute="centerX" secondItem="saQ-xe-zol" secondAttribute="centerX" id="Iav-0r-M7I"/>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="centerX" secondItem="saQ-xe-zol" secondAttribute="centerX" id="NB3-f8-Kg2"/>
+                            <constraint firstItem="WtA-k7-DXW" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="OK8-G2-2NA"/>
+                            <constraint firstItem="WtA-k7-DXW" firstAttribute="trailing" secondItem="kwR-hj-vYB" secondAttribute="trailing" id="WBt-NV-cKU"/>
                             <constraint firstItem="AO8-7o-tpb" firstAttribute="top" secondItem="kwR-hj-vYB" secondAttribute="bottom" constant="5" id="YCo-DH-eD9"/>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="centerY" secondItem="saQ-xe-zol" secondAttribute="centerY" id="ZZg-6N-A3f"/>
-                            <constraint firstItem="Ubi-Ly-ASn" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="25" id="Znk-0E-fkh"/>
+                            <constraint firstItem="XFF-Q8-zeD" firstAttribute="top" secondItem="WtA-k7-DXW" secondAttribute="bottom" constant="8" id="bcs-rR-qCo"/>
                             <constraint firstItem="Mfv-Nm-Lly" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="cdF-oP-1Wo"/>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="centerY" secondItem="saQ-xe-zol" secondAttribute="centerY" id="mTu-0O-Qv7"/>
                             <constraint firstItem="Ubi-Ly-ASn" firstAttribute="trailing" secondItem="kwR-hj-vYB" secondAttribute="trailing" id="wtn-qk-nKH"/>
-                            <constraint firstItem="XFF-Q8-zeD" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="25" id="zSm-AS-A7E"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -596,10 +606,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionText" destination="WtA-k7-DXW" id="yAT-qm-YMI"/>
                         <outlet property="distance" destination="Mfv-Nm-Lly" id="Wiw-aP-w9D"/>
-                        <outlet property="exchangeBtnYConstraint" destination="Znk-0E-fkh" id="t7c-Wa-npL"/>
+                        <outlet property="exchangeBtnYConstraint" destination="Fub-2c-N6z" id="WZm-I3-YXn"/>
                         <outlet property="exchangeButton" destination="Ubi-Ly-ASn" id="4TU-9v-TOW"/>
-                        <outlet property="ignoreBtnYConstraint" destination="zSm-AS-A7E" id="VgX-IX-yKm"/>
+                        <outlet property="ignoreBtnYConstraint" destination="bcs-rR-qCo" id="PsB-Jf-EEX"/>
                         <outlet property="ignoreButton" destination="XFF-Q8-zeD" id="j8f-9e-IN0"/>
                         <outlet property="image" destination="kwR-hj-vYB" id="Itb-bR-UK4"/>
                         <outlet property="imageXConstraint" destination="Iav-0r-M7I" id="sil-qH-1Lp"/>
