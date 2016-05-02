@@ -112,7 +112,7 @@ class MainContainerViewController: UIViewController {
     }
 
     func makeHidenMenuViewControllerFrame() -> CGRect {
-        let width = self.view.frame.width * 0.4
+        let width = self.view.frame.width * 0.5
         let height = self.view.frame.height
         let origin = CGPoint(x: -width, y: 0)
         let size = CGSize(width: width, height: height)
