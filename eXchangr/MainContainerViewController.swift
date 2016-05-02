@@ -13,13 +13,39 @@ class MainContainerViewController: UIViewController {
     var main: UINavigationController?
     var menu: UIViewController?
 
+    var blurOverlay = UIView()
+
+    let menuAnimationDuration: NSTimeInterval = 0.4
+    let menuAnimationDelay: NSTimeInterval = 0.0
+    let damping: CGFloat = 0.85
+    let startSpeed: CGFloat = 0.5
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBlurOverlay()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification), name: "showMenu", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(removeMenuNotification), name: "removeMenu", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pushControllerAndRemoveMenuNotification), name: "pushControllerAndRemoveMenu", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(performUserLogoutNotification), name: "performUserLogout", object: nil)
+    }
+
+    func configureBlurOverlay() {
+        blurOverlay.alpha = 0.0
+        blurOverlay.hidden = true
+        blurOverlay.frame = view.frame
+        blurOverlay.backgroundColor = UIColor.clearColor()
+        let blurEffect = UIBlurEffect(style: .Dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurOverlay.frame
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        blurOverlay.addSubview(blurEffectView)
+
+        blurOverlay.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(blurTap)))
+    }
+
+    func blurTap(sender: UITapGestureRecognizer) {
+        removeMenuViewController()
     }
 
     func showMenuNotification(notification: NSNotification) {
@@ -66,15 +92,28 @@ class MainContainerViewController: UIViewController {
 
         self.addChildViewController(menuController)
         menuController.view.frame = makeHidenMenuViewControllerFrame()
+
         self.view.addSubview(menuController.view)
+        self.blurOverlay.hidden = false
+        self.view.insertSubview(self.blurOverlay, belowSubview: menuController.view)
+
         menuController.didMoveToParentViewController(self)
         menu = menuController
+
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(menuSwipe))
+        swipeRecognizer.direction = .Left
+        menu!.view.addGestureRecognizer(swipeRecognizer)
+        animateMenu(origin: 0, completionHandler: nil)
+    }
+
+    func menuSwipe(sender: UISwipeGestureRecognizer) {
+        removeMenuViewController()
     }
 
     func makeHidenMenuViewControllerFrame() -> CGRect {
-        let width = self.view.frame.width * 0.6
+        let width = self.view.frame.width * 0.4
         let height = self.view.frame.height
-        let origin = CGPoint(x: 0, y: 0)
+        let origin = CGPoint(x: -width, y: 0)
         let size = CGSize(width: width, height: height)
         return CGRect(origin: origin, size: size)
     }
@@ -87,9 +126,22 @@ class MainContainerViewController: UIViewController {
     }
 
     func removeMenuViewController() {
-        menu?.willMoveToParentViewController(nil)
-        menu?.view.removeFromSuperview()
-        menu?.removeFromParentViewController()
-        menu = nil
+        menu!.willMoveToParentViewController(nil)
+        animateMenu(origin: -menu!.view.frame.width) {
+            (completed) in
+            self.menu!.view.removeFromSuperview()
+            self.menu!.removeFromParentViewController()
+            self.menu = nil
+            self.blurOverlay.hidden = true
+            self.blurOverlay.removeFromSuperview()
+        }
+    }
+
+    func animateMenu(origin origin: CGFloat ,completionHandler: ((Bool) -> ())?) {
+        UIView.animateWithDuration(self.menuAnimationDuration, delay: self.menuAnimationDelay, usingSpringWithDamping: self.damping, initialSpringVelocity: self.startSpeed, options: [], animations: {
+            self.menu!.view.frame.origin.x = origin
+
+            self.blurOverlay.alpha = 1 - self.blurOverlay.alpha
+            }, completion: completionHandler)
     }
 }
