@@ -61,23 +61,22 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
     }
 
     func configureItemImageButtons() {
-        let veryLightGrayColor = UIColor(white: 0.95, alpha: 1.0)
 
-        itemImage1.backgroundColor = veryLightGrayColor
+        itemImage1.backgroundColor = UIColor.whiteColor()
         itemImage1.layer.cornerRadius = 5
-        itemImage1.layer.borderColor = UIColor.lightGrayColor().CGColor
+        itemImage1.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         itemImage1.layer.borderWidth = 1
         itemImage1.clipsToBounds = true
 
-        itemImage2.backgroundColor = veryLightGrayColor
+        itemImage2.backgroundColor = UIColor.whiteColor()
         itemImage2.layer.cornerRadius = 5
-        itemImage2.layer.borderColor = UIColor.lightGrayColor().CGColor
+        itemImage2.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         itemImage2.layer.borderWidth = 1
         itemImage2.clipsToBounds = true
 
-        itemImage3.backgroundColor = veryLightGrayColor
+        itemImage3.backgroundColor = UIColor.whiteColor()
         itemImage3.layer.cornerRadius = 5
-        itemImage3.layer.borderColor = UIColor.lightGrayColor().CGColor
+        itemImage3.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         itemImage3.layer.borderWidth = 1
         itemImage3.clipsToBounds = true
     }
