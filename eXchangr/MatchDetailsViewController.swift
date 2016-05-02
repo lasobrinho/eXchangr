@@ -28,9 +28,6 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var yourItemsView: UIView!
     @IBOutlet weak var otherUserItemsView: UIView!
     
-//    var leftSwipeRecognizer: UISwipeGestureRecognizer
-//    var rightSwipeRecognizer: UISwipeGestureRecognizer
-    
     var exchange: Exchange?
     var otherUserDistance: Double!
     var currentIndex = 0
@@ -124,41 +121,5 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.itemDescriptionTextView.layer.cornerRadius = 5
         cell.itemDescriptionTextView.editable = false
     }
-
-
-//    let swipeAnimationDuration: NSTimeInterval = 0.15
-//    func leftImageSwipe(sender: UISwipeGestureRecognizer) {
-//        if currentIndex < item.pictures.count - 1 {
-//            currentIndex += 1
-//            UIView.animateWithDuration(swipeAnimationDuration, animations: {
-//                self.imageView.center.x = -self.view.center.x
-//                }, completion: { (success) in
-//                    self.imageView.center.x = self.view.frame.width + self.view.center.x
-//                    UIView.animateWithDuration(self.swipeAnimationDuration, animations: {
-//                        self.imageView.image = self.item.pictures[self.currentIndex].asUIImage()
-//                        self.imageView.center.x = self.view.center.x
-//                        }, completion: nil)
-//            })
-//        }
-//    }
-//    
-//    func rightImageSwipe(sender: UISwipeGestureRecognizer) {
-//        if currentIndex > 0 {
-//            currentIndex -= 1
-//            UIView.animateWithDuration(swipeAnimationDuration, animations: {
-//                self.imageView.center.x = self.view.frame.width + self.view.center.x
-//                }, completion: { (success) in
-//                    self.imageView.center.x = -self.view.center.x
-//                    UIView.animateWithDuration(self.swipeAnimationDuration, animations: {
-//                        self.imageView.image = self.item.pictures[self.currentIndex].asUIImage()
-//                        self.imageView.center.x = self.view.center.x
-//                        }, completion: nil)
-//            })
-//        }
-//    }
-//    
-//    func swipeGesture(sender: UISwipeGestureRecognizer) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
 
 }

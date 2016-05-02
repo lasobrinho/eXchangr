@@ -47,6 +47,17 @@ class EditItemViewController: UIViewController, UINavigationControllerDelegate, 
             navigationBarTitle.title = "New Item"
             saveButton.title = "Add"
         }
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+    }
+
+
+    func viewTapped(sender: UITapGestureRecognizer) {
+        hideKeyboard()
+    }
+
+    func hideKeyboard() {
+        itemNameTextField.resignFirstResponder()
+        itemDescriptionTextField.resignFirstResponder()
     }
 
     func configureItemImageButtons() {
