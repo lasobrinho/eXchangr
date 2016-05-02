@@ -49,12 +49,6 @@
                                     <action selector="LoginUserTapped:" destination="aSb-Nq-7gC" eventType="touchUpInside" id="cDe-PT-c5F"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
-                                <rect key="frame" x="240" y="323" width="121" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eXchangr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uC-LU-KX6">
                                 <rect key="frame" x="243" y="153" width="113" height="32.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -65,6 +59,12 @@
                                 <rect key="frame" x="260" y="494" width="81" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9H-kS-kZ0">
+                                <rect key="frame" x="240" y="323" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1255" y="476"/>
         </scene>
-        <!--User Registration View Controller-->
+        <!--User Registration-->
         <scene sceneID="pUO-PZ-9e5">
             <objects>
-                <viewController storyboardIdentifier="NewUserViewController" id="Qho-bd-Nxh" customClass="UserRegistrationViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewUserViewController" title="User Registration" id="Qho-bd-Nxh" customClass="UserRegistrationViewController" customModule="eXchangr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nEA-Oi-Jpc"/>
                         <viewControllerLayoutGuide type="bottom" id="ENM-pq-dM0"/>
@@ -124,8 +124,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-Pg-1Pj">
+                                <rect key="frame" x="226" y="301" width="149" height="30"/>
+                                <state key="normal" title="Start using eXchangr!"/>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="Qho-bd-Nxh" eventType="touchUpInside" id="Vdd-tW-bVp"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-eE-pk0">
-                                <rect key="frame" x="213" y="181" width="175" height="239"/>
+                                <rect key="frame" x="213" y="57" width="175" height="239"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eV-Y5-lMo">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
@@ -176,7 +183,7 @@
                                             <constraint firstAttribute="width" constant="175" id="vUb-fc-NgQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOH-Pc-MXc">
                                         <rect key="frame" x="0.0" y="183" width="175" height="21"/>
@@ -197,35 +204,30 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upr-UE-3Oy">
-                                <rect key="frame" x="214" y="110" width="171" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXC-ij-bSk">
+                                <rect key="frame" x="240" y="339" width="121" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-Pg-1Pj">
-                                <rect key="frame" x="226" y="425" width="149" height="30"/>
-                                <state key="normal" title="Start using eXchangr!"/>
-                                <connections>
-                                    <action selector="registerButtonTapped:" destination="Qho-bd-Nxh" eventType="touchUpInside" id="Vdd-tW-bVp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Upr-UE-3Oy" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="2lc-bM-Z3c"/>
-                            <constraint firstItem="Upr-UE-3Oy" firstAttribute="bottom" secondItem="NYc-eE-pk0" secondAttribute="top" constant="-50" id="2pF-5z-7CW"/>
+                            <constraint firstItem="WXC-ij-bSk" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="FDP-gg-qhz"/>
+                            <constraint firstItem="WXC-ij-bSk" firstAttribute="top" secondItem="hyN-Pg-1Pj" secondAttribute="bottom" constant="8" symbolic="YES" id="RND-yB-cNd"/>
                             <constraint firstItem="hyN-Pg-1Pj" firstAttribute="top" secondItem="NYc-eE-pk0" secondAttribute="bottom" constant="5" id="elR-6k-1KB"/>
                             <constraint firstItem="NYc-eE-pk0" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="fP0-NU-Nde"/>
                             <constraint firstItem="hyN-Pg-1Pj" firstAttribute="centerX" secondItem="9Gl-B9-5hC" secondAttribute="centerX" id="ga9-fS-gkb"/>
-                            <constraint firstItem="NYc-eE-pk0" firstAttribute="centerY" secondItem="9Gl-B9-5hC" secondAttribute="centerY" id="zYF-yu-dbx"/>
+                            <constraint firstItem="NYc-eE-pk0" firstAttribute="top" secondItem="nEA-Oi-Jpc" secondAttribute="bottom" constant="37" id="oGB-Pd-NRd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Zgy-ID-0Pv" id="tQO-Zb-xMa"/>
+                        <outlet property="feedbackLabel" destination="WXC-ij-bSk" id="XWt-G8-6Dm"/>
                         <outlet property="nameTextField" destination="tfr-Yc-JJA" id="ZJA-CQ-wCN"/>
                         <outlet property="passwordTextField" destination="kBP-Zq-Ara" id="Cxy-Ep-Wwx"/>
                         <outlet property="phoneTextField" destination="wDc-oN-Zgs" id="bnn-cz-s9w"/>
+                        <outlet property="registrationBtn" destination="hyN-Pg-1Pj" id="09t-sb-xrF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfC-ob-VGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -618,19 +620,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFF-Q8-zeD">
-                                <rect key="frame" x="150" y="417" width="44" height="30"/>
+                                <rect key="frame" x="150" y="489.5" width="44" height="30.5"/>
                                 <state key="normal" title="Ignore"/>
                                 <connections>
                                     <action selector="IgnoreButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="Ruk-TK-OFu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Ly-ASn">
-                                <rect key="frame" x="383" y="417" width="67" height="30"/>
+                                <rect key="frame" x="383" y="489.5" width="67" height="30"/>
                                 <state key="normal" title="Exchange"/>
                                 <connections>
                                     <action selector="ExchangeButtonTapped:" destination="m7k-Wr-9WG" eventType="touchUpInside" id="ca8-A5-eva"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
+                                <rect key="frame" x="20" y="289" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-hj-vYB">
                                 <rect key="frame" x="150" y="28" width="300" height="300"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -639,8 +647,9 @@
                                     <constraint firstAttribute="width" secondItem="kwR-hj-vYB" secondAttribute="height" multiplier="1:1" id="fQp-wo-TZi"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, could not find more items around you :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-k13">
-                                <rect key="frame" x="20" y="289.5" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtA-k7-DXW">
+                                <rect key="frame" x="150" y="400" width="300" height="81.5"/>
+                                <string key="text">140 character example: Mentioning St Francis on twitter creates unique context for constructing meaning unlike  oral or print communication</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -649,20 +658,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="leading" secondItem="saQ-xe-zol" secondAttribute="leadingMargin" id="3lG-nh-HKd"/>
+                            <constraint firstItem="WtA-k7-DXW" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="8" id="4nz-SB-Ss9"/>
                             <constraint firstItem="Mfv-Nm-Lly" firstAttribute="top" secondItem="AO8-7o-tpb" secondAttribute="bottom" constant="5" id="Bto-BD-E9f"/>
                             <constraint firstItem="XFF-Q8-zeD" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="FTs-Lq-g0C"/>
                             <constraint firstItem="kwR-hj-vYB" firstAttribute="top" secondItem="hRT-14-uNt" secondAttribute="bottom" constant="8" id="FUI-JH-fpq"/>
+                            <constraint firstItem="Ubi-Ly-ASn" firstAttribute="top" secondItem="WtA-k7-DXW" secondAttribute="bottom" constant="8" id="Fub-2c-N6z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Sea-oh-k13" secondAttribute="trailing" id="FzF-Ac-Mc4"/>
                             <constraint firstItem="AO8-7o-tpb" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="Hz5-k6-78g"/>
                             <constraint firstItem="kwR-hj-vYB" firstAttribute="centerX" secondItem="saQ-xe-zol" secondAttribute="centerX" id="Iav-0r-M7I"/>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="centerX" secondItem="saQ-xe-zol" secondAttribute="centerX" id="NB3-f8-Kg2"/>
+                            <constraint firstItem="WtA-k7-DXW" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="OK8-G2-2NA"/>
+                            <constraint firstItem="WtA-k7-DXW" firstAttribute="trailing" secondItem="kwR-hj-vYB" secondAttribute="trailing" id="WBt-NV-cKU"/>
                             <constraint firstItem="AO8-7o-tpb" firstAttribute="top" secondItem="kwR-hj-vYB" secondAttribute="bottom" constant="5" id="YCo-DH-eD9"/>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="centerY" secondItem="saQ-xe-zol" secondAttribute="centerY" id="ZZg-6N-A3f"/>
-                            <constraint firstItem="Ubi-Ly-ASn" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="25" id="Znk-0E-fkh"/>
+                            <constraint firstItem="XFF-Q8-zeD" firstAttribute="top" secondItem="WtA-k7-DXW" secondAttribute="bottom" constant="8" id="bcs-rR-qCo"/>
                             <constraint firstItem="Mfv-Nm-Lly" firstAttribute="leading" secondItem="kwR-hj-vYB" secondAttribute="leading" id="cdF-oP-1Wo"/>
                             <constraint firstItem="Sea-oh-k13" firstAttribute="centerY" secondItem="saQ-xe-zol" secondAttribute="centerY" id="mTu-0O-Qv7"/>
                             <constraint firstItem="Ubi-Ly-ASn" firstAttribute="trailing" secondItem="kwR-hj-vYB" secondAttribute="trailing" id="wtn-qk-nKH"/>
-                            <constraint firstItem="XFF-Q8-zeD" firstAttribute="top" secondItem="Mfv-Nm-Lly" secondAttribute="bottom" constant="25" id="zSm-AS-A7E"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -684,10 +696,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionText" destination="WtA-k7-DXW" id="yAT-qm-YMI"/>
                         <outlet property="distance" destination="Mfv-Nm-Lly" id="Wiw-aP-w9D"/>
+                        <outlet property="exchangeBtnYConstraint" destination="Fub-2c-N6z" id="WZm-I3-YXn"/>
                         <outlet property="exchangeButton" destination="Ubi-Ly-ASn" id="4TU-9v-TOW"/>
+                        <outlet property="ignoreBtnYConstraint" destination="bcs-rR-qCo" id="PsB-Jf-EEX"/>
                         <outlet property="ignoreButton" destination="XFF-Q8-zeD" id="j8f-9e-IN0"/>
                         <outlet property="image" destination="kwR-hj-vYB" id="Itb-bR-UK4"/>
+                        <outlet property="imageXConstraint" destination="Iav-0r-M7I" id="sil-qH-1Lp"/>
+                        <outlet property="imageYConstraint" destination="FUI-JH-fpq" id="D8g-B2-pAT"/>
                         <outlet property="name" destination="AO8-7o-tpb" id="2ZL-HU-mZO"/>
                         <outlet property="noMoreItems" destination="Sea-oh-k13" id="7wC-LK-Dn2"/>
                     </connections>

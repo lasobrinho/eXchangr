@@ -18,32 +18,86 @@ class BrowserViewController: UIViewController {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var ignoreButton: UIButton!
     @IBOutlet weak var exchangeButton: UIButton!
+    @IBOutlet weak var descriptionText: UILabel!
+
+
+
+    @IBOutlet weak var imageXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ignoreBtnYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var exchangeBtnYConstraint: NSLayoutConstraint!
 
     var browseItems = [Item]()
 
     var currentItem: Item!
+    var imageIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-        if image != nil {
-            image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
-        }
+
+        view.clipsToBounds = true
+
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
+
+        let leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(imageSwipe))
+        let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(imageSwipe))
+
+        leftSwipeRecognizer.direction = .Left
+        rightSwipeRecognizer.direction = .Right
+
+        image.addGestureRecognizer(leftSwipeRecognizer)
+        image.addGestureRecognizer(rightSwipeRecognizer)
+
+        toggleInterface(true)
         refreshData()
+    }
+
+    func imageSwipe(sender: UISwipeGestureRecognizer) {
+        if currentItem != nil {
+            if sender.direction == .Right {
+                if imageIndex > 0 {
+                    imageIndex -= 1
+                }
+            } else {
+                if imageIndex < currentItem.pictures.count - 1 {
+                    imageIndex += 1
+                }
+            }
+
+            image.image = currentItem.pictures[imageIndex].asUIImage()
+        } else {
+            imageIndex = 0
+        }
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        prepareForAnimation()
+    }
+
+    func prepareForAnimation() {
+        imageYConstraint.constant = -view.center.y - image.frame.height/3
+        ignoreBtnYConstraint.constant += view.frame.height * 3
+        exchangeBtnYConstraint.constant += view.frame.height * 3
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        imageYConstraint.constant = 8
+        self.ignoreBtnYConstraint.constant = 8
+        self.exchangeBtnYConstraint.constant = 8
+        UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
 
     func refreshData() {
         ServerInterface.sharedInstance.requestElegibleItemsList { [unowned self] (items) in
             self.browseItems = items
             self.loadUIElements()
-        }
-    }
-
-    func imageTapped() {
-        if currentItem != nil {
-            let detailsVC = mainStoryboard.instantiateViewControllerWithIdentifier("BrowseDetailsViewController") as! BrowseDetailsViewController
-            detailsVC.item = currentItem
-            presentViewController(detailsVC, animated: true, completion: nil)
         }
     }
 
@@ -71,16 +125,31 @@ class BrowserViewController: UIViewController {
 
     func increaseCurrentIndexCallback(success: Bool) {
         if success {
-            loadUIElements()
+            let duration: NSTimeInterval = 0.3
+            imageXConstraint.constant -= view.frame.width
+            UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: [], animations: {
+                self.view.layoutIfNeeded()
+                }, completion: {
+                    _ in
+                    self.loadUIElements()
+                    self.imageXConstraint.constant = self.view.center.x + self.view.frame.width
+                    self.view.layoutIfNeeded()
+                    self.imageXConstraint.constant = 0
+                    UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: [], animations: {
+                        self.view.layoutIfNeeded()
+                        }, completion: nil)
+            })
         }
     }
 
     func loadUIElements() {
+        imageIndex = 0
         if browseItems.count > 0 {
             toggleInterface(false)
             currentItem = browseItems.popLast()
             image.image = currentItem.pictures[0].asUIImage()
             name.text = currentItem.name
+            descriptionText.text = currentItem.description
             ServerInterface.sharedInstance.requestDistanceForItem(currentItem, callback: { (distance) in
                 self.distance.text = "\(distance) miles"
             })
@@ -91,6 +160,7 @@ class BrowserViewController: UIViewController {
     }
 
     func toggleInterface(hidden: Bool) {
+        descriptionText.hidden = hidden
         image.hidden = hidden
         name.hidden = hidden
         ignoreButton.hidden = hidden

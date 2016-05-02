@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UserAuthenticationObserver {
+class LoginViewController: UIViewController, UserAuthenticationObserver, UITextFieldDelegate {
 
     var mainStoryboard: UIStoryboard!
 
@@ -24,12 +24,34 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     @IBOutlet weak var passwordXConstraint: NSLayoutConstraint!
     @IBOutlet weak var appLabelYConstraint: NSLayoutConstraint!
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.delegate = self
+        usernameField.delegate = self
+
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         ServerInterface.sharedInstance.addUserAuthenticationObserver(self)
+    }
+
+    func viewTapped(sender: UITapGestureRecognizer) {
+        hideKeyboard()
+    }
+
+    func hideKeyboard() {
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField === usernameField {
+            passwordField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+
+        return true
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -45,7 +67,10 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
             self.loginButton.alpha = 1
             self.newUserLabel.alpha = 1
             self.createAnAccountButton.alpha = 1
-            }, completion: nil)
+            }, completion: {
+                success in
+                self.usernameField.becomeFirstResponder()
+        })
     }
 
 
@@ -77,6 +102,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver {
     }
 
     @IBAction func LoginUserTapped(sender: AnyObject) {
+        hideKeyboard()
         if fieldsAreValid() {
             loginButton.enabled = false
             ServerInterface.sharedInstance.performUserAuthentication(email: usernameField.text!, password: passwordField.text!)
