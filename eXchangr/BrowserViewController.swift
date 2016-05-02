@@ -18,9 +18,7 @@ class BrowserViewController: UIViewController {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var ignoreButton: UIButton!
     @IBOutlet weak var exchangeButton: UIButton!
-    @IBOutlet weak var descriptionText: UILabel!
-
-
+    @IBOutlet weak var descriptionText: UITextView!
 
     @IBOutlet weak var imageXConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageYConstraint: NSLayoutConstraint!
@@ -61,9 +59,17 @@ class BrowserViewController: UIViewController {
 
         image.addGestureRecognizer(leftSwipeRecognizer)
         image.addGestureRecognizer(rightSwipeRecognizer)
+        
+        configureDescriptionTextView()
 
         toggleInterface(true)
         refreshData()
+    }
+    
+    func configureDescriptionTextView() {
+        descriptionText.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+        descriptionText.editable = false
+        descriptionText.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
     }
 
     func imageSwipe(sender: UISwipeGestureRecognizer) {
