@@ -571,7 +571,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sck-IV-3Df">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sck-IV-3Df">
                                         <rect key="frame" x="0.0" y="27.5" width="560" height="332.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -881,7 +881,7 @@
                                             <constraint firstAttribute="height" constant="100" id="Hla-Aj-oGw"/>
                                         </constraints>
                                         <state key="normal" title="Add Picture">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="itemImage1Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="abE-Nr-g94"/>
@@ -894,7 +894,7 @@
                                             <constraint firstAttribute="width" constant="100" id="j9Y-eW-dyX"/>
                                         </constraints>
                                         <state key="normal" title="Add Picture">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="itemImage3Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="3xq-mM-qkT"/>
@@ -907,7 +907,7 @@
                                             <constraint firstAttribute="height" constant="100" id="mXf-TB-5Ca"/>
                                         </constraints>
                                         <state key="normal" title="Add Picture">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="itemImage2Tapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="HTt-wv-1BM"/>
@@ -984,7 +984,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Remove Picture">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="g4I-5J-Xiy"/>
@@ -998,7 +998,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Remove Picture">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="F2k-H3-KJL"/>
@@ -1012,7 +1012,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Remove Picture">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="removePictureTapped:" destination="Yss-Sa-rJy" eventType="touchUpInside" id="jP3-Qm-EGv"/>

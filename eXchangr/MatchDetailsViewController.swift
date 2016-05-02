@@ -40,7 +40,14 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         
         otherUserItemsTableView.delegate = self
         otherUserItemsTableView.dataSource = self
-
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
+        
+//        leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(leftImageSwipe))
+//        rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(rightImageSwipe))
+//        
+//        leftSwipeRecognizer.direction = .Left
+//        rightSwipeRecognizer.direction = .Right
     }
     
     func configureMatchDetailsView() {
@@ -68,7 +75,10 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         yourItemsTitleLabel.text = "Your Items that \(exchange!.otherUser.name) is interested"
         for item in exchange!.itemsLikedByTheOtherUser {
             yourItemsStackView.constraints[1].constant += 60
-            yourItemsStackView.addArrangedSubview(UIImageView(image: item.pictures[0].asUIImage()))
+            let image = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 60, height: 60))
+            image.image = item.pictures[0].asUIImage()
+            ViewCustomizers.makeRoundedView(image)
+            yourItemsStackView.addArrangedSubview(image)
         }
     }
     
@@ -96,7 +106,11 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier("OtherUserItemCell", forIndexPath: indexPath) as! OtherUserItemsTableViewCell
         cell.itemNameLabel.text = exchange!.otherUserItemsThatILike[indexPath.row].name
         cell.itemImageView.image = exchange!.otherUserItemsThatILike[indexPath.row].pictures[0].asUIImage()
+        ViewCustomizers.makeRoundedView(cell.itemImageView)
+//        cell.itemImageView.addGestureRecognizer(leftSwipeRecognizer)
+//        cell.itemImageView.addGestureRecognizer(rightSwipeRecognizer)
         cell.itemDescriptionTextView.text = exchange!.otherUserItemsThatILike[indexPath.row].description
+        
         configureCellTextField(cell)
         return cell
     }
@@ -105,6 +119,7 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.itemDescriptionTextView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
         cell.itemDescriptionTextView.layer.borderWidth = 1.0
         cell.itemDescriptionTextView.layer.cornerRadius = 5
+        cell.itemDescriptionTextView.editable = false
     }
 
 }

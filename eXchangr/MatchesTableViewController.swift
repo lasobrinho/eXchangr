@@ -44,7 +44,10 @@ class MatchesTableViewController: UITableViewController {
         }
         for item in exchanges![index].itemsLikedByTheOtherUser {
             cell.leftItemsStackView.constraints[0].constant += 40
-            cell.leftItemsStackView.addArrangedSubview(UIImageView(image: item.pictures[0].asUIImage()))
+            let image = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 40, height: 40))
+            image.image = item.pictures[0].asUIImage()
+            ViewCustomizers.makeRoundedView(image)
+            cell.leftItemsStackView.addArrangedSubview(image)
         }
     }
 
@@ -56,7 +59,10 @@ class MatchesTableViewController: UITableViewController {
         }
         for item in exchanges![index].otherUserItemsThatILike {
             cell.rightItemsStackView.constraints[1].constant += 40
-            cell.rightItemsStackView.addArrangedSubview(UIImageView(image: item.pictures[0].asUIImage()))
+            let image = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 40, height: 40))
+            image.image = item.pictures[0].asUIImage()
+            ViewCustomizers.makeRoundedView(image)
+            cell.rightItemsStackView.addArrangedSubview(image)
         }
         cell.rightItemsUserName.text = exchanges![index].otherUser.name
         cell.rightItemDistanceLabel.text = "\(exchanges![index].distance) miles"
