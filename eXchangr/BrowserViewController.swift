@@ -30,15 +30,46 @@ class BrowserViewController: UIViewController {
     var browseItems = [Item]()
 
     var currentItem: Item!
+    var imageIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+
         view.clipsToBounds = true
+
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
-        mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+
+        let leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(imageSwipe))
+        let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(imageSwipe))
+
+        leftSwipeRecognizer.direction = .Left
+        rightSwipeRecognizer.direction = .Right
+
+        image.addGestureRecognizer(leftSwipeRecognizer)
+        image.addGestureRecognizer(rightSwipeRecognizer)
+
         toggleInterface(true)
         refreshData()
+    }
+
+    func imageSwipe(sender: UISwipeGestureRecognizer) {
+        if currentItem != nil {
+            if sender.direction == .Right {
+                if imageIndex > 0 {
+                    imageIndex -= 1
+                }
+            } else {
+                if imageIndex < currentItem.pictures.count - 1 {
+                    imageIndex += 1
+                }
+            }
+
+            image.image = currentItem.pictures[imageIndex].asUIImage()
+        } else {
+            imageIndex = 0
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -112,6 +143,7 @@ class BrowserViewController: UIViewController {
     }
 
     func loadUIElements() {
+        imageIndex = 0
         if browseItems.count > 0 {
             toggleInterface(false)
             currentItem = browseItems.popLast()
