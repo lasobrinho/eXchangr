@@ -36,6 +36,10 @@ class LoginViewController: UIViewController, UserAuthenticationObserver, UITextF
     }
 
     func viewTapped(sender: UITapGestureRecognizer) {
+        hideKeyboard()
+    }
+
+    func hideKeyboard() {
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
     }
@@ -95,6 +99,7 @@ class LoginViewController: UIViewController, UserAuthenticationObserver, UITextF
     }
 
     @IBAction func LoginUserTapped(sender: AnyObject) {
+        hideKeyboard()
         if fieldsAreValid() {
             loginButton.enabled = false
             ServerInterface.sharedInstance.performUserAuthentication(email: usernameField.text!, password: passwordField.text!)
