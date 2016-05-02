@@ -16,6 +16,7 @@ class MatchesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         ServerInterface.sharedInstance.requestExchangesList { [unowned self] (exchanges) in
             self.exchanges = exchanges

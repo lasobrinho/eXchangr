@@ -22,6 +22,7 @@ class MainContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         configureBlurOverlay()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMenuNotification), name: "showMenu", object: nil)

@@ -35,6 +35,7 @@ class BrowserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
 
 
         let string: NSString = "eXchangr"

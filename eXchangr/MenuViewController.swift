@@ -17,6 +17,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         mainStoryboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
         configureUserInformationLabels()
     }

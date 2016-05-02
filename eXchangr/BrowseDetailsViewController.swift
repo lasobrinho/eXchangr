@@ -25,6 +25,7 @@ class BrowseDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         if item != nil {
             nameLabel.text = item.name
             descriptionLabel.text = item.description

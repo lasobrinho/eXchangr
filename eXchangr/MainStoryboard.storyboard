@@ -726,7 +726,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="wIQ-IY-day">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="5FW-qg-lqw">
+                        <barButtonItem key="leftBarButtonItem" image="icon" id="5FW-qg-lqw">
                             <connections>
                                 <action selector="MenuButtonTapped:" destination="m7k-Wr-9WG" id="GPb-Qy-UqM"/>
                             </connections>
@@ -1028,6 +1028,6 @@
     </scenes>
     <resources>
         <image name="genius" width="166" height="145"/>
-        <image name="menu" width="48" height="48"/>
+        <image name="icon" width="24" height="24"/>
     </resources>
 </document>
