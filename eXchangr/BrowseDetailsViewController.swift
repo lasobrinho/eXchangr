@@ -28,9 +28,6 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var yourItemsView: UIView!
     @IBOutlet weak var otherUserItemsView: UIView!
     
-//    var leftSwipeRecognizer: UISwipeGestureRecognizer
-//    var rightSwipeRecognizer: UISwipeGestureRecognizer
-    
     var exchange: Exchange?
     var otherUserDistance: Double!
     var currentIndex = 0
@@ -43,12 +40,7 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         
         otherUserItemsTableView.delegate = self
         otherUserItemsTableView.dataSource = self
-        
-//        leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(leftImageSwipe))
-//        rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(rightImageSwipe))
-//        
-//        leftSwipeRecognizer.direction = .Left
-//        rightSwipeRecognizer.direction = .Right
+
     }
     
     func configureMatchDetailsView() {
@@ -104,8 +96,6 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCellWithIdentifier("OtherUserItemCell", forIndexPath: indexPath) as! OtherUserItemsTableViewCell
         cell.itemNameLabel.text = exchange!.otherUserItemsThatILike[indexPath.row].name
         cell.itemImageView.image = exchange!.otherUserItemsThatILike[indexPath.row].pictures[0].asUIImage()
-//        cell.itemImageView.addGestureRecognizer(leftSwipeRecognizer)
-//        cell.itemImageView.addGestureRecognizer(rightSwipeRecognizer)
         cell.itemDescriptionTextView.text = exchange!.otherUserItemsThatILike[indexPath.row].description
         configureCellTextField(cell)
         return cell
@@ -116,41 +106,5 @@ class BrowseDetailsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.itemDescriptionTextView.layer.borderWidth = 1.0
         cell.itemDescriptionTextView.layer.cornerRadius = 5
     }
-
-
-//    let swipeAnimationDuration: NSTimeInterval = 0.15
-//    func leftImageSwipe(sender: UISwipeGestureRecognizer) {
-//        if currentIndex < item.pictures.count - 1 {
-//            currentIndex += 1
-//            UIView.animateWithDuration(swipeAnimationDuration, animations: {
-//                self.imageView.center.x = -self.view.center.x
-//                }, completion: { (success) in
-//                    self.imageView.center.x = self.view.frame.width + self.view.center.x
-//                    UIView.animateWithDuration(self.swipeAnimationDuration, animations: {
-//                        self.imageView.image = self.item.pictures[self.currentIndex].asUIImage()
-//                        self.imageView.center.x = self.view.center.x
-//                        }, completion: nil)
-//            })
-//        }
-//    }
-//    
-//    func rightImageSwipe(sender: UISwipeGestureRecognizer) {
-//        if currentIndex > 0 {
-//            currentIndex -= 1
-//            UIView.animateWithDuration(swipeAnimationDuration, animations: {
-//                self.imageView.center.x = self.view.frame.width + self.view.center.x
-//                }, completion: { (success) in
-//                    self.imageView.center.x = -self.view.center.x
-//                    UIView.animateWithDuration(self.swipeAnimationDuration, animations: {
-//                        self.imageView.image = self.item.pictures[self.currentIndex].asUIImage()
-//                        self.imageView.center.x = self.view.center.x
-//                        }, completion: nil)
-//            })
-//        }
-//    }
-//    
-//    func swipeGesture(sender: UISwipeGestureRecognizer) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
 
 }
